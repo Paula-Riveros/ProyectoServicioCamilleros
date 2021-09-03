@@ -9,7 +9,7 @@ import { Paciente } from '../models/paciente';
 })
 export class ListaPacienteComponent implements OnInit {
 
-  paciente: Paciente[] = [];
+  pacientes: Paciente[] = [];
 
   constructor(private pacienteService: PacienteService) { }
 
@@ -20,12 +20,16 @@ export class ListaPacienteComponent implements OnInit {
   listaPacientes(): void {
     this.pacienteService.lista().subscribe(
       data => {
-        this.paciente = data;
+        this.pacientes = data;
       }, 
       err => {
         console.log(err);
       }
     );
+  }
+
+  borrar(id: number) {
+    alert('borrar el ' + id);
   }
 
 }

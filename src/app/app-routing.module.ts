@@ -4,7 +4,10 @@ import { CamillerosComponent } from './components/camilleros/camilleros/camiller
 import { InicioCamillerosComponent } from './components/camilleros/inicio/inicio.component';
 import { HomeComponent } from './components/home/home.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { DetallePacienteComponent } from './components/paciente/detalle-paciente.component';
+import { EditarPacienteComponent } from './components/paciente/editar-paciente.component';
 import { ListaPacienteComponent } from './components/paciente/lista-paciente.component';
+import { NuevoPacienteComponent } from './components/paciente/nuevo-paciente.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
@@ -14,15 +17,20 @@ const routes: Routes = [
     { path: 'quienes-somos', component: QuienesSomosComponent},
   ]},
 
-  { path: 'paciente/lista', component: ListaPacienteComponent },
-  { path: 'paciente/detalle/:id', component: ListaPacienteComponent },
-  { path: 'paciente/nuevo', component: ListaPacienteComponent },
-  { path: 'paciente/editar/:id', component: ListaPacienteComponent },
-
   { path: 'camilleros', component: CamillerosComponent,  children:[
+    { path: 'inicio', component: InicioCamillerosComponent },
+    { path: 'paciente/lista', component: ListaPacienteComponent },
+    { path: 'paciente/editar/:id', component: EditarPacienteComponent },   
 
-    { path: 'inicio', component: InicioCamillerosComponent }
+    
   ]},
+
+  
+  { path: 'paciente/detalle/:id', component: DetallePacienteComponent },
+  { path: 'paciente/nuevo', component: NuevoPacienteComponent },
+  
+
+ 
      
     { path: '**', redirectTo: 'inicio/home' },
     { path: '', pathMatch: 'full', redirectTo: 'inicio/home' },

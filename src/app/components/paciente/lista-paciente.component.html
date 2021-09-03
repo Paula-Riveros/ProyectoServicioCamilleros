@@ -1,1 +1,24 @@
-{{paciente | json}}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Número de documento</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Teléfono</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Borrar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let paciente of pacientes">
+        <td>{{paciente.id}}</td>
+        <td>{{paciente.nombre}}</td>
+        <td>{{paciente.edad}}</td>
+        <td>{{paciente.direccion}}</td>
+        <td>{{paciente.telefono}}</td>
+        <td><button class="btn btn-outline-warning" routerLink="/camilleros/paciente/editar/{{paciente.id}}"><i class="fas fa-edit"></i> Editar</button></td>
+        <td><button class="btn btn-outline-danger" (click)="borrar(paciente.id)"><i class="fas fa-trash-alt"></i> Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>

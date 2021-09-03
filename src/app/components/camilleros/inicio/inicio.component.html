@@ -2,9 +2,10 @@
 
     <hr>
 
-    <h1>SOFTWARE PARA ADMINISTRACIÓN DE CAMAS</h1>
+    <h1>SOFTWARE PARA LA ADMINISTRACIÓN DEL SERVICIO DE CAMILLEROS</h1>
 
-    <h4 class="mt-3">Servicio para el mejoramiento de atención a pacientes</h4>
+    <h4 class="mt-3">Servicio para la gestión del personal de camillería 
+        y el personal de apoyo </h4>
 
     <hr>
 
@@ -20,7 +21,7 @@
                 <a >
                     <!-- [routerLink]="['/camas/traslado']" -->
                     <div>
-                        Traslado
+                        Solicitud
 
                     </div>
                 </a>
@@ -30,7 +31,7 @@
                 <a >
                     <!-- [routerLink]="['/camas/egreso']" -->
                     <div>
-                        Egreso
+                        Asignación
 
                     </div>
                 </a>
@@ -39,7 +40,16 @@
                 <a >
                     <!-- [routerLink]="['/camas/censo']" -->
                     <div>
-                        Censo
+                        Consulta
+
+                    </div>
+                </a>
+            </div>
+            <div class="col boton-camas">
+                <a [routerLink]="['/camilleros/paciente/lista']">
+                    
+                    <div>
+                        Pacientes
 
                     </div>
                 </a>
@@ -57,19 +67,21 @@
         <div class="row ">
             <div class="col mt-5">
 
-                <img src="../../../../assets/img/Camasinicio.png" a>
+                <img src="../../../../assets/img/camilleros2.jpg" a>
 
             </div>
             <div class="col mt-5 body-inicial">
 
-                <h4>GESTION DE CAMAS HOSPITALARIAS</h4>
+                <h4>SERVICIO DE CAMILLERÍA</h4>
 
                 <hr>
 
-                <p>Optimiza los procesos, recursos y mejora la atencion del paciente en el Hospital universitario de Santander, mediante un prototipo de software que permite la administracion de camas mediante distintos procesos internos de la institucion
-                    ayudando al paciente a tener un servicio de calidad
+                <p>Es un eslabón fundamental para la recuperación de la persona. El trabajo realizado con precisión, destreza, 
+                    habilidad y conocimiento garantizan la efectividad del funcionamiento del Hospital universitario de Santander y 
+                    mejora la atencion del paciente, mediante un prototipo de software que permite la administracion de 
+                    camilleros mediante distintos procesos internos de la institucion ayudando al paciente a tener un servicio de calidad.
 
-
+            
                     <div class="wrapper-services">
 
                         <div class="container">
@@ -86,7 +98,7 @@
 
 
                                             <i class="fab fa-accessible-icon"></i>
-                                            <h5>Traslado</h5>
+                                            <h5>Solicitud</h5>
 
                                         </div>
                                     </a>
@@ -102,7 +114,7 @@
                                         <div>
 
                                             <i class="fas fa-door-open"></i>
-                                            <h5>Egreso</h5>
+                                            <h5>Asignación</h5>
 
 
 
@@ -117,7 +129,7 @@
 
                                             <i class="fas fa-clipboard-list"></i>
 
-                                            <h5>Censo</h5>
+                                            <h5>Consulta</h5>
                                         </div>
                                     </a>
                                 </div>
