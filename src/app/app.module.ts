@@ -20,6 +20,9 @@ import { ListaPacienteComponent } from './components/paciente/lista-paciente.com
 import { DetallePacienteComponent } from './components/paciente/detalle-paciente.component';
 import { NuevoPacienteComponent } from './components/paciente/nuevo-paciente.component';
 import { EditarPacienteComponent } from './components/paciente/editar-paciente.component';
+import { CamillerosComponent } from './components/camilleros/camilleros/camilleros.component';
+import { InicioCamillerosComponent } from './components/camilleros/inicio/inicio.component';
+
 
 // External
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -42,7 +45,9 @@ import { ToastrModule } from 'ngx-toastr';
     ListaPacienteComponent,
     DetallePacienteComponent,
     NuevoPacienteComponent,
-    EditarPacienteComponent
+    EditarPacienteComponent,
+    CamillerosComponent,
+    InicioCamillerosComponent
   ],
   imports: [
     BrowserModule,

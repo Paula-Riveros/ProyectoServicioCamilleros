@@ -1,5 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CamillerosComponent } from './components/camilleros/camilleros/camilleros.component';
+import { InicioCamillerosComponent } from './components/camilleros/inicio/inicio.component';
 import { HomeComponent } from './components/home/home.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { ListaPacienteComponent } from './components/paciente/lista-paciente.component';
@@ -16,6 +18,11 @@ const routes: Routes = [
   { path: 'paciente/detalle/:id', component: ListaPacienteComponent },
   { path: 'paciente/nuevo', component: ListaPacienteComponent },
   { path: 'paciente/editar/:id', component: ListaPacienteComponent },
+
+  { path: 'camilleros', component: CamillerosComponent,  children:[
+
+    { path: 'inicio', component: InicioCamillerosComponent }
+  ]},
      
     { path: '**', redirectTo: 'inicio/home' },
     { path: '', pathMatch: 'full', redirectTo: 'inicio/home' },
