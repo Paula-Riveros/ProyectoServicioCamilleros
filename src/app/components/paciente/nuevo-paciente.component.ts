@@ -28,15 +28,15 @@ export class NuevoPacienteComponent implements OnInit {
     this.pacienteService.save(paciente).subscribe(
       data => {
         this.toastr.success('Paciente guardado', 'OK', {
-          timeOut: 3000
+          timeOut: 3000, positionClass: 'toast-top-center'
         });
-        this.router.navigate(['/paciente/lista']);
+        this.router.navigate(['/camilleros/paciente/lista']);
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000
+          timeOut: 3000, positionClass: 'toast-top-center'
         });
-        this.router.navigate(['/paciente/lista']);
+        this.router.navigate(['/camilleros/paciente/lista']);
       }
     );
   }

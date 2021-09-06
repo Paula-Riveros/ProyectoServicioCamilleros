@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { PacienteService } from 'src/app/service/paciente.service';
 import { Paciente } from '../models/paciente';
 
@@ -11,7 +12,7 @@ export class ListaPacienteComponent implements OnInit {
 
   pacientes: Paciente[] = [];
 
-  constructor(private pacienteService: PacienteService) { }
+  constructor(private pacienteService: PacienteService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.listaPacientes();
@@ -29,7 +30,19 @@ export class ListaPacienteComponent implements OnInit {
   }
 
   borrar(id: number) {
-    alert('borrar el ' + id);
+    this.pacienteService.delete(id).subscribe(
+    data => {
+      this.toastr.success('Paciente eliminado', 'OK', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      this.listaPacientes();
+    },
+    err => {
+      this.toastr.error(err.error.mensaje, 'Fail', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+    }
+  );
   }
 
 }

@@ -20,16 +20,10 @@ const routes: Routes = [
   { path: 'camilleros', component: CamillerosComponent,  children:[
     { path: 'inicio', component: InicioCamillerosComponent },
     { path: 'paciente/lista', component: ListaPacienteComponent },
-    { path: 'paciente/editar/:id', component: EditarPacienteComponent },   
-
-    
+    { path: 'paciente/detalle/:id', component: DetallePacienteComponent },
+    { path: 'paciente/nuevo', component: NuevoPacienteComponent },
+    { path: 'paciente/editar/:id', component: EditarPacienteComponent } 
   ]},
-
-  
-  { path: 'paciente/detalle/:id', component: DetallePacienteComponent },
-  { path: 'paciente/nuevo', component: NuevoPacienteComponent },
-  
-
  
      
     { path: '**', redirectTo: 'inicio/home' },
