@@ -1,5 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/auth/login.component';
+import { RegistroComponent } from './components/auth/registro.component';
 import { CamillerosComponent } from './components/camilleros/camilleros/camilleros.component';
 import { InicioCamillerosComponent } from './components/camilleros/inicio/inicio.component';
 import { HomeComponent } from './components/home/home.component';
@@ -12,6 +14,10 @@ import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent},
+  { path: 'registro', component: RegistroComponent},
+
+
   { path: 'inicio', component: InicioComponent, children:[
     { path: 'home', component: HomeComponent},
     { path: 'quienes-somos', component: QuienesSomosComponent},

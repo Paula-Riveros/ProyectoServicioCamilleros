@@ -27,6 +27,9 @@ import { InicioCamillerosComponent } from './components/camilleros/inicio/inicio
 // External
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './components/auth/login.component';
+import { RegistroComponent } from './components/auth/registro.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 
@@ -47,7 +50,10 @@ import { ToastrModule } from 'ngx-toastr';
     NuevoPacienteComponent,
     EditarPacienteComponent,
     CamillerosComponent,
-    InicioCamillerosComponent
+    InicioCamillerosComponent,
+    LoginComponent,
+    RegistroComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
