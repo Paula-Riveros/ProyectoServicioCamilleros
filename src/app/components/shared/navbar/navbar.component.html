@@ -47,31 +47,38 @@
 
             <div class="collapse navbar-collapse " id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="ml-3 nav-item" routerLinkActive="active">
-                        <a class="navbar-brand nav-link" aria-current="page" [routerLink]="['/inicio/home']">Inicio</a>
+                    <li class="ml-3 nav-item" routerLinkActive="active" *ngIf="!isLogged">
+                        <a class="navbar-brand nav-link" aria-current="page" [routerLink]="['/inicio/home']"><i class="fas fa-home"></i> Inicio</a>
                     </li>
 
 
 
-                    <li class=" nav-item" routerLinkActive="active">
-                        <a class="navbar-brand nav-link" [routerLink]="['/inicio/quienes-somos']">Quiénes somos</a>
+                    <li class=" nav-item" routerLinkActive="active" *ngIf="!isLogged">
+                        <a class="navbar-brand nav-link" [routerLink]="['/inicio/quienes-somos']"><i class="fas fa-info-circle"></i> Quiénes somos</a>
                     </li>
 
-                    <li class=" nav-item " routerLinkActive="active">
-                        <a class="navbar-brand nav-link" href="inicio/quienesSomos#una-id">Contáctenos</a>
+                    <li class=" nav-item " routerLinkActive="active" *ngIf="!isLogged">
+                        <a class="navbar-brand nav-link" href="inicio/quienesSomos#una-id"><i class="fas fa-phone"></i> Contáctenos</a>
                     </li>
+
+                    <li class=" nav-item " routerLinkActive="active" *ngIf="!isLogged">
+                        <a class="navbar-brand nav-link" routerLink="/login"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+                    </li>
+
+                    
                 </ul>
             </div>
         </div>
     </nav>
 
 
+
     <!-- Button Navigate Login Page -->
 
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end fixed-top ingreso">
+  <!--   <div class="d-grid gap-2 d-md-flex justify-content-md-end fixed-top ingreso">
 
-        <a class="btn btn-link link-ingreso" [routerLink]="['/login']"> Ingresar <i class="fas fa-angle-down icon-ingresar"></i></a>
-    </div>
+        <a class="btn btn-link link-ingreso" [routerLink]="['/login']">Ingresar <i class="fas fa-angle-down icon-ingresar"></i></a>
+    </div> -->
 
 
 

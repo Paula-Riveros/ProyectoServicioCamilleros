@@ -8,7 +8,7 @@ import { Paciente } from '../components/models/paciente';
 })
 export class PacienteService {
 
-  pacienteURL = 'http://localhost:8080/paciente/';
+  pacienteURL = 'http://localhost:1433/paciente/';
 
   constructor(private httpClient: HttpClient) { }
 

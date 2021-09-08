@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   nombreUsuario!: string;
   password!: string;
   roles: string[] = [];
-  errMsj!: string;
+  errMsj: string = '';
 
   constructor(private tokenService: TokenService, private authService: AuthService, private router: Router) { }
 
@@ -40,12 +40,13 @@ export class LoginComponent implements OnInit {
         this.tokenService.setUserName(data.nombreUsuario);
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
+        this.router.navigate(['/camilleros']);
       },
       err => {
         this.isLogged = false;
         this.isLoginFail = true;
-        this.errMsj = err.error.mensaje;
-        console.log(this.errMsj);
+        this.errMsj = err.error.message;
+        console.log(err.error.message);
       }
     );
   }

@@ -14,14 +14,13 @@ import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent},
-  { path: 'registro', component: RegistroComponent},
-
-
-  { path: 'inicio', component: InicioComponent, children:[
+   { path: 'inicio', component: InicioComponent, children:[
     { path: 'home', component: HomeComponent},
     { path: 'quienes-somos', component: QuienesSomosComponent},
   ]},
+
+  { path: 'login', component: LoginComponent},
+  { path: 'registro', component: RegistroComponent},
 
   { path: 'camilleros', component: CamillerosComponent,  children:[
     { path: 'inicio', component: InicioCamillerosComponent },

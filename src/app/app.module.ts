@@ -22,6 +22,7 @@ import { NuevoPacienteComponent } from './components/paciente/nuevo-paciente.com
 import { EditarPacienteComponent } from './components/paciente/editar-paciente.component';
 import { CamillerosComponent } from './components/camilleros/camilleros/camilleros.component';
 import { InicioCamillerosComponent } from './components/camilleros/inicio/inicio.component';
+import { interceptorProvider } from './interceptors/prod-interceptor.service';
 
 
 // External
@@ -30,6 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './components/auth/login.component';
 import { RegistroComponent } from './components/auth/registro.component';
 import { MenuComponent } from './components/menu/menu.component';
+
 
 
 
@@ -63,7 +65,7 @@ import { MenuComponent } from './components/menu/menu.component';
     BrowserAnimationsModule, 
     ToastrModule.forRoot()
   ],
-  providers: [ServicioService],
+  providers: [ServicioService, interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
