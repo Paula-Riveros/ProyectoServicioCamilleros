@@ -1,9 +1,18 @@
+<body>
+    
+<div class="container ">
+
+    <a [routerLink]="['/inicio/home']"><i class="fas fa-arrow-left mt-5"  ></i></a>
+
+</div>
+
 <div class="text-center" *ngIf="isLogged; else loggedOut">
     <h2>Ya has iniciado sesión</h2>
 </div>
 
 <ng-template #loggedOut>
-    <div class="container d-flex justify-content-center">
+
+    <!-- <div class="container d-flex justify-content-center">
         <div class="card">
             <div class="card-header">
                 <ul class="nav nav-tabs">
@@ -38,5 +47,49 @@
                 <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">Error en el login: {{errMsj}}</div>
             </div>
         </div>
+    </div> -->
+
+
+    <div class="login-box animate__animated animate__fadeIn ">
+
+        <img class="avatar" src="../../../../assets/img/icon.png" alt="Logo">
+        <h1>Login</h1>
+
+        <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+
+            <label for="nombreUsuario">Nombre de Usuario</label>
+
+            <div class="wrap-input100 m-b-16 mt-1">
+                <input type="text" name="nombreUsuario" id="nombreUsuario" class="input100" placeholder="Ingrese usuario aqui"
+                [(ngModel)]= "nombreUsuario" required>
+            </div>
+
+            <!-- <span *ngIf="loginForm.submitted && loginForm.controls['email'].errors" class="text-danger animate__animated animate__fadeIn"> El usuario es obligatorio</span> -->
+
+
+            <label for="password" class="mt-2"> Contraseña</label>
+
+            <div class="wrap-input100 m-b-16" data-validate="Password is required">
+                <input type="password" name="password" id="password" class="input100" placeholder="Ingrese contraseña aqui"
+                [(ngModel)]= "password" required>
+            </div>
+
+            <!-- <span *ngIf="loginForm.submitted && loginForm.controls['password'].errors" class="text-danger animate__animated animate__fadeIn"> La contraseña es obligatoria</span> -->
+
+            <br>
+            <div class="container-login100-form-btn mt-1">
+                <button class="login100-form-btn btn-block" [disabled]="!f.valid">
+                    <i class="fas fa-sign-in-alt"></i>  Ingresar</button>
+            </div>
+        </form>
+        <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">Error en el login: {{errMsj}}</div>
+
+        <div class="text-center">
+            <a class="nav-link" routerLink="/registro">Crear cuenta</a>
+        </div>
     </div>
+
+
 </ng-template>
+
+</body>

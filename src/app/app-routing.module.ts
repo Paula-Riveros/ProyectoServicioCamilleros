@@ -12,6 +12,7 @@ import { ListaPacienteComponent } from './components/paciente/lista-paciente.com
 import { NuevoPacienteComponent } from './components/paciente/nuevo-paciente.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { ProdGuardService as guard} from './guards/prod-guard.service';
 
 const routes: Routes = [
    { path: 'inicio', component: InicioComponent, children:[
@@ -24,10 +25,10 @@ const routes: Routes = [
 
   { path: 'camilleros', component: CamillerosComponent,  children:[
     { path: 'inicio', component: InicioCamillerosComponent },
-    { path: 'paciente/lista', component: ListaPacienteComponent },
-    { path: 'paciente/detalle/:id', component: DetallePacienteComponent },
-    { path: 'paciente/nuevo', component: NuevoPacienteComponent },
-    { path: 'paciente/editar/:id', component: EditarPacienteComponent } 
+    { path: 'paciente/lista', component: ListaPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']} },
+    { path: 'paciente/detalle/:id', component: DetallePacienteComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']} },
+    { path: 'paciente/nuevo', component: NuevoPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin']} },
+    { path: 'paciente/editar/:id', component: EditarPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin']} } 
   ]},
  
      

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { PacienteService } from 'src/app/service/paciente.service';
+import { TokenService } from 'src/app/service/token.service';
 import { Paciente } from '../models/paciente';
 
 @Component({
@@ -11,11 +12,19 @@ import { Paciente } from '../models/paciente';
 export class ListaPacienteComponent implements OnInit {
 
   pacientes: Paciente[] = [];
+  roles!: string[];
+  isAdmin = false;
 
-  constructor(private pacienteService: PacienteService, private toastr: ToastrService) { }
+  constructor(private pacienteService: PacienteService, private toastr: ToastrService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.listaPacientes();
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach( rol => {
+      if(rol =='ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
 
   listaPacientes(): void {

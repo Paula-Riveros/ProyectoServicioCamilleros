@@ -1,5 +1,6 @@
-<div>
-<button class="btn btn-outline-success" routerLink="/camilleros/paciente/nuevo"><i class="fas fa-plus-circle"></i> Nuevo paciente</button>
+<div *ngIf="isAdmin">
+<button class="btn btn-outline-success" routerLink="/camilleros/paciente/nuevo">
+  <i class="fas fa-plus-circle"></i> Nuevo paciente</button>
 </div>
 
 <table class="table">
@@ -11,8 +12,8 @@
         <th scope="col">Dirección</th>
         <th scope="col">Teléfono</th>
         <th scope="col">Ver</th>
-        <th scope="col">Editar</th>
-        <th scope="col">Borrar</th>
+        <th scope="col" *ngIf="isAdmin">Editar</th>
+        <th scope="col" *ngIf="isAdmin">Borrar</th>
       </tr>
     </thead>
     <tbody>
@@ -23,8 +24,8 @@
         <td>{{paciente.direccion}}</td>
         <td>{{paciente.telefono}}</td>
         <td><button class="btn btn-outline-primary" routerLink="/camilleros/paciente/detalle/{{paciente.id}}"><i class="fas fa-eye"></i> Ver</button></td>
-        <td><button class="btn btn-outline-warning" routerLink="/camilleros/paciente/editar/{{paciente.id}}"><i class="fas fa-edit"></i> Editar</button></td>
-        <td><button class="btn btn-outline-danger" (click)="borrar(paciente.id)"><i class="fas fa-trash-alt"></i> Eliminar</button></td>
+        <td *ngIf="isAdmin"><button class="btn btn-outline-warning" routerLink="/camilleros/paciente/editar/{{paciente.id}}"><i class="fas fa-edit"></i> Editar</button></td>
+        <td *ngIf="isAdmin"><button class="btn btn-outline-danger" (click)="borrar(paciente.id)"><i class="fas fa-trash-alt"></i> Eliminar</button></td>
       </tr>
     </tbody>
   </table>

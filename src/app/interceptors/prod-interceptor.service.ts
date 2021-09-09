@@ -14,10 +14,10 @@ export class ProdInterceptorService implements HttpInterceptor{
     let intReq = req;
     const token = this.tokenService.getToken();
     if (token != null) {
-      intReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer' + token) })
+      intReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token)});
     }
     return next.handle(intReq);
   }
 }
 
-export const interceptorProvider = [{provide: HTTP_INTERCEPTORS, useClass: ProdInterceptorService, multi: true}]
+export const interceptorProvider = [{provide: HTTP_INTERCEPTORS, useClass: ProdInterceptorService, multi: true}];

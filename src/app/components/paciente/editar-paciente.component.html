@@ -27,7 +27,8 @@
                 <input type="number" class="form-control" id="telefono" name="telefono" [(ngModel)]="paciente.telefono" required>
             </div>
 
-            <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">Actualizar</button>
+            <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"><i class="fas fa-pencil-alt"></i> Actualizar</button>
+            <button class="btn btn-outline-primary btn-block" routerLink="/camilleros/paciente/lista"><i class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
         </form>
     </div>
 </div>
