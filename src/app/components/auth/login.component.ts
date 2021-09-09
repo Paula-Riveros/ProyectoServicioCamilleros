@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/service/auth.service';
 import { TokenService } from 'src/app/service/token.service';
 import { LoginUsuario } from '../models/login-usuario';
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
   errMsj: string = '';
 
-  constructor(private tokenService: TokenService, private authService: AuthService, private router: Router) { }
+  constructor(private tokenService: TokenService, private authService: AuthService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
     if (this.tokenService.getToken()) {
@@ -34,18 +35,22 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginUsuario).subscribe(
       data => {
         this.isLogged = true;
-        this.isLoginFail = false;
 
         this.tokenService.setToken(data.token);
         this.tokenService.setUserName(data.nombreUsuario);
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
+        this.toastr.success('Bienvenido ' + data.nombreUsuario, 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
         this.router.navigate(['/camilleros']);
       },
       err => {
         this.isLogged = false;
-        this.isLoginFail = true;
-        this.errMsj = err.error.message;
+        this.errMsj = err.error.mensaje;
+        this.toastr.error(this.errMsj, 'Fail', {
+          timeOut: 3000,  positionClass: 'toast-top-center',
+        });
         console.log(err.error.message);
       }
     );

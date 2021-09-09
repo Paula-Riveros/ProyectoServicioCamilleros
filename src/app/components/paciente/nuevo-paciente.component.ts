@@ -36,7 +36,7 @@ export class NuevoPacienteComponent implements OnInit {
         this.toastr.error(err.error.mensaje, 'Fail', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        this.router.navigate(['/camilleros/paciente/lista']);
+        // this.router.navigate(['/camilleros/paciente/lista']);
       }
     );
   }
