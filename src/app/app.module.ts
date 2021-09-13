@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ServicioService } from './servicio.service';
+import { ServicioService } from './service/servicio.service';
 import { HomeComponent } from './components/home/home.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -23,14 +23,24 @@ import { EditarPacienteComponent } from './components/paciente/editar-paciente.c
 import { CamillerosComponent } from './components/camilleros/camilleros/camilleros.component';
 import { InicioCamillerosComponent } from './components/camilleros/inicio/inicio.component';
 import { interceptorProvider } from './interceptors/prod-interceptor.service';
+import { LoginComponent } from './components/auth/login.component';
+import { RegistroComponent } from './components/auth/registro.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { ListaServicioComponent } from './components/camilleros/servicio/lista-servicio.component';
+import { DetalleServicioComponent } from './components/camilleros/servicio/detalle-servicio.component';
+import { NuevoServicioComponent } from './components/camilleros/servicio/nuevo-servicio.component';
+import { EditarServicioComponent } from './components/camilleros/servicio/editar-servicio.component';
+import { ListaCamilleroComponent } from './components/camillero/lista-camillero.component';
+import { DetalleCamilleroComponent } from './components/camillero/detalle-camillero.component';
+import { NuevoCamilleroComponent } from './components/camillero/nuevo-camillero.component';
+import { EditarCamilleroComponent } from './components/camillero/editar-camillero.component';
 
 
 // External
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { LoginComponent } from './components/auth/login.component';
-import { RegistroComponent } from './components/auth/registro.component';
-import { MenuComponent } from './components/menu/menu.component';
+
+
 
 
 
@@ -55,7 +65,15 @@ import { MenuComponent } from './components/menu/menu.component';
     InicioCamillerosComponent,
     LoginComponent,
     RegistroComponent,
-    MenuComponent
+    MenuComponent,
+    ListaServicioComponent,
+    DetalleServicioComponent,
+    NuevoServicioComponent,
+    EditarServicioComponent,
+    ListaCamilleroComponent,
+    DetalleCamilleroComponent,
+    NuevoCamilleroComponent,
+    EditarCamilleroComponent
   ],
   imports: [
     BrowserModule,

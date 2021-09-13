@@ -18,11 +18,9 @@
 
             <div class="col boton-camas">
 
-                <a >
-                    <!-- [routerLink]="['/camas/traslado']" -->
+                <a [routerLink]="['/camilleros/servicio/nuevo']">
                     <div>
                         Solicitud
-
                     </div>
                 </a>
 
@@ -37,20 +35,27 @@
                 </a>
             </div>
             <div class="col boton-camas">
-                <a >
-                    <!-- [routerLink]="['/camas/censo']" -->
+                <a [routerLink]="['/camilleros/servicio/lista']">
                     <div>
                         Consulta
-
                     </div>
                 </a>
             </div>
             <div class="col boton-camas">
+                <!-- <button class="btn btn-outline" routerLink="/camilleros/paciente/lista">
+                    Pacientes</button> -->
                 <a [routerLink]="['/camilleros/paciente/lista']">
-                    
                     <div>
                         Pacientes
-
+                    </div>
+                </a>
+            </div>
+            <div class="col boton-camas">
+                <!-- <button class="btn btn-outline" routerLink="/camilleros/paciente/lista">
+                    Pacientes</button> -->
+                <a [routerLink]="['/camilleros/camillero/lista']">
+                    <div>
+                        Camilleros
                     </div>
                 </a>
             </div>

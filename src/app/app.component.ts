@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Servicio } from './servicio';
-import { ServicioService } from './servicio.service';
+import { ServicioService } from './service/servicio.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +9,7 @@ import { ServicioService } from './servicio.service';
 })
 export class AppComponent implements OnInit{
 
-  public servicios: Servicio[] = [];
+ // public servicios: Servicio[] = [];
 
   constructor(private servicioService: ServicioService) { }
 

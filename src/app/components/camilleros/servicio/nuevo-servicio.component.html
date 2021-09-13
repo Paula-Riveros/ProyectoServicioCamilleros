@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4 mx-auto"></div>
+        <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+
+            <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input type="text" class="form-control" id="fecha" name="fecha" [(ngModel)]="fecha" required >
+            </div>
+
+            <div class="form-group">
+                <label for="servicioSolicitado">Servicio Solicitado</label>
+                <input type="text" class="form-control" id="servicioSolicitado" name="servicioSolicitado" [(ngModel)]="servicioSolicitado" required>
+            </div>
+
+            <div class="form-group">
+                <label for="destinoServicio">Destino del Servicio</label>
+                <input type="text" class="form-control" id="destinoServicio" name="destinoServicio" [(ngModel)]="destinoServicio" required>
+            </div>
+
+            <div class="form-group">
+                <label for="solicitante">Solicitante</label>
+                <input type="text" class="form-control" id="solicitante" name="solicitante" [(ngModel)]="solicitante" required>
+            </div>
+
+            <div class="form-group">
+                <label for="transporte">Transporte</label>
+                <input type="text" class="form-control" id="transporte" name="transporte" [(ngModel)]="transporte" required>
+            </div>
+
+            <div class="form-group">
+                <label for="insumo">Insumo</label>
+                <input type="text" class="form-control" id="insumo" name="insumo" [(ngModel)]="insumo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="familiar">Acompañante</label>
+                <input type="text" class="form-control" id="familiar" name="familiar" [(ngModel)]="familiar" required>
+            </div>
+
+            <div class="form-group">
+                <label for="aislamiento">Aislamiento</label>
+                <input type="text" class="form-control" id="aislamiento" name="aislamiento" [(ngModel)]="aislamiento" required>
+            </div>
+
+            <div class="form-group">
+                <label for="observaciones">Observaciones</label>
+                <input type="text" class="form-control" id="observaciones" name="observaciones" [(ngModel)]="observaciones" required>
+            </div>
+
+            <div class="form-group">
+                <label for="idPaciente">Paciente</label>
+                <input type="number" class="form-control" id="idPaciente" name="idPaciente" [(ngModel)]="idPaciente" required>
+            </div>
+
+
+            <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"><i class="fas fa-paper-plane"></i> Enviar</button>
+            <button class="btn btn-outline-primary btn-block" routerLink="/camilleros/servicio/lista"><i class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
+        </form>
+    </div>
+</div>
+

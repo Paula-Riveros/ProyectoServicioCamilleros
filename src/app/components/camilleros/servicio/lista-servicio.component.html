@@ -1,0 +1,47 @@
+<div *ngIf="isAdmin">
+    <button class="btn btn-outline-success" routerLink="/camilleros/servicio/nuevo">
+      <i class="fas fa-plus-circle"></i> Nuevo servicio</button>
+    </div>
+
+  <div>  
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Servicio solicitado</th>
+            <th scope="col">Destino del servicio</th>
+            <th scope="col">Solicitante</th>
+            <th scope="col">Transporte</th>
+            <th scope="col">Insumo</th>
+            <th scope="col">Acompañante</th>
+            <th scope="col">Aislamiento</th>
+            <th scope="col">Observaciones</th>
+            <th scope="col">Paciente</th>
+            <th scope="col">Camillero</th>
+            <th scope="col">Ver</th>
+            <th scope="col" *ngIf="isAdmin">Editar</th>
+            <th scope="col" *ngIf="isAdmin">Borrar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let servicio of servicios">
+            <td>{{servicio.fecha}}</td>
+            <td>{{servicio.servicioSolicitado}}</td>
+            <td>{{servicio.destinoServicio}}</td>
+            <td>{{servicio.solicitante}}</td>
+            <td>{{servicio.transporte}}</td>
+            <td>{{servicio.insumo}}</td>
+            <td>{{servicio.familiar}}</td>
+            <td>{{servicio.aislamiento}}</td>
+            <td>{{servicio.observaciones}}</td>
+            <td>{{servicio.idPaciente}}</td>
+            <td>{{servicio.idCamillero}}</td>
+            <td><button class="btn btn-outline-primary" routerLink="/camilleros/servicio/detalle/{{servicio.id}}"><i class="fas fa-eye"></i></button></td>
+            <td *ngIf="isAdmin"><button class="btn btn-outline-warning" routerLink="/camilleros/servicio/editar/{{servicio.id}}"><i class="fas fa-edit"></i></button></td>
+            <td *ngIf="isAdmin"><button class="btn btn-outline-danger" (click)="borrar(servicio.id)"><i class="fas fa-trash-alt"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+<!-- {{servicios | json}} -->
