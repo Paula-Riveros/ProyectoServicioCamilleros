@@ -30,7 +30,7 @@ export class ListaServicioComponent implements OnInit {
   listaServicios(): void {
     this.servicioService.lista().subscribe(
       data => {
-        console.log(data[0].paciente?.id);
+        // console.log(data[0].paciente?.id);
         this.servicios = data;
       }, 
       err => {

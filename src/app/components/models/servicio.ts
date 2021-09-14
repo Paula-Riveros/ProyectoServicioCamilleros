@@ -1,3 +1,4 @@
+import { Camillero } from "./camillero";
 import { Paciente } from "./paciente";
 
 export class Servicio {
@@ -13,6 +14,7 @@ export class Servicio {
     observaciones: string;
     paciente?: Paciente;
     idPaciente?: number;
+    camillero?: Camillero;
     idCamillero?: number;
 
     constructor(id: number, fecha: string, servicioSolicitado: string, destinoServicio: string, solicitante: string,

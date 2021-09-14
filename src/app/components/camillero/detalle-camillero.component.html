@@ -1,1 +1,18 @@
-<p>detalle-camillero works!</p>
+<div class="container">
+    <div class="row mt-5" *ngIf="camillero">
+        <div class="col-md-4 mx-auto">
+            <div class="card-mt-5" style="width: 18rem;">
+                <div class="card-header text-center">
+                  Camillero
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>NÚMERO DE DOCUMENTO: </b>{{camillero.idCamillero}}</li>
+                  <li class="list-group-item"><b>NOMBRE: </b>{{camillero.nombreCamillero}}</li>
+                </ul>
+                <div class="card-footer">
+                    <button class="btn btn-outline-primary btn-block" (click)="volver()"><i class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

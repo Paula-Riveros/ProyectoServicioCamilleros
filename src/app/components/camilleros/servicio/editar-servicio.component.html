@@ -1,1 +1,67 @@
-<p>editar-servicio works!</p>
+<div class="container" *ngIf="servicio">
+    <div class="row mt-5">
+        <div class="col-md-4 mx-auto"></div>
+        <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+
+            <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input type="text" class="form-control" id="fecha" name="fecha" [(ngModel)]="servicio.fecha" disabled >
+            </div>
+
+            <div class="form-group">
+                <label for="servicioSolicitado">Servicio Solicitado</label>
+                <input type="text" class="form-control" id="servicioSolicitado" name="servicioSolicitado" [(ngModel)]="servicio.servicioSolicitado" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="destinoServicio">Destino del Servicio</label>
+                <input type="text" class="form-control" id="destinoServicio" name="destinoServicio" [(ngModel)]="servicio.destinoServicio" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="solicitante">Solicitante</label>
+                <input type="text" class="form-control" id="solicitante" name="solicitante" [(ngModel)]="servicio.solicitante" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="transporte">Transporte</label>
+                <input type="text" class="form-control" id="transporte" name="transporte" [(ngModel)]="servicio.transporte" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="insumo">Insumo</label>
+                <input type="text" class="form-control" id="insumo" name="insumo" [(ngModel)]="servicio.insumo" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="familiar">Acompañante</label>
+                <input type="text" class="form-control" id="familiar" name="familiar" [(ngModel)]="servicio.familiar" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="aislamiento">Aislamiento</label>
+                <input type="text" class="form-control" id="aislamiento" name="aislamiento" [(ngModel)]="servicio.aislamiento" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="observaciones">Observaciones</label>
+                <input type="text" class="form-control" id="observaciones" name="observaciones" [(ngModel)]="servicio.observaciones" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="idPaciente">Paciente</label>
+                <input type="number" class="form-control" id="idPaciente" name="idPaciente" [(ngModel)]="servicio.idPaciente" >
+            </div>
+
+            <div class="form-group">
+                <label for="idCamillero">Camillero</label>
+                <input type="number" class="form-control" id="idCamillero" name="idCamillero" [(ngModel)]="servicio.idCamillero" required>
+            </div>
+
+
+            <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"><i class="fas fa-paper-plane"></i> Enviar</button>
+            <button class="btn btn-outline-primary btn-block" routerLink="/camilleros/servicio/lista"><i class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
+        </form>
+    </div>
+</div>
+

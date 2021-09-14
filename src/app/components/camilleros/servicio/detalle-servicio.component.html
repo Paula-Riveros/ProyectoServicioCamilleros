@@ -1,1 +1,28 @@
-<p>detalle-servicio works!</p>
+<div class="container">
+    <div class="row mt-5" *ngIf="servicio">
+        <div class="col-md-4 mx-auto">
+            <div class="card-mt-5" style="width: 18rem;">
+                <div class="card-header text-center">
+                  Servicio {{servicio.id}}
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>FECHA: </b>{{servicio.fecha}}</li>
+                  <li class="list-group-item"><b>SERVICIO: </b>{{servicio.servicioSolicitado}}</li>
+                  <li class="list-group-item"><b>DESTINO DEL SERVICIO: </b>{{servicio.destinoServicio}}</li>
+                  <li class="list-group-item"><b>SOLICITANTE: </b>{{servicio.solicitante}}</li>
+                  <li class="list-group-item"><b>TRANSPORTE: </b>{{servicio.transporte}}</li>
+                  <li class="list-group-item"><b>INSUMO: </b>{{servicio.insumo}}</li>
+                  <li class="list-group-item"><b>ACOMPAÑANTE: </b>{{servicio.familiar}}</li>
+                  <li class="list-group-item"><b>Aislamiento: </b>{{servicio.aislamiento}}</li>
+                  <li class="list-group-item"><b>OBSERVACIONES: </b>{{servicio.observaciones}}</li>
+                  <li class="list-group-item"><b>PACIENTE: </b>{{servicio.paciente?.id}}</li>
+                  <li class="list-group-item"><b>CAMILLERO: </b>{{servicio.camillero?.nombreCamillero}}</li>
+                </ul>
+                <div class="card-footer">
+                    <button class="btn btn-outline-primary btn-block" (click)="volver()"><i class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
