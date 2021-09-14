@@ -1,3 +1,5 @@
+import { Paciente } from "./paciente";
+
 export class Servicio {
     id: number; // ? no es campo obligatorio, en algunas ocasiones tendra el id y en otras no
     fecha: string;
@@ -9,12 +11,12 @@ export class Servicio {
     familiar: string;
     aislamiento: string;
     observaciones: string;
+    paciente?: Paciente;
     idPaciente?: number;
     idCamillero?: number;
 
     constructor(id: number, fecha: string, servicioSolicitado: string, destinoServicio: string, solicitante: string,
-        transporte: string, insumo: string, familiar: string, aislamiento: string, observaciones: string, 
-        idPaciente: number) {
+        transporte: string, insumo: string, familiar: string, aislamiento: string, observaciones: string, idPaciente: number) {
             this.id = id;
             this.fecha = fecha;
             this.servicioSolicitado = servicioSolicitado;
@@ -27,4 +29,5 @@ export class Servicio {
             this.observaciones = observaciones;
             this.idPaciente = idPaciente;
         }
+
 }
