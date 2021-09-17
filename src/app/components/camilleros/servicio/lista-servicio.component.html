@@ -32,7 +32,8 @@
             <td>{{servicio.transporte}}</td>
             <td>{{servicio.insumo}}</td>
             <td>{{servicio.familiar}}</td>
-            <td>{{servicio.aislamiento}}</td>
+            <td *ngIf="servicio.aislamiento">Sí</td>
+            <td *ngIf="!servicio.aislamiento">No</td>
             <td>{{servicio.observaciones}}</td>
             <td>{{servicio.paciente?.id}}</td>
             <td>{{servicio.camillero?.nombreCamillero}}</td>

@@ -38,10 +38,23 @@
                 <input type="text" class="form-control" id="familiar" name="familiar" [(ngModel)]="servicio.familiar" disabled>
             </div>
 
-            <div class="form-group">
+            <div>
+                <label for="aislamiento">Aislamiento</label>
+                <div class="form-control">
+                    <label class="radio-inline">
+                        <input type="radio" name="aislamiento" id="aislamiento" [value]="true" [(ngModel)]="servicio.aislamiento" disabled> Sí
+                    </label>
+                    &nbsp;
+                    <label class="radio-inline">
+                        <input type="radio" name="aislamiento" id="aislamiento" [value]="false" [(ngModel)]="servicio.aislamiento" disabled> No
+                    </label>
+                </div>
+            </div>
+
+            <!-- <div class="form-group">
                 <label for="aislamiento">Aislamiento</label>
                 <input type="text" class="form-control" id="aislamiento" name="aislamiento" [(ngModel)]="servicio.aislamiento" disabled>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <label for="observaciones">Observaciones</label>
@@ -50,13 +63,21 @@
 
             <div class="form-group">
                 <label for="idPaciente">Paciente</label>
-                <input type="number" class="form-control" id="idPaciente" name="idPaciente" [(ngModel)]="servicio.idPaciente" >
+                <input type="text" class="form-control" id="idPaciente" name="idPaciente" [ngModel]="servicio.paciente?.id" disabled>
             </div>
 
             <div class="form-group">
                 <label for="idCamillero">Camillero</label>
-                <input type="number" class="form-control" id="idCamillero" name="idCamillero" [(ngModel)]="servicio.idCamillero" required>
+                <select class="form-control" name="idCamillero" id="idCamillero" [(ngModel)]="servicio.idCamillero">
+                    <option selected>Elija un camillero</option>
+                    <option [ngValue]="camillero.idCamillero" *ngFor="let camillero of camilleros">{{camillero.nombreCamillero}}</option>
+                </select>
             </div>
+
+             <!-- <div class="form-group">
+                <label for="idCamillero">Camillero</label>
+                <input type="number" class="form-control" id="idCamillero" name="idCamillero" [(ngModel)]="servicio.idCamillero" required>
+            </div>  -->
 
 
             <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"><i class="fas fa-paper-plane"></i> Enviar</button>

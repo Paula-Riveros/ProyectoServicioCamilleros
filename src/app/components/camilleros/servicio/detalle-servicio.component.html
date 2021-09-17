@@ -13,7 +13,8 @@
                   <li class="list-group-item"><b>TRANSPORTE: </b>{{servicio.transporte}}</li>
                   <li class="list-group-item"><b>INSUMO: </b>{{servicio.insumo}}</li>
                   <li class="list-group-item"><b>ACOMPAÑANTE: </b>{{servicio.familiar}}</li>
-                  <li class="list-group-item"><b>Aislamiento: </b>{{servicio.aislamiento}}</li>
+                  <li class="list-group-item" *ngIf="servicio.aislamiento"><b>AISLAMIENTO: </b>Sí</li>
+                  <li class="list-group-item" *ngIf="!servicio.aislamiento"><b>AISLAMIENTO: </b>No</li>
                   <li class="list-group-item"><b>OBSERVACIONES: </b>{{servicio.observaciones}}</li>
                   <li class="list-group-item"><b>PACIENTE: </b>{{servicio.paciente?.id}}</li>
                   <li class="list-group-item"><b>CAMILLERO: </b>{{servicio.camillero?.nombreCamillero}}</li>

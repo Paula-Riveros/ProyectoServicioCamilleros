@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CamilleroService } from 'src/app/service/camillero.service';
 import { ServicioService } from 'src/app/service/servicio.service';
+import { Camillero } from '../../models/camillero';
 import { Servicio } from '../../models/servicio';
 
 @Component({
@@ -12,15 +14,17 @@ import { Servicio } from '../../models/servicio';
 export class EditarServicioComponent implements OnInit {
 
   servicio!: Servicio;
+  camilleros: Camillero[] = [];
 
   constructor(private servicioService: ServicioService, private activatedRoute: ActivatedRoute, 
-    private toastr: ToastrService, private router: Router) { }
+    private toastr: ToastrService, private router: Router, private camilleroService: CamilleroService) { }
 
   ngOnInit() {
+    this.listaCamilleros();
     const id = this.activatedRoute.snapshot.params.id;
     this.servicioService.detail(id).subscribe(
       data => {
-        // console.log(data.paciente?.id);
+        console.log(data.paciente?.id);
         this.servicio = data;
       },
       err => {
@@ -46,6 +50,17 @@ export class EditarServicioComponent implements OnInit {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         this.router.navigate(['/camilleros/servicio/lista']);
+      }
+    );
+  }
+
+  listaCamilleros(): void {
+    this.camilleroService.lista().subscribe(
+      data => {
+        this.camilleros = data;
+      }, 
+      err => {
+        console.log(err);
       }
     );
   }
