@@ -12,6 +12,8 @@ import { DetalleServicioComponent } from './components/camilleros/servicio/detal
 import { EditarServicioComponent } from './components/camilleros/servicio/editar-servicio.component';
 import { ListaServicioComponent } from './components/camilleros/servicio/lista-servicio.component';
 import { NuevoServicioComponent } from './components/camilleros/servicio/nuevo-servicio.component';
+import { DetalleGenpacienComponent } from './components/genpacien/detalle-genpacien.component';
+import { ListaGenpacienComponent } from './components/genpacien/lista-genpacien.component';
 import { HomeComponent } from './components/home/home.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { DetallePacienteComponent } from './components/paciente/detalle-paciente.component';
@@ -46,7 +48,10 @@ const routes: Routes = [
     { path: 'servicio/lista', component: ListaServicioComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']}},
     { path: 'servicio/detalle/:id', component: DetalleServicioComponent, canActivate: [guard], data: { expectedRol: ['admin']}},
     { path: 'servicio/nuevo', component: NuevoServicioComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']}},
-    { path: 'servicio/editar/:id', component: EditarServicioComponent, canActivate: [guard], data: { expectedRol: ['admin']}}
+    { path: 'servicio/editar/:id', component: EditarServicioComponent, canActivate: [guard], data: { expectedRol: ['admin']}},
+
+    { path: 'genpacien/lista', component: ListaGenpacienComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']} },
+    { path: 'genpacien/detalle/:pacnumdoc', component: DetalleGenpacienComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']} },
   ]},
  
      

@@ -1,0 +1,22 @@
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Número de documento</th>
+            <th scope="col">Primer nombre</th>
+            <th scope="col">Segundo nombre</th>
+            <th scope="col">Primer apellido</th>
+            <th scope="col">Segundo apellido</th>
+            <th scope="col">Ver</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let genpacien of genpacientes">
+            <td>{{genpacien.pacnumdoc}}</td>
+            <td>{{genpacien.pacprinom}}</td>
+            <td>{{genpacien.pacsegnom}}</td>
+            <td>{{genpacien.pacpriape}}</td>
+            <td>{{genpacien.pacsegape}}</td>
+            <td><button class="btn btn-outline-primary" routerLink="/camilleros/paciente/detalle/{{genpacien.oid}}"><i class="fas fa-eye"></i> Ver</button></td>
+          </tr>
+        </tbody>
+      </table>

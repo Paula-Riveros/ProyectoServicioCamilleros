@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { GenpacienService } from 'src/app/service/genpacien.service';
 import { PacienteService } from 'src/app/service/paciente.service';
 import { ServicioService } from 'src/app/service/servicio.service';
 import { Servicio } from '../../models/servicio';
@@ -22,20 +23,20 @@ export class NuevoServicioComponent implements OnInit {
   familiar: string = '';
   aislamiento: string = '';
   observaciones: string = '';
-  idPaciente!: number;
+  docPaciente: string = '';
   nombrePaciente: string = '';
 
   @ViewChild('txtBuscar') txtBuscar!: ElementRef<HTMLInputElement>;
 
 
-  constructor(private servicioService: ServicioService, private pacienteService: PacienteService, private toastr: ToastrService, private router: Router) { }
+  constructor(private servicioService: ServicioService, private genpacienService: GenpacienService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onCreate(): void {
     const servicio = new Servicio(this.id, this.fecha, this.servicioSolicitado, this.destinoServicio, this.solicitante, this.transporte,
-      this.insumo, this.familiar, this.aislamiento, this.observaciones, this.idPaciente, this.nombrePaciente);
+      this.insumo, this.familiar, this.aislamiento, this.observaciones, this.docPaciente, this.nombrePaciente);
     this.servicioService.save(servicio).subscribe(
       data => {
         this.toastr.success('Servicio enviado', 'OK', {
@@ -58,9 +59,10 @@ export class NuevoServicioComponent implements OnInit {
     //Si es vacía la cadena recibida, finalizar la función
     if (valor.trim().length==0) {return;}
     // console.log(valor);
-    this.pacienteService.detail(parseInt(valor)).subscribe(
+    // this.pacienteService.detail(parseInt(valor)).subscribe(
+    this.genpacienService.detailPacnumdoc(valor).subscribe(
       data => {
-        this.nombrePaciente = data.nombre;
+        this.nombrePaciente = data.pacprinom;
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {

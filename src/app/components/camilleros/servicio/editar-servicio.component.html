@@ -68,11 +68,11 @@
 
             <label >Paciente</label>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="idPaciente" id="idPaciente" [ngModel]="servicio.paciente?.id" disabled>
-                <label for="idPaciente">Número de documento</label>
+                <input type="text" class="form-control" name="docPaciente" id="docPaciente" [ngModel]="servicio.genpacien?.pacnumdoc" disabled>
+                <label for="docPaciente">Número de documento</label>
               </div>
               <div class="form-floating">
-                <input type="text" class="form-control" name="nombrePaciente" id="nombrePaciente" [ngModel]="servicio.paciente?.nombre" disabled>
+                <input type="text" class="form-control" name="nombrePaciente" id="nombrePaciente" [ngModel]="servicio.genpacien?.pacprinom" disabled>
                 <label for="nombrePaciente">Nombre completo</label>
               </div>
 

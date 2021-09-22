@@ -1,4 +1,5 @@
 import { Camillero } from "./camillero";
+import { Genpacien } from "./genpacien";
 import { Paciente } from "./paciente";
 
 export class Servicio {
@@ -12,14 +13,17 @@ export class Servicio {
     familiar: string;
     aislamiento: string;
     observaciones: string;
-    paciente?: Paciente;
-    idPaciente?: number;
+    // paciente?: Paciente;
+    // idPaciente?: number;
     nombrePaciente: string;
+    genpacien?: Genpacien;
+    docPaciente: string;
     camillero?: Camillero;
     idCamillero?: number;
 
     constructor(id: number, fecha: string, servicioSolicitado: string, destinoServicio: string, solicitante: string,
-        transporte: string, insumo: string, familiar: string, aislamiento: string, observaciones: string, idPaciente: number, nombrePaciente: string) {
+        transporte: string, insumo: string, familiar: string, aislamiento: string, observaciones: string, 
+        docPaciente: string, nombrePaciente: string) {
             this.id = id;
             this.fecha = fecha;
             this.servicioSolicitado = servicioSolicitado;
@@ -30,7 +34,8 @@ export class Servicio {
             this.familiar = familiar;
             this.aislamiento = aislamiento;
             this.observaciones = observaciones;
-            this.idPaciente = idPaciente;
+            // this.idPaciente = idPaciente;
+            this.docPaciente = docPaciente;
             this.nombrePaciente = nombrePaciente;
         }
 

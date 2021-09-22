@@ -69,9 +69,9 @@
 
             <label >Paciente</label>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="idPaciente" id="idPaciente" 
-                [(ngModel)]="idPaciente" (keyup.enter)="buscar()" #txtBuscar required>
-                <label for="idPaciente">Número de documento</label>
+                <input type="text" class="form-control" name="docPaciente" id="docPaciente" 
+                [(ngModel)]="docPaciente" (keyup.enter)="buscar()" #txtBuscar required>
+                <label for="docPaciente">Número de documento</label>
               </div>
               <div class="form-floating">
                 <input type="text" class="form-control" name="nombrePaciente" id="nombrePaciente" [ngModel]="nombrePaciente" required>

@@ -33,6 +33,10 @@ import { ListaCamilleroComponent } from './components/camillero/lista-camillero.
 import { DetalleCamilleroComponent } from './components/camillero/detalle-camillero.component';
 import { NuevoCamilleroComponent } from './components/camillero/nuevo-camillero.component';
 import { EditarCamilleroComponent } from './components/camillero/editar-camillero.component';
+import { ListaGenpacienComponent } from './components/genpacien/lista-genpacien.component';
+import { DetalleGenpacienComponent } from './components/genpacien/detalle-genpacien.component';
+
+
 
 
 // External
@@ -68,7 +72,9 @@ import { ToastrModule } from 'ngx-toastr';
     ListaCamilleroComponent,
     DetalleCamilleroComponent,
     NuevoCamilleroComponent,
-    EditarCamilleroComponent
+    EditarCamilleroComponent,
+    ListaGenpacienComponent,
+    DetalleGenpacienComponent
   ],
   imports: [
     BrowserModule,

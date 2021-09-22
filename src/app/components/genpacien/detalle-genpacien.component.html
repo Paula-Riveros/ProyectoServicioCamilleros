@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row mt-5" *ngIf="genpacien">
+        <div class="col-md-4 mx-auto">
+            <div class="card-mt-5" style="width: 18rem;">
+                <div class="card-header text-center">
+                  Paciente
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>NÚMERO DE DOCUMENTO: </b>{{genpacien.pacnumdoc}}</li>
+                  <li class="list-group-item"><b>NOMBRE COMPLETO: </b>{{genpacien.pacprinom}} {{genpacien.pacsegnom}} {{genpacien.pacpriape}} {{genpacien.pacsegape}}</li>
+                  <!-- <li class="list-group-item"><b>DIRECCIÓN: </b>{{paciente.direccion}}</li>
+                  <li class="list-group-item"><b>EDAD: </b>{{paciente.edad}} años</li>
+                  <li class="list-group-item"><b>TELÉFONO: </b>{{paciente.telefono}}</li> -->
+                </ul>
+                <div class="card-footer">
+                    <button class="btn btn-outline-primary btn-block" (click)="volver()"><i class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
