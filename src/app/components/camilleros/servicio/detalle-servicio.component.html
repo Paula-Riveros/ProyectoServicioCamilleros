@@ -16,7 +16,13 @@
                   <li class="list-group-item" *ngIf="servicio.aislamiento"><b>AISLAMIENTO: </b>Sí</li>
                   <li class="list-group-item" *ngIf="!servicio.aislamiento"><b>AISLAMIENTO: </b>No</li>
                   <li class="list-group-item"><b>OBSERVACIONES: </b>{{servicio.observaciones}}</li>
-                  <li class="list-group-item"><b>PACIENTE: </b>{{servicio.paciente?.id}}</li>
+                  <li class="list-group-item">
+                    <b>PACIENTE: </b>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><b>N° de documento:</b> {{servicio.paciente?.id}}</li>
+                      <li class="list-group-item"><b>Nombre:</b> {{servicio.paciente?.nombre}}</li>
+                    </ul>
+                  </li>
                   <li class="list-group-item"><b>CAMILLERO: </b>{{servicio.camillero?.nombreCamillero}}</li>
                 </ul>
                 <div class="card-footer">

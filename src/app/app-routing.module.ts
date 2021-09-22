@@ -38,15 +38,15 @@ const routes: Routes = [
     { path: 'paciente/nuevo', component: NuevoPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin']} },
     { path: 'paciente/editar/:id', component: EditarPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin']} },
     
-    { path: 'camillero/lista', component: ListaCamilleroComponent},
-    { path: 'camillero/detalle/:id', component: DetalleCamilleroComponent},
-    { path: 'camillero/nuevo', component: NuevoCamilleroComponent},
-    { path: 'camillero/editar/:id', component: EditarCamilleroComponent},
+    { path: 'camillero/lista', component: ListaCamilleroComponent, canActivate: [guard], data: { expectedRol: ['admin']}},
+    { path: 'camillero/detalle/:id', component: DetalleCamilleroComponent, canActivate: [guard], data: { expectedRol: ['admin']}},
+    { path: 'camillero/nuevo', component: NuevoCamilleroComponent, canActivate: [guard], data: { expectedRol: ['admin']}},
+    { path: 'camillero/editar/:id', component: EditarCamilleroComponent, canActivate: [guard], data: { expectedRol: ['admin']}},
 
-    { path: 'servicio/lista', component: ListaServicioComponent},
-    { path: 'servicio/detalle/:id', component: DetalleServicioComponent},
-    { path: 'servicio/nuevo', component: NuevoServicioComponent},
-    { path: 'servicio/editar/:id', component: EditarServicioComponent}
+    { path: 'servicio/lista', component: ListaServicioComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']}},
+    { path: 'servicio/detalle/:id', component: DetalleServicioComponent, canActivate: [guard], data: { expectedRol: ['admin']}},
+    { path: 'servicio/nuevo', component: NuevoServicioComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']}},
+    { path: 'servicio/editar/:id', component: EditarServicioComponent, canActivate: [guard], data: { expectedRol: ['admin']}}
   ]},
  
      

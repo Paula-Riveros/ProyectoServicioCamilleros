@@ -1,6 +1,6 @@
 <div class="container" *ngIf="servicio">
     <div class="row mt-5">
-        <div class="col-md-4 mx-auto"></div>
+        <div class="col-md-4 mx-auto">
         <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
 
             <div class="form-group">
@@ -61,15 +61,25 @@
                 <input type="text" class="form-control" id="observaciones" name="observaciones" [(ngModel)]="servicio.observaciones" disabled>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="idPaciente">Paciente</label>
                 <input type="text" class="form-control" id="idPaciente" name="idPaciente" [ngModel]="servicio.paciente?.id" disabled>
-            </div>
+            </div> -->
+
+            <label >Paciente</label>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="idPaciente" id="idPaciente" [ngModel]="servicio.paciente?.id" disabled>
+                <label for="idPaciente">Número de documento</label>
+              </div>
+              <div class="form-floating">
+                <input type="text" class="form-control" name="nombrePaciente" id="nombrePaciente" [ngModel]="servicio.paciente?.nombre" disabled>
+                <label for="nombrePaciente">Nombre completo</label>
+              </div>
 
             <div class="form-group">
                 <label for="idCamillero">Camillero</label>
                 <select class="form-control" name="idCamillero" id="idCamillero" [(ngModel)]="servicio.idCamillero">
-                    <option selected>Elija un camillero</option>
+                    <option [ngValue]="null" selected>Elija un camillero</option>
                     <option [ngValue]="camillero.idCamillero" *ngFor="let camillero of camilleros">{{camillero.nombreCamillero}}</option>
                 </select>
             </div>
@@ -83,6 +93,7 @@
             <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"><i class="fas fa-paper-plane"></i> Enviar</button>
             <button class="btn btn-outline-primary btn-block" routerLink="/camilleros/servicio/lista"><i class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
         </form>
+    </div>
     </div>
 </div>
 

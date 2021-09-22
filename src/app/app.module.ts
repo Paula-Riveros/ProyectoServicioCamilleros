@@ -25,7 +25,6 @@ import { InicioCamillerosComponent } from './components/camilleros/inicio/inicio
 import { interceptorProvider } from './interceptors/prod-interceptor.service';
 import { LoginComponent } from './components/auth/login.component';
 import { RegistroComponent } from './components/auth/registro.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { ListaServicioComponent } from './components/camilleros/servicio/lista-servicio.component';
 import { DetalleServicioComponent } from './components/camilleros/servicio/detalle-servicio.component';
 import { NuevoServicioComponent } from './components/camilleros/servicio/nuevo-servicio.component';
@@ -62,7 +61,6 @@ import { ToastrModule } from 'ngx-toastr';
     InicioCamillerosComponent,
     LoginComponent,
     RegistroComponent,
-    MenuComponent,
     ListaServicioComponent,
     DetalleServicioComponent,
     NuevoServicioComponent,

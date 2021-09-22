@@ -14,11 +14,12 @@ export class Servicio {
     observaciones: string;
     paciente?: Paciente;
     idPaciente?: number;
+    nombrePaciente: string;
     camillero?: Camillero;
     idCamillero?: number;
 
     constructor(id: number, fecha: string, servicioSolicitado: string, destinoServicio: string, solicitante: string,
-        transporte: string, insumo: string, familiar: string, aislamiento: string, observaciones: string, idPaciente: number) {
+        transporte: string, insumo: string, familiar: string, aislamiento: string, observaciones: string, idPaciente: number, nombrePaciente: string) {
             this.id = id;
             this.fecha = fecha;
             this.servicioSolicitado = servicioSolicitado;
@@ -30,6 +31,7 @@ export class Servicio {
             this.aislamiento = aislamiento;
             this.observaciones = observaciones;
             this.idPaciente = idPaciente;
+            this.nombrePaciente = nombrePaciente;
         }
 
 }
