@@ -25,9 +25,8 @@
                 </a>
 
             </div>
-            <div class="col boton-camas">
-                <a >
-                    <!-- [routerLink]="['/camas/egreso']" -->
+            <div *ngIf="isAdmin" class="col boton-camas">
+                <a [routerLink]="['/camilleros/servicio/lista']">
                     <div>
                         Asignación
 
@@ -41,16 +40,14 @@
                     </div>
                 </a>
             </div>
-            <div class="col boton-camas">
-                <!-- <button class="btn btn-outline" routerLink="/camilleros/paciente/lista">
-                    Pacientes</button> -->
+            <!-- <div class="col boton-camas">
                 <a [routerLink]="['/camilleros/paciente/lista']">
                     <div>
                         Pacientes
                     </div>
                 </a>
-            </div>
-            <div class="col boton-camas">
+            </div> -->
+            <div *ngIf="isAdmin" class="col boton-camas">
                 <!-- <button class="btn btn-outline" routerLink="/camilleros/paciente/lista">
                     Pacientes</button> -->
                 <a [routerLink]="['/camilleros/camillero/lista']">

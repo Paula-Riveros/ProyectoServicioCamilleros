@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { GenpacienService } from 'src/app/service/genpacien.service';
 import { PacienteService } from 'src/app/service/paciente.service';
 import { ServicioService } from 'src/app/service/servicio.service';
+import { TokenService } from 'src/app/service/token.service';
 import { Servicio } from '../../models/servicio';
 
 @Component({
@@ -26,12 +27,23 @@ export class NuevoServicioComponent implements OnInit {
   docPaciente: string = '';
   nombrePaciente: string = '';
 
+  roles!: string[];
+  isAdmin = false;
+
   @ViewChild('txtBuscar') txtBuscar!: ElementRef<HTMLInputElement>;
 
 
-  constructor(private servicioService: ServicioService, private genpacienService: GenpacienService, private toastr: ToastrService, private router: Router) { }
+  constructor(private servicioService: ServicioService, private genpacienService: GenpacienService, 
+    private toastr: ToastrService, private router: Router, private tokenService: TokenService) { }
+
 
   ngOnInit(): void {
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach( rol => {
+      if(rol =='ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
 
   onCreate(): void {
@@ -62,7 +74,7 @@ export class NuevoServicioComponent implements OnInit {
     // this.pacienteService.detail(parseInt(valor)).subscribe(
     this.genpacienService.detailPacnumdoc(valor).subscribe(
       data => {
-        this.nombrePaciente = data.pacprinom;
+        this.nombrePaciente = data.pacprinom + '' + data.pacsegnom + ' ' + data.pacpriape + ' ' + data.pacsegape;
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {

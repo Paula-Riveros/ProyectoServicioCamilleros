@@ -1,5 +1,7 @@
 <div class="container">
     <div class="row mt-5">
+        <a *ngIf="!isAdmin" [routerLink]="['/camilleros/inicio']"><i class="fas fa-arrow-left mt-5"  ></i></a>
+
         <div class="col-md-4 mx-auto">
         <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
 
@@ -96,7 +98,7 @@
 
             <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"><i class="fas fa-paper-plane"></i>
                 Enviar</button>
-            <button class="btn btn-outline-primary btn-block" routerLink="/camilleros/servicio/lista"><i
+            <button *ngIf="isAdmin" class="btn btn-outline-primary btn-block" routerLink="/camilleros/servicio/lista"><i
                     class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
         </form>
     </div>

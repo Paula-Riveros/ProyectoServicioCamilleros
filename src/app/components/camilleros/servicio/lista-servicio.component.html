@@ -18,7 +18,7 @@
             <th scope="col">Observaciones</th>
             <th scope="col">Paciente</th>
             <th scope="col">Camillero</th>
-            <th scope="col">Ver</th>
+            <th scope="col" *ngIf="isAdmin">Ver</th>
             <th scope="col" *ngIf="isAdmin">Editar</th>
             <th scope="col" *ngIf="isAdmin">Borrar</th>
           </tr>

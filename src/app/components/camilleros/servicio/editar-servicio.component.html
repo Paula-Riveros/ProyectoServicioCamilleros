@@ -72,7 +72,8 @@
                 <label for="docPaciente">Número de documento</label>
               </div>
               <div class="form-floating">
-                <input type="text" class="form-control" name="nombrePaciente" id="nombrePaciente" [ngModel]="servicio.genpacien?.pacprinom" disabled>
+                <input type="text" class="form-control" name="nombrePaciente" id="nombrePaciente" 
+                [ngModel]="servicio.genpacien?.pacprinom + ' ' + servicio.genpacien?.pacsegnom + ' ' + servicio.genpacien?.pacpriape + ' ' + servicio.genpacien?.pacsegape" disabled>
                 <label for="nombrePaciente">Nombre completo</label>
               </div>
 
