@@ -65,7 +65,7 @@ export class NuevoServicioComponent implements OnInit {
     );
   }
 
-  buscar() {
+  buscarNombrePaciente() {
     let valor: string = this.txtBuscar.nativeElement.value;
 
     //Si es vacía la cadena recibida, finalizar la función
@@ -74,7 +74,7 @@ export class NuevoServicioComponent implements OnInit {
     // this.pacienteService.detail(parseInt(valor)).subscribe(
     this.genpacienService.detailPacnumdoc(valor).subscribe(
       data => {
-        this.nombrePaciente = data.pacprinom + '' + data.pacsegnom + ' ' + data.pacpriape + ' ' + data.pacsegape;
+        this.nombrePaciente = data.pacprinom.concat(' ', data.pacsegnom).concat(' ', data.pacpriape).concat(' ',data.pacsegape);
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {

@@ -19,8 +19,16 @@ export class ServicioService {
     return this.httpClient.get<Servicio[]>(this.servicioURL + 'lista');
   }
 
+  // public lista(page: number, size: number, order: string, asc: boolean): Observable<any> {
+  //   return this.httpClient.get<any>(this.servicioURL + `lista?page=${page}&size=${size}&order=${order}&asc=${asc}`);
+  // }
+
   public detail(id: number): Observable<Servicio> {
     return this.httpClient.get<Servicio>(this.servicioURL + `detail/${id}`);
+  }
+
+  public listafecha(servicio: Servicio): Observable<Servicio[]> {
+    return this.httpClient.get<Servicio[]>(this.servicioURL + 'listafecha');
   }
 
   public save(servicio: Servicio): Observable<any> {

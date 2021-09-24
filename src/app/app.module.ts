@@ -42,6 +42,7 @@ import { DetalleGenpacienComponent } from './components/genpacien/detalle-genpac
 // External
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { FiltroFechaPipe } from './components/pipes/filtro-fecha.pipe';
 
 
 
@@ -74,7 +75,8 @@ import { ToastrModule } from 'ngx-toastr';
     NuevoCamilleroComponent,
     EditarCamilleroComponent,
     ListaGenpacienComponent,
-    DetalleGenpacienComponent
+    DetalleGenpacienComponent,
+    FiltroFechaPipe
   ],
   imports: [
     BrowserModule,
