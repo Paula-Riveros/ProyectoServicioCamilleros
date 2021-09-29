@@ -38,20 +38,20 @@ export class ListaCamilleroComponent implements OnInit {
     );
   }
 
-  borrar(idCamillero: number) {
-    this.camilleroService.delete(idCamillero).subscribe(
-    data => {
-      this.toastr.success('Camillero eliminado', 'OK', {
-        timeOut: 3000, positionClass: 'toast-top-center'
-      });
-      this.listaCamilleros();
-    },
-    err => {
-      this.toastr.error(err.error.mensaje, 'Fail', {
-        timeOut: 3000, positionClass: 'toast-top-center'
-      });
-    }
-  );
-  }
+  // borrar(idCamillero: number) {
+  //   this.camilleroService.delete(idCamillero).subscribe(
+  //   data => {
+  //     this.toastr.success('Camillero eliminado', 'OK', {
+  //       timeOut: 3000, positionClass: 'toast-top-center'
+  //     });
+  //     this.listaCamilleros();
+  //   },
+  //   err => {
+  //     this.toastr.error(err.error.mensaje, 'Fail', {
+  //       timeOut: 3000, positionClass: 'toast-top-center'
+  //     });
+  //   }
+  // );
+  // }
 
 }

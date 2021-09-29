@@ -7,7 +7,8 @@
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item"><b>NÚMERO DE DOCUMENTO: </b>{{camillero.idCamillero}}</li>
-                  <li class="list-group-item"><b>NOMBRE: </b>{{camillero.nombreCamillero}}</li>
+                  <li class="list-group-item" *ngIf="camillero.estadoCamillero"><b>NOMBRE: </b>Activo</li>
+                  <li class="list-group-item" *ngIf="!camillero.estadoCamillero"><b>ESTADO: </b>Inactivo</li>
                 </ul>
                 <div class="card-footer">
                     <button class="btn btn-outline-primary btn-block" (click)="volver()"><i class="fas fa-arrow-alt-circle-left"></i> Regresar</button>

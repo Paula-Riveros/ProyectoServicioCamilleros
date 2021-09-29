@@ -1,86 +1,89 @@
 <div class="container">
     <div class="row mt-5">
-        <a *ngIf="!isAdmin" [routerLink]="['/camilleros/inicio']"><i class="fas fa-arrow-left mt-5"  ></i></a>
+        <a *ngIf="!isAdmin" [routerLink]="['/camilleros/inicio']"><i class="fas fa-arrow-left mt-5"></i></a>
 
         <div class="col-md-4 mx-auto">
-        <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
 
-            <div class="form-group">
-                <label for="fecha">Fecha</label>
-                <input type="date" class="form-control" id="fecha" name="fecha" [(ngModel)]="fecha" required>
-            </div>
-
-            <div class="form-group">
-                <label for="servicioSolicitado">Servicio Solicitado</label>
-                <input type="text" class="form-control" id="servicioSolicitado" name="servicioSolicitado"
-                    [(ngModel)]="servicioSolicitado" required>
-            </div>
-
-            <div class="form-group">
-                <label for="destinoServicio">Destino del Servicio</label>
-                <input type="text" class="form-control" id="destinoServicio" name="destinoServicio"
-                    [(ngModel)]="destinoServicio" required>
-            </div>
-
-            <div class="form-group">
-                <label for="solicitante">Solicitante</label>
-                <input type="text" class="form-control" id="solicitante" name="solicitante" [(ngModel)]="solicitante"
-                    required>
-            </div>
-
-            <div class="form-group">
-                <label for="transporte">Transporte</label>
-                <input type="text" class="form-control" id="transporte" name="transporte" [(ngModel)]="transporte"
-                    required>
-            </div>
-
-            <div class="form-group">
-                <label for="insumo">Insumo</label>
-                <input type="text" class="form-control" id="insumo" name="insumo" [(ngModel)]="insumo" required>
-            </div>
-
-            <div class="form-group">
-                <label for="familiar">Acompañante</label>
-                <input type="text" class="form-control" id="familiar" name="familiar" [(ngModel)]="familiar" required>
-            </div>
-
-            <div>
-                <label for="aislamiento">Aislamiento</label>
-                <div class="form-control">
-                    <label class="radio-inline">
-                        <input type="radio" name="aislamiento" id="aislamiento" [value]="true"
-                            [(ngModel)]="aislamiento" required> Sí
-                    </label>
-                    &nbsp;
-                    <label class="radio-inline">
-                        <input type="radio" name="aislamiento" id="aislamiento" [value]="false"
-                            [(ngModel)]="aislamiento" required> No
-                    </label>
+                <div class="form-group">
+                    <label for="fecha">Fecha</label>
+                    <input type="text" class="form-control" id="fecha" name="fecha" [(ngModel)]="fecha" required>
                 </div>
-            </div>
 
-            <!-- <div class="form-group">
+                <div class="form-group">
+                    <label for="servicioSolicitado">Servicio Solicitado</label>
+                    <input type="text" class="form-control" id="servicioSolicitado" name="servicioSolicitado"
+                        [(ngModel)]="servicioSolicitado" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="destinoServicio">Destino del Servicio</label>
+                    <input type="text" class="form-control" id="destinoServicio" name="destinoServicio"
+                        [(ngModel)]="destinoServicio" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="solicitante">Solicitante</label>
+                    <input type="text" class="form-control" id="solicitante" name="solicitante"
+                        [(ngModel)]="solicitante" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="transporte">Transporte</label>
+                    <input type="text" class="form-control" id="transporte" name="transporte" [(ngModel)]="transporte"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="insumo">Insumo</label>
+                    <input type="text" class="form-control" id="insumo" name="insumo" [(ngModel)]="insumo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="familiar">Acompañante</label>
+                    <input type="text" class="form-control" id="familiar" name="familiar" [(ngModel)]="familiar"
+                        required>
+                </div>
+
+                <div>
+                    <label for="aislamiento">Aislamiento</label>
+                    <div class="form-control">
+                        <label class="radio-inline">
+                            <input type="radio" name="aislamiento" id="aislamiento" [value]="true"
+                                [(ngModel)]="aislamiento" required> Sí
+                        </label>
+                        &nbsp;
+                        <label class="radio-inline">
+                            <input type="radio" name="aislamiento" id="aislamiento" [value]="false"
+                                [(ngModel)]="aislamiento" required> No
+                        </label>
+                    </div>
+                </div>
+
+                <!-- <div class="form-group">
                 <label for="aislamiento">Aislamiento</label>
                 <input type="radio" class="form-control" id="aislamiento" name="aislamiento" [(ngModel)]="aislamiento" required>
             </div> -->
 
-            <div class="form-group">
-                <label for="observaciones">Observaciones</label>
-                <textarea class="form-control" id="observaciones" name="observaciones" [(ngModel)]="observaciones" required rows="3"></textarea>
-            </div>
+                <div class="form-group">
+                    <label for="observaciones">Observaciones</label>
+                    <textarea class="form-control" id="observaciones" name="observaciones" [(ngModel)]="observaciones"
+                        required rows="3"></textarea>
+                </div>
 
-            <label >Paciente</label>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="docPaciente" id="docPaciente" 
-                [(ngModel)]="docPaciente" (keyup.enter)="buscarNombrePaciente()" #txtBuscar required>
-                <label for="docPaciente">Número de documento</label>
-              </div>
-              <div class="form-floating">
-                <input type="text" class="form-control" name="nombrePaciente" id="nombrePaciente" [ngModel]="nombrePaciente" required>
-                <label for="nombrePaciente">Nombre completo</label>
-              </div>
+                <label>Paciente</label>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="docPaciente" id="docPaciente"
+                        [(ngModel)]="docPaciente" (keyup.enter)="buscarNombrePaciente()" #txtBuscar required>
+                    <label for="docPaciente">Número de documento</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="nombrePaciente" id="nombrePaciente"
+                        [ngModel]="nombrePaciente" required>
+                    <label for="nombrePaciente">Nombre completo</label>
+                </div>
 
-            <!-- <div class="form-group">
+                <!-- <div class="form-group">
                 <label for="idPaciente">Paciente</label>
                 <div class="form-inline">
                     <label for="idPaciente">Número de documento</label>
@@ -96,11 +99,13 @@
             </div> -->
 
 
-            <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"><i class="fas fa-paper-plane"></i>
-                Enviar</button>
-            <button *ngIf="isAdmin" class="btn btn-outline-primary btn-block" routerLink="/camilleros/servicio/lista"><i
-                    class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
-        </form>
-    </div>
+                <button class="btn btn-outline-success btn-block" [disabled]="!f.valid" (click)="horaEnvioServicio()"><i
+                        class="fas fa-paper-plane"></i>
+                    Enviar</button>
+                <button *ngIf="isAdmin" class="btn btn-outline-primary btn-block"
+                    routerLink="/camilleros/servicio/lista"><i class="fas fa-arrow-alt-circle-left"></i>
+                    Regresar</button>
+            </form>
+        </div>
     </div>
 </div>

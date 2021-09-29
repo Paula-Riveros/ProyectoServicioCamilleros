@@ -13,6 +13,7 @@ export class NuevoCamilleroComponent implements OnInit {
 
   idCamillero!: number;
   nombreCamillero: string = '';
+  estadoCamillero: string = 'true';
 
   constructor(private camilleroService: CamilleroService, private toastr: ToastrService, private router: Router) { }
 
@@ -20,7 +21,7 @@ export class NuevoCamilleroComponent implements OnInit {
   }
 
   onCreate(): void {
-    const camillero = new Camillero(this.idCamillero, this.nombreCamillero);
+    const camillero = new Camillero(this.idCamillero, this.nombreCamillero, this.estadoCamillero);
     this.camilleroService.save(camillero).subscribe(
       data => {
         this.toastr.success('Camillero guardado', 'OK', {
