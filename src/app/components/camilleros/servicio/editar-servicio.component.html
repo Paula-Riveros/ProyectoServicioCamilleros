@@ -91,7 +91,7 @@
             </div>  -->
 
 
-            <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"><i class="fas fa-paper-plane"></i> Enviar</button>
+            <button class="btn btn-outline-success btn-block" [disabled]="!f.valid" (click)="horaAsignacionServicio()"><i class="fas fa-paper-plane"></i> Actualizar</button>
             <button class="btn btn-outline-primary btn-block" routerLink="/camilleros/servicio/lista"><i class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
         </form>
     </div>

@@ -26,12 +26,11 @@ export class NuevoServicioComponent implements OnInit {
   observaciones: string = '';
   docPaciente: string = '';
   nombrePaciente: string = '';
+  
   horaEnvio = '';
   horaAsignacion = '00:00:00';
   horaEjecucion = '00:00:00';
   horaFinalizacion = '00:00:00';
-  
-  today = '';
 
   roles!: string[];
   isAdmin = false;
@@ -57,8 +56,7 @@ export class NuevoServicioComponent implements OnInit {
     const nowFecha = new Date();
     const day = ("0" + nowFecha.getDate()).slice(-2);
     const month = ("0" + (nowFecha.getMonth() + 1)).slice(-2);
-    this.today = nowFecha.getFullYear() + "-" + (month) + "-" + (day);
-    this.fecha = this.today;
+    this.fecha = nowFecha.getFullYear() + "-" + (month) + "-" + (day);
   }
 
   horaEnvioServicio(): void {

@@ -35,6 +35,17 @@ export class EditarServicioComponent implements OnInit {
     );
   }
 
+
+  horaAsignacionServicio(): void {
+    const nowHora = new Date();
+    const hora = ("0" + nowHora.getHours()).slice(-2);
+    const min = ("0" + nowHora.getMinutes()).slice(-2);
+    const seg = ("0" + nowHora.getSeconds()).slice(-2);
+    this.servicio.horaAsignacion = hora + ":" + min + ":" + seg;
+    this.servicio.horaEjecucion = '00:00:00';
+    this.servicio.horaFinalizacion = '00:00:00';
+  }
+
   onUpdate(): void {
     const id = this.activatedRoute.snapshot.params.id;
     this.servicioService.update(id, this.servicio).subscribe(
@@ -56,7 +67,8 @@ export class EditarServicioComponent implements OnInit {
   listaCamilleros(): void {
     this.camilleroService.lista().subscribe(
       data => {
-        this.camilleros = data;
+        // this.camilleros = data;
+        this.camilleros = data.filter( camillero => camillero.estadoCamillero == true);
       }, 
       err => {
         console.log(err);
