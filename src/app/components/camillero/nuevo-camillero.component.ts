@@ -13,7 +13,7 @@ export class NuevoCamilleroComponent implements OnInit {
 
   idCamillero!: number;
   nombreCamillero: string = '';
-  estadoCamillero: string = 'true';
+  estadoCamillero: boolean = true;
 
   constructor(private camilleroService: CamilleroService, private toastr: ToastrService, private router: Router) { }
 

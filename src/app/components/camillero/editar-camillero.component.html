@@ -13,6 +13,18 @@
                 <input type="text" class="form-control" id="nombreCamillero" name="nombreCamillero" [(ngModel)]="camillero.nombreCamillero" required>
             </div>
         
+            <div>
+                <label for="estadoCamillero">Estado</label>
+                <div class="form-control">
+                    <label class="radio-inline">
+                        <input type="radio" name="estadoCamillero" id="estadoCamillero" [value]="true" [(ngModel)]="camillero.estadoCamillero"> Activo
+                    </label>
+                    &nbsp;
+                    <label class="radio-inline">
+                        <input type="radio" name="estadoCamillero" id="estadoCamillero" [value]="false" [(ngModel)]="camillero.estadoCamillero"> Inactivo
+                    </label>
+                </div>
+            </div>
 
             <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"><i class="fas fa-pencil-alt"></i> Actualizar</button>
             <button class="btn btn-outline-primary btn-block" routerLink="/camilleros/camillero/lista"><i class="fas fa-arrow-alt-circle-left"></i> Regresar</button>

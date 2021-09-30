@@ -24,7 +24,6 @@ export class EditarServicioComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params.id;
     this.servicioService.detail(id).subscribe(
       data => {
-        console.log(data.genpacien?.pacnumdoc);
         this.servicio = data;
       },
       err => {
