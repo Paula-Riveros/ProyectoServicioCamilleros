@@ -19,6 +19,7 @@
     </form>
   </div>
 
+  <div class="mb-3">
   <button class="btn btn-primary mt-3" (click)="prevPage()">
     Anteriores
   </button>
@@ -26,9 +27,12 @@
   <button class="btn btn-primary mt-3" (click)="nextPage()" [disabled]="(servicios | filtroFecha:page:search).length === 0">
     Siguientes
   </button>
+</div>
 
-<div>
-  <table class="table table-hover mb-0 text-center">
+  <div class="container">
+<div class="table-responsive">
+  <table id="dtHorizontalExample" class="table table-striped table-hover table-sm mb-0 text-center" cellspacing="0"
+  width="100%">
     <thead>
       <tr>
         <!-- (click)="sort()" -->
@@ -84,5 +88,8 @@
     </tbody>
   </table>
 </div>
+  </div>
+
+
 
 <!-- {{servicios[0].paciente | json}}  -->

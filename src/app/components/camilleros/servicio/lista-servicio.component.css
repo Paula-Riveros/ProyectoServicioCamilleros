@@ -1,0 +1,28 @@
+.table-responsive {
+    max-height: 20em;
+}
+
+.table {
+    width: 120%;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background: rgb(205, 232, 245);
+    z-index: 5;
+}
+
+thead th:nth-child(1) {
+    position: sticky;
+    left: 0;
+    background: rgb(205, 232, 245);
+    z-index: 6;
+}
+
+tbody td:nth-child(1) {
+    position: sticky;
+    left: 0;
+    background: white;
+    z-index: 3;
+}

@@ -53,6 +53,7 @@ export class ListaServicioComponent implements OnInit {
     );
   }
 
+
   // listaServicios(): void {
   //   this.servicioService.lista(this.page, this.size, this.order, this.asc).subscribe(
   //     data => {
