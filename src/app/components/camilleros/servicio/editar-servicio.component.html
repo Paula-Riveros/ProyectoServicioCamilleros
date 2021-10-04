@@ -79,7 +79,7 @@
 
             <div class="form-group">
                 <label for="idCamillero">Camillero</label>
-                <select class="form-control" name="idCamillero" id="idCamillero" [(ngModel)]="servicio.idCamillero">
+                <select class="form-control" name="idCamillero" id="idCamillero" [(ngModel)]="servicio.idCamillero" required>
                     <option [ngValue]="null" selected>Elija un camillero</option>
                     <option [ngValue]="camillero.idCamillero" *ngFor="let camillero of camilleros">{{camillero.nombreCamillero}}</option>
                 </select>
@@ -93,6 +93,7 @@
 
             <button class="btn btn-outline-success btn-block" [disabled]="!f.valid" (click)="horaAsignacionServicio()"><i class="fas fa-paper-plane"></i> Actualizar</button>
             <button class="btn btn-outline-primary btn-block" routerLink="/camilleros/servicio/lista"><i class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
+            
         </form>
     </div>
     </div>

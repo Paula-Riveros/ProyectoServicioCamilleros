@@ -35,10 +35,11 @@ const routes: Routes = [
 
   { path: 'camilleros', component: CamillerosComponent,  children:[
     { path: 'inicio', component: InicioCamillerosComponent },
-    { path: 'paciente/lista', component: ListaPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']} },
-    { path: 'paciente/detalle/:id', component: DetallePacienteComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']} },
-    { path: 'paciente/nuevo', component: NuevoPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin']} },
-    { path: 'paciente/editar/:id', component: EditarPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin']} },
+
+    //{ path: 'paciente/lista', component: ListaPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']} },
+    //{ path: 'paciente/detalle/:id', component: DetallePacienteComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']} },
+    //{ path: 'paciente/nuevo', component: NuevoPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin']} },
+    //{ path: 'paciente/editar/:id', component: EditarPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin']} },
     
     { path: 'camillero/lista', component: ListaCamilleroComponent, canActivate: [guard], data: { expectedRol: ['admin']}},
     { path: 'camillero/detalle/:id', component: DetalleCamilleroComponent, canActivate: [guard], data: { expectedRol: ['admin']}},

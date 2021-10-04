@@ -16,7 +16,7 @@ export class ServicioService {
   constructor(private httpClient: HttpClient) { }
 
   public lista(): Observable<Servicio[]> {
-    return this.httpClient.get<Servicio[]>(this.servicioURL + 'lista');
+    return this.httpClient.get<Servicio[]>(`${this.servicioURL}lista`);
   }
 
   // public lista(page: number, size: number, order: string, asc: boolean): Observable<any> {
@@ -39,6 +39,10 @@ export class ServicioService {
 
   public update(id: number, servicio: Servicio): Observable<any> {
     return this.httpClient.put<any>(this.servicioURL + `update/${id}`, servicio); 
+  }
+  
+  public updateTime(servicio: Servicio): Observable<Servicio> {
+    return this.httpClient.put<any>(`${this.servicioURL}updatetime`, servicio); 
   }
 
   public delete(id: number): Observable<any> {

@@ -34,5 +34,6 @@ export class DetalleServicioComponent implements OnInit {
   volver(): void {
     this.router.navigate(['/camilleros/servicio/lista']);
   }
+  
 
 }

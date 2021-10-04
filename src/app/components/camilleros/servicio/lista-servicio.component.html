@@ -1,9 +1,10 @@
-<div *ngIf="isAdmin">
-  <button class="btn btn-outline-success" routerLink="/camilleros/servicio/nuevo">
-    <i class="fas fa-plus-circle"></i> Nuevo servicio</button>
-</div>
 
-<!-- <div class="col-md-3 mx-auto text-center">
+  <div *ngIf="isAdmin">
+    <button class="btn btn-outline-success" routerLink="/camilleros/servicio/nuevo">
+      <i class="fas fa-plus-circle"></i> Nuevo servicio</button>
+  </div>
+
+  <!-- <div class="col-md-3 mx-auto text-center">
     <label><b>Listar servicios por fecha</b></label>
     <form class="form-inline my-2">
       <input type="date" (ngModelChange)="listaServiciosFecha(key.value)" #key="ngModel" ngModel
@@ -14,68 +15,74 @@
   <div class="col-md-3 mx-auto text-center">
     <label><b>Listar servicios por fecha</b></label>
     <form class="form-inline my-2">
-      <input type="text" (keyup)="onSearchServicio(txtSearch.value)" #txtSearch 
-      class="form-control mr-sm-2" placeholder="Buscar servicios por fecha">
+      <input type="text" (keyup)="onSearchServicio(txtSearch.value)" #txtSearch class="form-control mr-sm-2"
+        placeholder="Buscar servicios por fecha">
     </form>
   </div>
 
   <div class="mb-3">
-  <button class="btn btn-primary mt-3" (click)="prevPage()">
-    Anteriores
-  </button>
-  &nbsp;
-  <button class="btn btn-primary mt-3" (click)="nextPage()" [disabled]="(servicios | filtroFecha:page:search).length === 0">
-    Siguientes
-  </button>
-</div>
+    <button class="btn btn-primary mt-3" (click)="prevPage()">
+      Anteriores
+    </button>
+    &nbsp;
+    <button class="btn btn-primary mt-3" (click)="nextPage()"
+      [disabled]="(servicios | filtroFecha:page:search).length === 0">
+      Siguientes
+    </button>
+  </div>
 
-  <div class="container">
-<div class="table-responsive">
-  <table id="dtHorizontalExample" class="table table-striped table-hover table-sm mb-0 text-center" cellspacing="0"
-  width="100%">
-    <thead>
-      <tr>
-        <!-- (click)="sort()" -->
-        <th scope="col">Id</th> 
-        <th scope="col">Fecha</th>
-        <th scope="col">Servicio solicitado</th>
-        <th scope="col">Destino del servicio</th>
-        <th scope="col">Solicitante</th>
-        <th scope="col">Transporte</th>
-        <th scope="col">Insumo</th>
-        <th scope="col">Acompañante</th>
-        <th scope="col">Aislamiento</th>
-        <th scope="col">Observaciones</th>
-        <th scope="col">Paciente</th>
-        <th scope="col">Camillero</th>
-        <th scope="col" *ngIf="isAdmin">Ver</th>
-        <th scope="col" *ngIf="isAdmin">Editar</th>
-        <th scope="col" *ngIf="isAdmin">Borrar</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let servicio of servicios | filtroFecha:page:search">
-        <td>{{servicio.id}}</td>
-        <td>{{servicio.fecha}}</td>
-        <td>{{servicio.servicioSolicitado}}</td>
-        <td>{{servicio.destinoServicio}}</td>
-        <td>{{servicio.solicitante}}</td>
-        <td>{{servicio.transporte}}</td>
-        <td>{{servicio.insumo}}</td>
-        <td>{{servicio.familiar}}</td>
-        <td *ngIf="servicio.aislamiento">Sí</td>
-        <td *ngIf="!servicio.aislamiento">No</td>
-        <td>{{servicio.observaciones}}</td>
-        <td>{{servicio.genpacien?.pacnumdoc}}</td>
-        <td>{{servicio.camillero?.nombreCamillero}}</td>
-        <td *ngIf="isAdmin"><button class="btn btn-outline-primary"
-            routerLink="/camilleros/servicio/detalle/{{servicio.id}}"><i class="fas fa-eye"></i></button></td>
-        <td *ngIf="isAdmin"><button class="btn btn-outline-warning"
-            routerLink="/camilleros/servicio/editar/{{servicio.id}}"><i class="fas fa-edit"></i></button></td>
-        <td *ngIf="isAdmin"><button class="btn btn-outline-danger" (click)="borrar(servicio.id)"><i
-              class="fas fa-trash-alt"></i></button></td>
-      </tr>
-      <!-- <tr>
+  <div class="container" id="main-container">
+  <div class="table-responsive">
+    <table id="dtHorizontalExample" class="table table-striped table-hover table-sm mb-0 text-center" cellspacing="0"
+      width="100%">
+      <thead>
+        <tr>
+          <!-- (click)="sort()" -->
+          <th scope="col">Id</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Servicio solicitado</th>
+          <th scope="col">Destino del servicio</th>
+          <th scope="col">Solicitante</th>
+          <th scope="col">Transporte</th>
+          <th scope="col">Insumo</th>
+          <th scope="col">Acompañante</th>
+          <th scope="col">Aislamiento</th>
+          <th scope="col">Observaciones</th>
+          <th scope="col">Paciente</th>
+          <th scope="col">Camillero</th>
+          <th scope="col">Registrar hora</th>
+          <th scope="col" *ngIf="isAdmin">Ver</th>
+          <th scope="col" *ngIf="isAdmin">Editar</th>
+          <th scope="col" *ngIf="isSuperadmin">Borrar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let servicio of servicios | filtroFecha:page:search">
+          <td>{{servicio.id}}</td>
+          <td>{{servicio.fecha}}</td>
+          <td>{{servicio.servicioSolicitado}}</td>
+          <td>{{servicio.destinoServicio}}</td>
+          <td>{{servicio.solicitante}}</td>
+          <td>{{servicio.transporte}}</td>
+          <td>{{servicio.insumo}}</td>
+          <td>{{servicio.familiar}}</td>
+          <td *ngIf="servicio.aislamiento">Sí</td>
+          <td *ngIf="!servicio.aislamiento">No</td>
+          <td>{{servicio.observaciones}}</td>
+          <td>{{servicio.genpacien?.pacnumdoc}}</td>
+          <td>{{servicio.camillero?.nombreCamillero}}</td>
+          <!-- <td><a (click)="onOpenModal(servicio, 'editTime')" class="btn btn-outline-info tooltips" data-placement="top" data-original-title="Edit"><i class="fas fa-clock"></i></a></td> -->
+          <td><button (click)="onOpenModal(servicio, 'editTime')" class="btn btn-outline-info tooltips"
+              data-placement="top" data-original-title="Edit"><i class="fas fa-clock"></i></button></td>
+
+          <td *ngIf="isAdmin"><button class="btn btn-outline-primary"
+              routerLink="/camilleros/servicio/detalle/{{servicio.id}}"><i class="fas fa-eye"></i></button></td>
+          <td *ngIf="isAdmin"><button class="btn btn-outline-warning"
+              routerLink="/camilleros/servicio/editar/{{servicio.id}}"><i class="fas fa-edit"></i></button></td>
+          <td *ngIf="isSuperadmin"><button class="btn btn-outline-danger" (click)="borrar(servicio.id)"><i
+                class="fas fa-trash-alt"></i></button></td>
+        </tr>
+        <!-- <tr>
         <td><i class="fas fa-angle-double-left fa-2x" (click)="rewind()"></i></td>
         <td colspan="10">
           <span *ngFor="let p of totalPages; let i = index">
@@ -85,10 +92,51 @@
         </td>
         <td><i class="fas fa-angle-double-right fa-2x" (click)="forward()"></i></td>
       </tr> -->
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
   </div>
+
+  <!-- Edit Time -->
+  <div class="modal fade" id="updateTimeModal" tabindex="-1" role="dialog" aria-labelledby="servicioEditModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateTimeModalLabel">Registrar hora </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form #f="ngForm">
+
+            <!-- <input type="hidden" ngModel="{{servicio.id}}" name="id" class="form-control" id="id"> -->
+
+            <label>Presione el botón rojo para registrar la hora de ejecución del servicio y/o 
+              el botón verde para registrar la hora de finalización del servicio. Despues haga clic en "Guardar cambios"
+            para guardar la información.</label>
+            <div class="form-group mt-4">
+              <button type="button" class="btn btn-danger" (click)="horaEjecucionServicio()">Hora de ejecución</button><br>
+              <input type="text" class="form-control mt-2" id="horaEjecucion" name="horaEjecucion">
+            </div>
+
+            <div class="form-group mt-5">
+              <button type="button" class="btn btn-success" (click)="horaFinalizacionServicio()">Hora de finalización</button><br>
+              <input type="text" class="form-control mt-2" id="horaFinalizacion" name="horaFinalizacion">
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button (click)="onUpdateTime(f.value)" class="btn btn-primary">Guardar cambios</button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
 
 
 

@@ -8,11 +8,11 @@ export class FiltroFechaPipe implements PipeTransform {
 
   transform(servicios: Servicio[], page: number = 0, search: string = ''): Servicio[] {
     if(search.length === 0) {
-      return servicios.slice(page,page + 5);
+      return servicios.slice(page,page + 10);
     }
 
     const filteredServicios = servicios.filter( servicio => servicio.fecha.includes( search ) );
-    return filteredServicios.slice(page,page + 5);
+    return filteredServicios.slice(page,page + 10);
   }
 
 }

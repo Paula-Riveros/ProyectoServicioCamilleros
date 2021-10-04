@@ -56,6 +56,8 @@ export class NuevoServicioComponent implements OnInit {
     const nowFecha = new Date();
     const day = ("0" + nowFecha.getDate()).slice(-2);
     const month = ("0" + (nowFecha.getMonth() + 1)).slice(-2);
+    const today = nowFecha.getFullYear() + "-" + (month) + "-" + (day);
+    (document.getElementById("fecha") as HTMLInputElement).value = today;
     this.fecha = nowFecha.getFullYear() + "-" + (month) + "-" + (day);
   }
 
