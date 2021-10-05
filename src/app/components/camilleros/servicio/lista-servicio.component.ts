@@ -24,16 +24,9 @@ export class ListaServicioComponent implements OnInit {
   page: number = 0;
   search: string = '';
 
-  // Paginación (otro metodo)
-  // page = 0;
-  // size = 15;
-  // order = 'id';
-  // asc = true;
+  cancelado = false;
 
-  // isFirst = false;
-  // isLast = false;
-
-  constructor(private servicioService: ServicioService, private toastr: ToastrService, private tokenService: TokenService, 
+  constructor(private servicioService: ServicioService, private toastr: ToastrService, private tokenService: TokenService,
     private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
@@ -61,35 +54,6 @@ export class ListaServicioComponent implements OnInit {
     );
   }
 
-
-  // listaServicios(): void {
-  //   this.servicioService.lista(this.page, this.size, this.order, this.asc).subscribe(
-  //     data => {
-  //       this.servicios = data.content;
-  //       this.isFirst = data.first;
-  //       this.isLast = data.last;
-  //       this.totalPages = new Array(data['totalPages']);
-  //       // console.log(data[0].paciente?.id);
-  //     },
-  //     err => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
-
-  // listaServiciosFecha(key: string): void {
-  //   console.log(key);
-  //   const results: Servicio[] = [];
-  //   for (const servicio of this.servicios) {
-  //     if (servicio.fecha.indexOf(key) !== -1) {
-  //       results.push(servicio);
-  //     }
-  //   }
-  //   this.servicios = results;
-  //   if (results.length === 0 || !key) {
-  //     this.listaServicios();
-  //   }
-  // }
 
   onSearchServicio(search: string) {
     this.page = 0;
@@ -121,14 +85,14 @@ export class ListaServicioComponent implements OnInit {
   }
 
   prevPage() {
-    if(this.page > 0) {
+    if (this.page > 0) {
       this.page -= 10;
     }
   }
 
 
- // --------------------------------------------------------------
- // Paginación (otro metodo)
+  // --------------------------------------------------------------
+  // Paginación (otro metodo)
   // sort(): void {
   //   this.asc = !this.asc;
   //   this.listaServicios();
@@ -193,6 +157,33 @@ export class ListaServicioComponent implements OnInit {
     );
   }
 
+  habilitar(): void {
+    const motivo = (document.getElementById('motivo') as HTMLInputElement);
+
+    if(!this.cancelado) {
+        motivo.disabled = true;
+    }else {
+      motivo.disabled = false;
+    }
+  }
+
+  onUpdateCancel(servicio: Servicio): void {
+    this.servicioService.updateCancelado(this.servicio).subscribe(
+      data => {
+        this.toastr.success('Servicio cancelado', 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        this.router.navigate(['/camilleros/servicio/lista']);
+      },
+      err => {
+        this.toastr.error(err.error.mensaje, 'Fail', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        this.router.navigate(['/camilleros/servicio/lista']);
+      }
+    );
+  }
+
   public onOpenModal(servicio: Servicio, mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
@@ -202,6 +193,10 @@ export class ListaServicioComponent implements OnInit {
     if (mode === 'editTime') {
       this.servicio = servicio;
       button.setAttribute('data-bs-target', '#updateTimeModal');
+    }
+    if (mode === 'editCancel') {
+      this.servicio = servicio;
+      button.setAttribute('data-bs-target', '#updateCancelModal');
     }
     container!.appendChild(button);
     button.click();

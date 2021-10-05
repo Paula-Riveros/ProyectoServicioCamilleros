@@ -16,10 +16,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { LoginUsuarioComponent } from './components/user/login-usuario/login-usuario.component';
 import { NavbarLoginComponent } from './components/shared/navbar-login/navbar-login.component';
-import { ListaPacienteComponent } from './components/paciente/lista-paciente.component';
-import { DetallePacienteComponent } from './components/paciente/detalle-paciente.component';
-import { NuevoPacienteComponent } from './components/paciente/nuevo-paciente.component';
-import { EditarPacienteComponent } from './components/paciente/editar-paciente.component';
+//import { ListaPacienteComponent } from './components/paciente/lista-paciente.component';
+//import { DetallePacienteComponent } from './components/paciente/detalle-paciente.component';
+//import { NuevoPacienteComponent } from './components/paciente/nuevo-paciente.component';
+//import { EditarPacienteComponent } from './components/paciente/editar-paciente.component';
 import { CamillerosComponent } from './components/camilleros/camilleros/camilleros.component';
 import { InicioCamillerosComponent } from './components/camilleros/inicio/inicio.component';
 import { interceptorProvider } from './interceptors/prod-interceptor.service';
@@ -58,10 +58,10 @@ import { FiltroFechaPipe } from './components/pipes/filtro-fecha.pipe';
     CarouselComponent,
     LoginUsuarioComponent,
     NavbarLoginComponent,
-    ListaPacienteComponent,
-    DetallePacienteComponent,
-    NuevoPacienteComponent,
-    EditarPacienteComponent,
+    //ListaPacienteComponent,
+    //DetallePacienteComponent,
+    //NuevoPacienteComponent,
+    //EditarPacienteComponent,
     CamillerosComponent,
     InicioCamillerosComponent,
     LoginComponent,

@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { GenpacienService } from 'src/app/service/genpacien.service';
-import { PacienteService } from 'src/app/service/paciente.service';
 import { ServicioService } from 'src/app/service/servicio.service';
 import { TokenService } from 'src/app/service/token.service';
 import { Servicio } from '../../models/servicio';
@@ -22,7 +21,7 @@ export class NuevoServicioComponent implements OnInit {
   transporte: string = '';
   insumo: string = '';
   familiar: string = '';
-  aislamiento: string = '';
+  aislamiento!: boolean;
   observaciones: string = '';
   docPaciente: string = '';
   nombrePaciente: string = '';
@@ -31,6 +30,9 @@ export class NuevoServicioComponent implements OnInit {
   horaAsignacion = '00:00:00';
   horaEjecucion = '00:00:00';
   horaFinalizacion = '00:00:00';
+
+  cancelado: boolean = false;
+  motivoCancelado: string = '';
 
   roles!: string[];
   isAdmin = false;
@@ -72,7 +74,7 @@ export class NuevoServicioComponent implements OnInit {
   onCreate(): void {
     const servicio = new Servicio(this.id, this.fecha, this.servicioSolicitado, this.destinoServicio, this.solicitante, this.transporte,
       this.insumo, this.familiar, this.aislamiento, this.observaciones, this.docPaciente, this.nombrePaciente, this.horaEnvio,
-      this.horaAsignacion, this.horaEjecucion, this.horaFinalizacion);
+      this.horaAsignacion, this.horaEjecucion, this.horaFinalizacion, this.cancelado, this.motivoCancelado);
     this.servicioService.save(servicio).subscribe(
       data => {
         this.toastr.success('Servicio enviado', 'OK', {

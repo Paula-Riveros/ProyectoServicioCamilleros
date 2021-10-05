@@ -16,10 +16,10 @@ import { DetalleGenpacienComponent } from './components/genpacien/detalle-genpac
 import { ListaGenpacienComponent } from './components/genpacien/lista-genpacien.component';
 import { HomeComponent } from './components/home/home.component';
 import { InicioComponent } from './components/inicio/inicio.component';
-import { DetallePacienteComponent } from './components/paciente/detalle-paciente.component';
-import { EditarPacienteComponent } from './components/paciente/editar-paciente.component';
-import { ListaPacienteComponent } from './components/paciente/lista-paciente.component';
-import { NuevoPacienteComponent } from './components/paciente/nuevo-paciente.component';
+//import { DetallePacienteComponent } from './components/paciente/detalle-paciente.component';
+//import { EditarPacienteComponent } from './components/paciente/editar-paciente.component';
+//import { ListaPacienteComponent } from './components/paciente/lista-paciente.component';
+//import { NuevoPacienteComponent } from './components/paciente/nuevo-paciente.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { ProdGuardService as guard} from './guards/prod-guard.service';

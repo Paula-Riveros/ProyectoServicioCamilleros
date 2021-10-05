@@ -45,6 +45,10 @@ export class ServicioService {
     return this.httpClient.put<any>(`${this.servicioURL}updatetime`, servicio); 
   }
 
+  public updateCancelado(servicio: Servicio): Observable<Servicio> {
+    return this.httpClient.put<any>(`${this.servicioURL}updatecancelado`, servicio); 
+  }
+
   public delete(id: number): Observable<any> {
     return this.httpClient.delete<any>(this.servicioURL + `delete/${id}`);
   }
