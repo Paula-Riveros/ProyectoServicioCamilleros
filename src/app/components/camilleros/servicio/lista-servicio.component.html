@@ -108,10 +108,8 @@
         </div>
 
         <div class="modal-body">
-          <form #f="ngForm">
-
-            <!-- <input type="hidden" ngModel="{{servicio.id}}" name="id" class="form-control" id="id"> -->
-
+          <form #editForm="ngForm">
+            
             <label>Presione el botón rojo para registrar la hora de ejecución del servicio y/o
               el botón verde para registrar la hora de finalización del servicio. Despues haga clic en "Guardar cambios"
               para guardar la información.</label>
@@ -129,7 +127,7 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button (click)="onUpdateTime(f.value)" class="btn btn-primary">Guardar cambios</button>
+              <button (click)="onUpdateTime(editForm.value)" class="btn btn-primary">Guardar cambios</button>
             </div>
 
           </form>
@@ -150,32 +148,45 @@
         </div>
 
         <div class="modal-body mt-2">
-          <form #cancel="ngForm">
+          <form #f="ngForm">
 
-            <!-- <input type="hidden" ngModel="{{servicio.id}}" name="id" class="form-control" id="id"> -->
+            <input type="hidden" ngModel="{{servicio?.id}}" name="id" class="form-control" id="id">
+            <input type="hidden" ngModel="{{servicio?.fecha}}" name="fecha" class="form-control" id="fecha">
+            <input type="hidden" ngModel="{{servicio?.servicioSolicitado}}" name="servicioSolicitado" class="form-control" id="servicioSolicitado">
+            <input type="hidden" ngModel="{{servicio?.destinoServicio}}" name="destinoServicio" class="form-control" id="destinoServicio">
+            <input type="hidden" ngModel="{{servicio?.solicitante}}" name="solicitante" class="form-control" id="solicitante">
+            <input type="hidden" ngModel="{{servicio?.transporte}}" name="transporte" class="form-control" id="transporte">
+            <input type="hidden" ngModel="{{servicio?.insumo}}" name="insumo" class="form-control" id="insumo">
+            <input type="hidden" ngModel="{{servicio?.familiar}}" name="familiar" class="form-control" id="familiar">
+            <input type="hidden" ngModel="{{servicio?.aislamiento}}" name="aislamiento" class="form-control" id="aislamiento">
+            <input type="hidden" ngModel="{{servicio?.observaciones}}" name="observaciones" class="form-control" id="observaciones">
+            <input type="hidden" ngModel="{{servicio?.horaEnvio}}" name="nombreCamillero" class="form-control" id="nombreCamillero">
+            <input type="hidden" ngModel="{{servicio?.horaAsignacion}}" name="horaAsignacion" class="form-control" id="horaAsignacion">
+            <input type="hidden" ngModel="{{servicio?.horaEjecucion}}" name="horaEjecucion" class="form-control" id="horaEjecucion">
+            <input type="hidden" ngModel="{{servicio?.horaFinalizacion}}" name="horaFinalizacion" class="form-control" id="horaFinalizacion">
 
             <div class="col-md-6">
-            <label style="text-align: center;">¿Desea cancelar este servicio?</label>
-            <br>
-                    <div class="form-control mt-2 col-md-4">
-                        <label class="radio-inline">
-                            <input type="radio" name="cancelado" id="cancelado" [value]="true" (onKeyUp)="habilitar()"> Sí
-                        </label>
-                        &nbsp; &nbsp; &nbsp;
-                        <label class="radio-inline">
-                            <input type="radio" name="cancelado" id="cancelado" [value]="false" (onKeyUp)="habilitar()"> No
-                        </label>
-                    </div>
+              <label style="text-align: center;">¿Desea cancelar este servicio?</label>
+              <br>
+              <div class="form-control mt-2 col-md-4">
+                <label class="radio-inline">
+                  <input type="radio" name="cancelado" id="cancelado" value="true" ngModel="{{servicio?.cancelado}}" (click)="habilitar()"> Sí
+                </label>
+                &nbsp; &nbsp; &nbsp;
+                <label class="radio-inline">
+                  <input type="radio" name="cancelado" id="noCancelado" value="false" ngModel="{{servicio?.cancelado}}" (click)="noHabilitar()"> No
+                </label>
+              </div>
             </div>
 
             <div class="form-group mt-3">
               <label for="motivoCancelado">¿Por qué desea cancelar el servicio? </label>
-              <textarea class="form-control" disabled id="motivo" name="motivo" rows="3"></textarea>
-          </div>
+              <textarea class="form-control" ngModel="{{servicio?.motivoCancelado}}" (keyup)="habilitar()" id="motivoCancelado" name="motivoCancelado" rows="3" [disabled]="isCancel"></textarea>
+            </div>
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button (click)="onUpdateCancel(cancel.value)" class="btn btn-primary">Guardar cambios</button>
+              <button (click)="onUpdateCancel(f.value)" class="btn btn-primary">Guardar cambios</button>
             </div>
 
           </form>

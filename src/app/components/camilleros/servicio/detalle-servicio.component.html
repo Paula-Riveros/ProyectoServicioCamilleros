@@ -36,6 +36,16 @@
               <li class="list-group-item"><b>Hora de finalización:</b> {{servicio.horaFinalizacion}}</li>
             </ul>
           </li>
+
+          <li class="list-group-item">
+            <b>¿CANCELADO? </b>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngIf="servicio.cancelado"><b>Sí cancelado</b> </li>
+              <li class="list-group-item" *ngIf="!servicio.cancelado"><b>No cancelado</b> </li>
+              <li class="list-group-item" *ngIf="servicio.cancelado"><b>Motivo: </b> {{servicio.motivoCancelado}}</li>
+            </ul>
+          </li>
+
         </ul>
         <div class="card-footer">
           <button class="btn btn-outline-primary btn-block" (click)="volver()"><i

@@ -24,7 +24,7 @@ export class ListaServicioComponent implements OnInit {
   page: number = 0;
   search: string = '';
 
-  cancelado = false;
+  isCancel: boolean = true;  
 
   constructor(private servicioService: ServicioService, private toastr: ToastrService, private tokenService: TokenService,
     private activatedRoute: ActivatedRoute, private router: Router) { }
@@ -158,15 +158,23 @@ export class ListaServicioComponent implements OnInit {
   }
 
   habilitar(): void {
-    const motivo = (document.getElementById('motivo') as HTMLInputElement);
-
-    if(!this.cancelado) {
-        motivo.disabled = true;
-    }else {
-      motivo.disabled = false;
-    }
+    const cancel = (document.getElementById('cancelado') as HTMLInputElement).value;
+    this.isCancel = false;
+    this.servicio.cancelado = true;
+    const mot = (document.getElementById('motivoCancelado') as HTMLInputElement).value;
+    this.servicio.motivoCancelado = mot;
+    console.log(cancel);
   }
 
+  noHabilitar(): void {
+    const nocancel = (document.getElementById('noCancelado') as HTMLInputElement).value;
+    this.isCancel = true;
+    this.servicio.cancelado = false;
+    (document.getElementById('motivoCancelado') as HTMLInputElement).value = '';
+    this.servicio.motivoCancelado = '';
+    console.log(nocancel);
+  }
+ 
   onUpdateCancel(servicio: Servicio): void {
     this.servicioService.updateCancelado(this.servicio).subscribe(
       data => {
@@ -197,6 +205,9 @@ export class ListaServicioComponent implements OnInit {
     if (mode === 'editCancel') {
       this.servicio = servicio;
       button.setAttribute('data-bs-target', '#updateCancelModal');
+      if(this.servicio.cancelado == true) {
+        this.isCancel = false;
+      }
     }
     container!.appendChild(button);
     button.click();

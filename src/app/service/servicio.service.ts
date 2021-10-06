@@ -42,11 +42,11 @@ export class ServicioService {
   }
   
   public updateTime(servicio: Servicio): Observable<Servicio> {
-    return this.httpClient.put<any>(`${this.servicioURL}updatetime`, servicio); 
+    return this.httpClient.put<Servicio>(`${this.servicioURL}updatetime`, servicio); 
   }
 
   public updateCancelado(servicio: Servicio): Observable<Servicio> {
-    return this.httpClient.put<any>(`${this.servicioURL}updatecancelado`, servicio); 
+    return this.httpClient.put<Servicio>(this.servicioURL + 'updatecancelado', servicio); 
   }
 
   public delete(id: number): Observable<any> {
