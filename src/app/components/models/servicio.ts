@@ -9,8 +9,11 @@ export class Servicio {
     genareser?: Genareser;
     servicioSolicitado: number;
 
-    destinoServicio: string;
     solicitante: string;
+
+    genareser2?: Genareser;
+    destinoServicio: number;
+
     transporte: string;
     insumo: string;
     familiar: string;
@@ -32,15 +35,15 @@ export class Servicio {
     cancelado: boolean;
     motivoCancelado: string;
 
-    constructor(id: number, fecha: string, servicioSolicitado: number, destinoServicio: string, solicitante: string,
+    constructor(id: number, fecha: string, servicioSolicitado: number, solicitante: string, destinoServicio: number,
         transporte: string, insumo: string, familiar: string, aislamiento: boolean, observaciones: string, 
         docPaciente: string, nombrePaciente: string, horaEnvio: string, horaAsignacion: string, horaEjecucion: string,
         horaFinalizacion: string, cancelado: boolean, motivoCancelado: string) {
             this.id = id;
             this.fecha = fecha;
             this.servicioSolicitado = servicioSolicitado;
-            this.destinoServicio = destinoServicio;
             this.solicitante = solicitante;
+            this.destinoServicio = destinoServicio;
             this.transporte =transporte;
             this.insumo = insumo;
             this.familiar = familiar;

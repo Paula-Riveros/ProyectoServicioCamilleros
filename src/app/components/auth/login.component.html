@@ -58,7 +58,6 @@
         <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
 
             <label for="nombreUsuario">Nombre de Usuario</label>
-
             <div class="wrap-input100 m-b-16 mt-1">
                 <input type="text" name="nombreUsuario" id="nombreUsuario" class="input100" placeholder="Ingrese usuario aqui"
                 [(ngModel)]= "nombreUsuario" required>
@@ -67,9 +66,9 @@
             <!-- <span *ngIf="loginForm.submitted && loginForm.controls['email'].errors" class="text-danger animate__animated animate__fadeIn"> El usuario es obligatorio</span> -->
 
 
-            <label for="password" class="mt-2"> Contraseña</label>
+            <label for="password" class="mt-3"> Contraseña</label>
 
-            <div class="wrap-input100 m-b-16" data-validate="Password is required">
+            <div class="wrap-input100 m-b-16 mt-1" data-validate="Password is required">
                 <input type="password" name="password" id="password" class="input100" placeholder="Ingrese contraseña aqui"
                 [(ngModel)]= "password" required>
             </div>

@@ -20,9 +20,8 @@ export class NuevoServicioComponent implements OnInit {
 
   genaresers: Genareser[] = [];
   servicioSolicitado!: number;
-
-  destinoServicio: string = '';
   solicitante: string = '';
+  destinoServicio!: number;
   transporte: string = '';
   insumo: string = '';
   familiar: string = '';
@@ -79,7 +78,7 @@ export class NuevoServicioComponent implements OnInit {
   }
 
   onCreate(): void {
-    const servicio = new Servicio(this.id, this.fecha, this.servicioSolicitado, this.destinoServicio, this.solicitante, this.transporte,
+    const servicio = new Servicio(this.id, this.fecha, this.servicioSolicitado, this.solicitante, this.destinoServicio, this.transporte,
       this.insumo, this.familiar, this.aislamiento, this.observaciones, this.docPaciente, this.nombrePaciente, this.horaEnvio,
       this.horaAsignacion, this.horaEjecucion, this.horaFinalizacion, this.cancelado, this.motivoCancelado);
     this.servicioService.save(servicio).subscribe(

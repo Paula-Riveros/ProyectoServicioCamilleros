@@ -15,16 +15,7 @@
                     <select class="form-control" name="servicioSolicitado" id="servicioSolicitado" [(ngModel)]="servicioSolicitado" required>
                         <option [ngValue]="null" selected>Elija un servicio</option>
                         <option [ngValue]="genareser.oid" *ngFor="let genareser of genaresers">{{genareser.gasnombre}}</option>
-                    </select>
-
-                 
-                </div>
-
-
-                <div class="form-group">
-                    <label for="destinoServicio">Destino del Servicio</label>
-                    <input type="text" class="form-control" id="destinoServicio" name="destinoServicio"
-                        [(ngModel)]="destinoServicio" required>
+                    </select>                 
                 </div>
 
                 <div class="form-group">
@@ -32,6 +23,16 @@
                     <input type="text" class="form-control" id="solicitante" name="solicitante"
                         [(ngModel)]="solicitante" required>
                 </div>
+
+                <div class="form-group">
+                    <label for="destinoServicio">Destino del Servicio</label>
+                    <select class="form-control" name="destinoServicio" id="destinoServicio" [(ngModel)]="destinoServicio" required>
+                        <option [ngValue]="null" selected>Elija un destino</option>
+                        <option [ngValue]="genareser.oid" *ngFor="let genareser of genaresers">{{genareser.gasnombre}}</option>
+                    </select>
+                </div>
+
+                
 
                 <div class="form-group">
                     <label for="transporte">Transporte</label>

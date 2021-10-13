@@ -10,17 +10,17 @@
 
             <div class="form-group">
                 <label for="servicioSolicitado">Servicio Solicitado</label>
-                <input type="text" class="form-control" id="servicioSolicitado" name="servicioSolicitado" [(ngModel)]="servicio.servicioSolicitado" disabled>
-            </div>
-
-            <div class="form-group">
-                <label for="destinoServicio">Destino del Servicio</label>
-                <input type="text" class="form-control" id="destinoServicio" name="destinoServicio" [(ngModel)]="servicio.destinoServicio" disabled>
+                <input type="text" class="form-control" id="servicioSolicitado" name="servicioSolicitado" [ngModel]="servicio.genareser?.gasnombre" disabled>
             </div>
 
             <div class="form-group">
                 <label for="solicitante">Solicitante</label>
                 <input type="text" class="form-control" id="solicitante" name="solicitante" [(ngModel)]="servicio.solicitante" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="destinoServicio">Destino del Servicio</label>
+                <input type="text" class="form-control" id="destinoServicio" name="destinoServicio" [ngModel]="servicio.genareser2?.gasnombre" disabled>
             </div>
 
             <div class="form-group">
