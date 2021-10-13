@@ -1,10 +1,14 @@
 import { Camillero } from "./camillero";
+import { Genareser } from "./genareser";
 import { Genpacien } from "./genpacien";
 
 export class Servicio {
     id: number; // ? no es campo obligatorio, en algunas ocasiones tendra el id y en otras no
     fecha: string;
-    servicioSolicitado: string;
+
+    genareser?: Genareser;
+    servicioSolicitado: number;
+
     destinoServicio: string;
     solicitante: string;
     transporte: string;
@@ -17,8 +21,10 @@ export class Servicio {
     nombrePaciente: string;
     genpacien?: Genpacien;
     docPaciente: string;
+
     camillero?: Camillero;
     idCamillero?: number;
+
     horaEnvio: string;
     horaAsignacion: string;
     horaEjecucion: string;
@@ -26,7 +32,7 @@ export class Servicio {
     cancelado: boolean;
     motivoCancelado: string;
 
-    constructor(id: number, fecha: string, servicioSolicitado: string, destinoServicio: string, solicitante: string,
+    constructor(id: number, fecha: string, servicioSolicitado: number, destinoServicio: string, solicitante: string,
         transporte: string, insumo: string, familiar: string, aislamiento: boolean, observaciones: string, 
         docPaciente: string, nombrePaciente: string, horaEnvio: string, horaAsignacion: string, horaEjecucion: string,
         horaFinalizacion: string, cancelado: boolean, motivoCancelado: string) {
@@ -40,7 +46,6 @@ export class Servicio {
             this.familiar = familiar;
             this.aislamiento = aislamiento;
             this.observaciones = observaciones;
-            // this.idPaciente = idPaciente;
             this.docPaciente = docPaciente;
             this.nombrePaciente = nombrePaciente;
             this.horaEnvio = horaEnvio;

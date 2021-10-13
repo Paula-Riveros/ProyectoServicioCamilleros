@@ -163,7 +163,7 @@ export class ListaServicioComponent implements OnInit {
     this.servicio.cancelado = true;
     const mot = (document.getElementById('motivoCancelado') as HTMLInputElement).value;
     this.servicio.motivoCancelado = mot;
-    console.log(cancel);
+    //console.log(cancel);
   }
 
   noHabilitar(): void {
@@ -172,7 +172,7 @@ export class ListaServicioComponent implements OnInit {
     this.servicio.cancelado = false;
     (document.getElementById('motivoCancelado') as HTMLInputElement).value = '';
     this.servicio.motivoCancelado = '';
-    console.log(nocancel);
+    //console.log(nocancel);
   }
  
   onUpdateCancel(servicio: Servicio): void {

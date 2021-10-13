@@ -1,9 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { GenareserService } from 'src/app/service/genareser.service';
 import { GenpacienService } from 'src/app/service/genpacien.service';
 import { ServicioService } from 'src/app/service/servicio.service';
 import { TokenService } from 'src/app/service/token.service';
+import { Genareser } from '../../models/genareser';
 import { Servicio } from '../../models/servicio';
 
 @Component({
@@ -15,7 +17,10 @@ export class NuevoServicioComponent implements OnInit {
 
   id!: number;
   fecha = '';
-  servicioSolicitado: string = '';
+
+  genaresers: Genareser[] = [];
+  servicioSolicitado!: number;
+
   destinoServicio: string = '';
   solicitante: string = '';
   transporte: string = '';
@@ -41,11 +46,13 @@ export class NuevoServicioComponent implements OnInit {
 
 
   constructor(private servicioService: ServicioService, private genpacienService: GenpacienService,
-    private toastr: ToastrService, private router: Router, private tokenService: TokenService) { }
+    private toastr: ToastrService, private router: Router, private tokenService: TokenService, 
+    private genareserService: GenareserService) { }
 
 
   ngOnInit(): void {
     this.fechaActual();
+    this.listaSolicitados();
     this.roles = this.tokenService.getAuthorities();
     this.roles.forEach(rol => {
       if (rol == 'ROLE_ADMIN') {
@@ -87,6 +94,17 @@ export class NuevoServicioComponent implements OnInit {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         // this.router.navigate(['/camilleros/servicio/lista']);
+      }
+    );
+  }
+
+  listaSolicitados(): void {
+    this.genareserService.lista().subscribe(
+      data => {
+        this.genaresers = data;
+      }, 
+      err => {
+        console.log(err);
       }
     );
   }
