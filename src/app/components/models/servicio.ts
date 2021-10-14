@@ -32,6 +32,7 @@ export class Servicio {
     horaAsignacion: string;
     horaEjecucion: string;
     horaFinalizacion: string;
+    
     cancelado: boolean;
     motivoCancelado: string;
 
