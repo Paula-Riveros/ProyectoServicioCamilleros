@@ -33,13 +33,13 @@ export class Servicio {
     horaEjecucion: string;
     horaFinalizacion: string;
     
-    cancelado: boolean;
+    cancelado: Boolean;
     motivoCancelado: string;
 
     constructor(id: number, fecha: string, servicioSolicitado: number, solicitante: string, destinoServicio: number,
         transporte: string, insumo: string, familiar: string, aislamiento: boolean, observaciones: string, 
         docPaciente: string, nombrePaciente: string, horaEnvio: string, horaAsignacion: string, horaEjecucion: string,
-        horaFinalizacion: string, cancelado: boolean, motivoCancelado: string) {
+        horaFinalizacion: string, cancelado: Boolean, motivoCancelado: string) {
             this.id = id;
             this.fecha = fecha;
             this.servicioSolicitado = servicioSolicitado;

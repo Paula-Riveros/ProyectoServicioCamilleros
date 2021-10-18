@@ -65,7 +65,7 @@ export class DetalleServicioComponent implements OnInit {
       console.log(this.tiempoT);
     }
 
-
+    
   }
 
   volver(): void {

@@ -35,7 +35,7 @@ export class NuevoServicioComponent implements OnInit {
   horaEjecucion = '00:00:00';
   horaFinalizacion = '00:00:00';
 
-  cancelado: boolean = false;
+  cancelado: Boolean = false;
   motivoCancelado: string = '';
 
   roles!: string[];

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { GenareserService } from 'src/app/service/genareser.service';
 import { ServicioService } from 'src/app/service/servicio.service';
 import { TokenService } from 'src/app/service/token.service';
+import { Genareser } from '../../models/genareser';
 import { Servicio } from '../../models/servicio';
 
 @Component({
@@ -19,18 +21,23 @@ export class ListaServicioComponent implements OnInit {
 
   servicio!: Servicio;
 
-  totalPages: Array<number> = [];
+  //genaresers: Genareser[] = [];
+
+  // totalPages: Array<number> = [];
 
   page: number = 0;
   search: string = '';
+  searchOtro: string = '';
+  searchCancel: string = '';
 
   isCancel: boolean = true;  
 
   constructor(private servicioService: ServicioService, private toastr: ToastrService, private tokenService: TokenService,
-    private activatedRoute: ActivatedRoute, private router: Router) { }
+    private activatedRoute: ActivatedRoute, private router: Router, private genareserService: GenareserService) { }
 
   ngOnInit(): void {
     this.listaServicios();
+    //this.listaSolicitados();
     this.roles = this.tokenService.getAuthorities();
     this.roles.forEach(rol => {
       if (rol == 'ROLE_ADMIN') {
@@ -60,6 +67,11 @@ export class ListaServicioComponent implements OnInit {
     this.search = search;
   }
 
+  onSearchServicioByOtro(searchOtro: string) {
+    this.page = 0;
+    this.searchOtro = searchOtro;
+  }
+
   borrar(id: number) {
     this.servicioService.delete(id).subscribe(
       data => {
@@ -75,6 +87,17 @@ export class ListaServicioComponent implements OnInit {
       }
     );
   }
+
+  // listaSolicitados(): void {
+  //   this.genareserService.lista().subscribe(
+  //     data => {
+  //       this.genaresers = data;
+  //     }, 
+  //     err => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
 
   // --------------------------------------------------------------
 

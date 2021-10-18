@@ -1,5 +1,5 @@
 <div *ngIf="isAdmin">
-  <button class="btn btn-outline-success" routerLink="/camilleros/servicio/nuevo">
+  <button class="btn btn-outline-success mb-3" routerLink="/camilleros/servicio/nuevo">
     <i class="fas fa-plus-circle"></i> Nuevo servicio</button>
 </div>
 
@@ -19,13 +19,53 @@
   </form>
 </div>
 
+<div class="col-md-3 mx-auto text-center">
+  <label><b>Listar servicios por otro</b></label>
+  <form class="form-inline my-2">
+    <input type="text" (keyup)="onSearchServicioByOtro(txtSearchOtro.value)" #txtSearchOtro class="form-control mr-sm-2"
+      placeholder="Buscar servicios por fecha">
+  </form>
+</div>
+
+<div class="col-md-3 mx-auto text-center">
+  <label for="aislamiento"><b>Cancelado</b></label>
+  <div class="form-control">
+    <form name="demo">
+    <label class="radio-inline">
+      <input type="radio" name="searchCancel" checked 
+      value="" [(ngModel)]="searchCancel"> Todos
+    </label>
+    &nbsp;
+    <label class="radio-inline">
+      <input type="radio" name="searchCancel"
+      value="true" [(ngModel)]="searchCancel"> Sí
+    </label>
+    &nbsp;
+    <label class="radio-inline">
+      <input type="radio" name="searchCancel"
+      value="false" [(ngModel)]="searchCancel"> No
+    </label>
+  </form>
+  </div>
+</div>
+
+<!-- <div class="col-md-3 mx-auto text-center">
+  <label><b>Listar servicios por tipo</b></label>
+  <form class="form-inline my-2">
+    <select class="form-control mr-sm-2" (keyup)="onSearchServicio(txtSearch.value)" #txtSearch>
+      <option [ngValue]="null" selected>Elija un servicio</option>
+      <option [ngValue]="genareser.oid" *ngFor="let genareser of genaresers">{{genareser.gasnombre}}</option>
+  </select>
+  </form>
+</div> -->
+
 <div class="mb-3">
   <button class="btn btn-primary mt-3" (click)="prevPage()">
     Anteriores
   </button>
   &nbsp;
   <button class="btn btn-primary mt-3" (click)="nextPage()"
-    [disabled]="(servicios | filtroFecha:page:search).length === 0">
+    [disabled]="(servicios | filtroFecha:page:search:searchOtro).length === 0">
     Siguientes
   </button>
 </div>
@@ -49,6 +89,7 @@
           <th scope="col">Observaciones</th>
           <th scope="col">Paciente</th>
           <th scope="col">Camillero</th>
+          <th scope="col">Fallido</th>
           <th scope="col">Registrar hora</th>
           <th scope="col">Cancelar servicio</th>
           <th scope="col" *ngIf="isAdmin">Ver</th>
@@ -57,7 +98,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let servicio of servicios | filtroFecha:page:search">
+        <!-- *ngFor="let servicio of servicios | filtroFecha:page:search" -->
+        <tr *ngFor="let servicio of servicios | filtroFecha:page:search:searchOtro:searchCancel">
           <td>{{servicio.id}}</td>
           <td>{{servicio.fecha}}</td>
           <td>{{servicio.genareser?.gasnombre}}</td>
@@ -71,6 +113,8 @@
           <td>{{servicio.observaciones}}</td>
           <td>{{servicio.genpacien?.pacnumdoc}}</td>
           <td>{{servicio.camillero?.nombreCamillero}}</td>
+          <td *ngIf="servicio.cancelado">Cancelado</td>
+          <td *ngIf="!servicio.cancelado">No cancelado</td>
           <!-- <td><a (click)="onOpenModal(servicio, 'editTime')" class="btn btn-outline-info tooltips" data-placement="top" data-original-title="Edit"><i class="fas fa-clock"></i></a></td> -->
           <td><button (click)="onOpenModal(servicio, 'editTime')" class="btn btn-outline-info tooltips"
               data-placement="top" data-original-title="Edit"><i class="fas fa-clock"></i></button></td>
@@ -109,7 +153,7 @@
 
         <div class="modal-body">
           <form #editForm="ngForm">
-            
+
             <label>Presione el botón rojo para registrar la hora de ejecución del servicio y/o
               el botón verde para registrar la hora de finalización del servicio. Despues haga clic en "Guardar cambios"
               para guardar la información.</label>
@@ -152,36 +196,49 @@
 
             <input type="hidden" ngModel="{{servicio?.id}}" name="id" class="form-control" id="id">
             <input type="hidden" ngModel="{{servicio?.fecha}}" name="fecha" class="form-control" id="fecha">
-            <input type="hidden" ngModel="{{servicio?.servicioSolicitado}}" name="servicioSolicitado" class="form-control" id="servicioSolicitado">
-            <input type="hidden" ngModel="{{servicio?.destinoServicio}}" name="destinoServicio" class="form-control" id="destinoServicio">
-            <input type="hidden" ngModel="{{servicio?.solicitante}}" name="solicitante" class="form-control" id="solicitante">
-            <input type="hidden" ngModel="{{servicio?.transporte}}" name="transporte" class="form-control" id="transporte">
+            <input type="hidden" ngModel="{{servicio?.servicioSolicitado}}" name="servicioSolicitado"
+              class="form-control" id="servicioSolicitado">
+            <input type="hidden" ngModel="{{servicio?.destinoServicio}}" name="destinoServicio" class="form-control"
+              id="destinoServicio">
+            <input type="hidden" ngModel="{{servicio?.solicitante}}" name="solicitante" class="form-control"
+              id="solicitante">
+            <input type="hidden" ngModel="{{servicio?.transporte}}" name="transporte" class="form-control"
+              id="transporte">
             <input type="hidden" ngModel="{{servicio?.insumo}}" name="insumo" class="form-control" id="insumo">
             <input type="hidden" ngModel="{{servicio?.familiar}}" name="familiar" class="form-control" id="familiar">
-            <input type="hidden" ngModel="{{servicio?.aislamiento}}" name="aislamiento" class="form-control" id="aislamiento">
-            <input type="hidden" ngModel="{{servicio?.observaciones}}" name="observaciones" class="form-control" id="observaciones">
-            <input type="hidden" ngModel="{{servicio?.horaEnvio}}" name="nombreCamillero" class="form-control" id="nombreCamillero">
-            <input type="hidden" ngModel="{{servicio?.horaAsignacion}}" name="horaAsignacion" class="form-control" id="horaAsignacion">
-            <input type="hidden" ngModel="{{servicio?.horaEjecucion}}" name="horaEjecucion" class="form-control" id="horaEjecucion">
-            <input type="hidden" ngModel="{{servicio?.horaFinalizacion}}" name="horaFinalizacion" class="form-control" id="horaFinalizacion">
+            <input type="hidden" ngModel="{{servicio?.aislamiento}}" name="aislamiento" class="form-control"
+              id="aislamiento">
+            <input type="hidden" ngModel="{{servicio?.observaciones}}" name="observaciones" class="form-control"
+              id="observaciones">
+            <input type="hidden" ngModel="{{servicio?.horaEnvio}}" name="nombreCamillero" class="form-control"
+              id="nombreCamillero">
+            <input type="hidden" ngModel="{{servicio?.horaAsignacion}}" name="horaAsignacion" class="form-control"
+              id="horaAsignacion">
+            <input type="hidden" ngModel="{{servicio?.horaEjecucion}}" name="horaEjecucion" class="form-control"
+              id="horaEjecucion">
+            <input type="hidden" ngModel="{{servicio?.horaFinalizacion}}" name="horaFinalizacion" class="form-control"
+              id="horaFinalizacion">
 
             <div class="col-md-6">
               <label style="text-align: center;">¿Desea cancelar este servicio?</label>
               <br>
               <div class="form-control mt-2 col-md-4">
                 <label class="radio-inline">
-                  <input type="radio" name="cancelado" id="cancelado" value="true" ngModel="{{servicio?.cancelado}}" (click)="habilitar()"> Sí
+                  <input type="radio" name="cancelado" id="cancelado" value="true" ngModel="{{servicio?.cancelado}}"
+                    (click)="habilitar()"> Sí
                 </label>
                 &nbsp; &nbsp; &nbsp;
                 <label class="radio-inline">
-                  <input type="radio" name="cancelado" id="noCancelado" value="false" ngModel="{{servicio?.cancelado}}" (click)="noHabilitar()"> No
+                  <input type="radio" name="cancelado" id="noCancelado" value="false" ngModel="{{servicio?.cancelado}}"
+                    (click)="noHabilitar()"> No
                 </label>
               </div>
             </div>
 
             <div class="form-group mt-3">
               <label for="motivoCancelado">¿Por qué desea cancelar el servicio? </label>
-              <textarea class="form-control" ngModel="{{servicio?.motivoCancelado}}" (keyup)="habilitar()" id="motivoCancelado" name="motivoCancelado" rows="3" [disabled]="isCancel"></textarea>
+              <textarea class="form-control" ngModel="{{servicio?.motivoCancelado}}" (keyup)="habilitar()"
+                id="motivoCancelado" name="motivoCancelado" rows="3" [disabled]="isCancel"></textarea>
             </div>
 
             <div class="modal-footer">
