@@ -8,7 +8,9 @@ import { Genareser } from '../components/models/genareser';
 })
 export class GenareserService {
 
-  genareserURL = 'http://localhost:1433/genareser/';
+  // genareserURL = 'http://localhost:1433/genareser/';
+
+  genareserURL = 'http://localhost:8080/genareser/';
 
   constructor(private httpClient: HttpClient) { }
 

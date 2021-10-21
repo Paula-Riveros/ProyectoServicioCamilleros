@@ -10,7 +10,9 @@ import { NuevoUsuario } from '../components/models/nuevo-usuario';
 })
 export class AuthService {
 
-  authURL = 'http://localhost:1433/auth/';
+  //authURL = 'http://localhost:1433/auth/';
+
+  authURL = 'http://localhost:8080/auth/';
 
   constructor(private httpClient: HttpClient) { }
 

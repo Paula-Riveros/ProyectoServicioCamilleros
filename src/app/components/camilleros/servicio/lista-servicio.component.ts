@@ -21,14 +21,15 @@ export class ListaServicioComponent implements OnInit {
 
   servicio!: Servicio;
 
-  //genaresers: Genareser[] = [];
+  genaresers: Genareser[] = [];
 
   // totalPages: Array<number> = [];
 
   page: number = 0;
   search: string = '';
-  searchOtro: string = '';
+  search2: string = '';
   searchCancel: string = '';
+  searchSolicitado: any = null;
 
   isCancel: boolean = true;  
 
@@ -37,7 +38,7 @@ export class ListaServicioComponent implements OnInit {
 
   ngOnInit(): void {
     this.listaServicios();
-    //this.listaSolicitados();
+    this.listaSolicitados();
     this.roles = this.tokenService.getAuthorities();
     this.roles.forEach(rol => {
       if (rol == 'ROLE_ADMIN') {
@@ -60,16 +61,16 @@ export class ListaServicioComponent implements OnInit {
       }
     );
   }
-
+  
 
   onSearchServicio(search: string) {
     this.page = 0;
     this.search = search;
   }
 
-  onSearchServicioByOtro(searchOtro: string) {
+  onSearchServicio2(search2: string) {
     this.page = 0;
-    this.searchOtro = searchOtro;
+    this.search2 = search2;
   }
 
   borrar(id: number) {
@@ -88,28 +89,28 @@ export class ListaServicioComponent implements OnInit {
     );
   }
 
-  // listaSolicitados(): void {
-  //   this.genareserService.lista().subscribe(
-  //     data => {
-  //       this.genaresers = data;
-  //     }, 
-  //     err => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
+   listaSolicitados(): void {
+     this.genareserService.lista().subscribe(
+       data => {
+         this.genaresers = data;
+       }, 
+       err => {
+         console.log(err);
+       }
+     );
+   }
 
   // --------------------------------------------------------------
 
   // Paginación
 
   nextPage() {
-    this.page += 10;
+    this.page += 20;
   }
 
   prevPage() {
     if (this.page > 0) {
-      this.page -= 10;
+      this.page -= 20;
     }
   }
 
@@ -153,6 +154,10 @@ export class ListaServicioComponent implements OnInit {
     this.servicio.horaFinalizacion = '00:00:00';
   }
 
+  cambioHEj(txtHEj: string): void {
+    this.servicio.horaEjecucion = (document.getElementById("horaEjecucion") as HTMLInputElement).value;
+  }
+
   horaFinalizacionServicio(): void {
     const nowHora = new Date();
     const hora = ("0" + nowHora.getHours()).slice(-2);
@@ -161,6 +166,10 @@ export class ListaServicioComponent implements OnInit {
     const horaF = hora + ":" + min + ":" + seg;
     (document.getElementById("horaFinalizacion") as HTMLInputElement).value = horaF;
     this.servicio.horaFinalizacion = hora + ":" + min + ":" + seg;
+  }
+
+  cambioHF(txtHF: string): void {
+    this.servicio.horaFinalizacion = (document.getElementById("horaFinalizacion") as HTMLInputElement).value;
   }
 
   onUpdateTime(servicio: Servicio): void {
@@ -215,6 +224,17 @@ export class ListaServicioComponent implements OnInit {
     );
   }
 
+  printServicio(imprimir1: any) {
+    let printContents = (document.getElementById(imprimir1) as InnerHTML).innerHTML;
+    let originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+}
+
   public onOpenModal(servicio: Servicio, mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
@@ -231,6 +251,10 @@ export class ListaServicioComponent implements OnInit {
       if(this.servicio.cancelado == true) {
         this.isCancel = false;
       }
+    }
+    if (mode === 'print') {
+      this.servicio = servicio;
+      button.setAttribute('data-bs-target', '#imprimirModal');
     }
     container!.appendChild(button);
     button.click();

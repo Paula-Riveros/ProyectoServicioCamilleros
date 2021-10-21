@@ -8,7 +8,9 @@ import { Genpacien } from '../components/models/genpacien';
 })
 export class GenpacienService {
 
-  genpacienURL = 'http://localhost:1433/genpacien/';
+  // genpacienURL = 'http://localhost:1433/genpacien/';
+
+  genpacienURL = 'http://localhost:8080/genpacien/';
 
   constructor(private httpClient: HttpClient) { }
 

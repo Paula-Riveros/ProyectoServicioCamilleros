@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container" id="imprimir1">
   <div class="row mt-5" *ngIf="servicio">
     <div class="col-md-4 mx-auto">
       <div class="card-mt-5" style="width: 18rem;">
@@ -33,131 +33,17 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><b>Hora de envio:</b> {{servicio.horaEnvio}}</li>
               <li class="list-group-item"><b>Hora de asignación:</b> {{servicio.horaAsignacion}}</li>
-              <li class="list-group-item"><b>Hora de ejecución:</b> {{servicio.horaEjecucion}}</li>
-              <li class="list-group-item"><b>Hora de finalización:</b> {{servicio.horaFinalizacion}}</li>
             </ul>
           </li>
-
-          <li class="list-group-item">
-            <b>¿CANCELADO? </b>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item" *ngIf="servicio.cancelado"><b>Sí cancelado</b> </li>
-              <li class="list-group-item" *ngIf="!servicio.cancelado"><b>No cancelado</b> </li>
-              <li class="list-group-item" *ngIf="servicio.cancelado"><b>Motivo: </b> {{servicio.motivoCancelado}}</li>
-            </ul>
-          </li>
-
         </ul>
         <div class="card-footer">
-          <button class="btn btn-outline-primary btn-block" (click)="volver()"><i
-              class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
         </div>
       </div>
     </div>
   </div>
- </div> -->
+ </div>
 
-<!-- ============== Tarjetas ====================== -->
-
-
-<!-- <button class="btn btn-outline-primary btn-block" (click)="volver()"><i
-  class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
-
-<div class="container bootstrap snippets bootdeys">
-  <div class="row">
-    <div class="col-md-4 col-sm-6 content-card">
-      <div class="card-big-shadow">
-        <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
-          <div class="content">
-            <h6 class="category"><b>Fecha: </b>{{servicio?.fecha}}</h6><br> -->
-<!-- <h4 class="title">Servicio {{servicio.id}}</h4> -->
-<!-- <p class="description"><b>SERVICIO: </b>{{servicio?.genareser?.gasnombre}}</p>
-            <p class="description"><b>SOLICITANTE: </b>{{servicio?.solicitante}}</p>
-            <p class="description"><b>DESTINO DEL SERVICIO: </b>{{servicio?.genareser2?.gasnombre}}</p>
-          </div>
-        </div> 
-      </div>
-    </div>
-
-    <div class="col-md-4 col-sm-6 content-card">
-      <div class="card-big-shadow">
-        <div class="card card-just-text" data-background="color" data-color="green" data-radius="none">
-          <div class="content"> -->
-<!-- <h6 class="category">Best cards</h6> -->
-<!-- <h4 class="title"><a href="#">Green Card</a></h4>-->
-<!-- <p class="description"><b>TRANSPORTE: </b>{{servicio?.transporte}}</p>
-            <p class="description"><b>INSUMO: </b>{{servicio?.insumo}}</p>
-            <p class="description" *ngIf="servicio?.aislamiento"><b>AISLAMIENTO: </b>Sí</p>
-            <p class="description" *ngIf="!servicio?.aislamiento"><b>AISLAMIENTO: </b>No</p>
-            <p class="description"><b>OBSERVACIONES: </b>{{servicio?.observaciones}}</p>
-            <p class="description"><b>CAMILLERO: </b>{{servicio?.camillero?.nombreCamillero}}</p>
-          </div>
-        </div> 
-      </div>
-    </div>
-
-    <div class="col-md-4 col-sm-6 content-card">
-      <div class="card-big-shadow">
-        <div class="card card-just-text" data-background="color" data-color="yellow" data-radius="none">
-          <div class="content"> -->
-<!-- <h6 class="category">Best cards</h6>
-            <h4 class="title"><a href="#">Yellow Card</a></h4> -->
-<!-- <p class="description" style="text-align: center;"><b>PACIENTE</b></p>
-            <p class="description"><b>N° de documento:</b> {{servicio?.genpacien?.pacnumdoc}}</p>
-            <p class="description"><b>Nombre:</b> {{servicio?.genpacien?.pacprinom}} {{servicio?.genpacien?.pacsegnom}}
-              {{servicio?.genpacien?.pacpriape}} {{servicio?.genpacien?.pacsegape}}</p>
-              <p class="description"><b>ACOMPAÑANTE: </b>{{servicio?.familiar}}</p>
-              
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 col-sm-6 content-card">
-      <div class="card-big-shadow">
-        <div class="card card-just-text" data-background="color" data-color="brown" data-radius="none">
-          <div class="content"> -->
-<!-- <h6 class="category">Best cards</h6>
-            <h4 class="title"><a href="#">Brown Card</a></h4> -->
-<!-- <p class="description" style="text-align: center;"><b>HORAS</b></p>
-            <p class="description"><b>Hora de envio:</b><br>{{servicio?.horaEnvio}}</p>
-            <p class="description"><b>Hora de asignación:</b><br>{{servicio?.horaAsignacion}}</p>
-            <p class="description"><b>Hora de ejecución:</b><br>{{servicio?.horaEjecucion}}</p>
-            <p class="description"><b>Hora de finalización:</b><br>{{servicio?.horaFinalizacion}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 col-sm-6 content-card">
-      <div class="card-big-shadow">
-        <div class="card card-just-text" data-background="color" data-color="purple" data-radius="none">
-          <div class="content"> -->
-<!-- <h6 class="category">Best cards</h6>
-            <h4 class="title"><a href="#">Purple Card</a></h4> -->
-<!-- <p class="description"><b>¿CANCELADO?</b></p>
-            <p class="description" *ngIf="servicio?.cancelado"><b>Sí cancelado</b></p>
-            <p class="description" *ngIf="!servicio?.cancelado"><b>No cancelado</b></p>
-            <p class="description" *ngIf="servicio?.cancelado"><b>Motivo: </b> {{servicio?.motivoCancelado}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-md-4 col-sm-6 content-card">
-      <div class="card-big-shadow">
-        <div class="card card-just-text" data-background="color" data-color="orange" data-radius="none">
-          <div class="content"> -->
-<!-- <h6 class="category">Best cards</h6>
-            <h4 class="title"><a href="#">Orange Card</a></h4> -->
-<!-- <p class="description">{{tiempoT}} </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>  -->
+ <button (click)="printServicio('imprimir1')">IMPRIMIR</button>
 
 
 <!-- ============================= Service Wrapper =============================== -->

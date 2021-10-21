@@ -13,7 +13,7 @@
                 <div class="form-group">
                     <label for="servicioSolicitado">Servicio Solicitado</label>
                     <select class="form-control" name="servicioSolicitado" id="servicioSolicitado" [(ngModel)]="servicioSolicitado" required>
-                        <option [ngValue]="null" selected>Elija un servicio</option>
+                        <option [ngValue]="0" selected>Elija un servicio</option>
                         <option [ngValue]="genareser.oid" *ngFor="let genareser of genaresers">{{genareser.gasnombre}}</option>
                     </select>                 
                 </div>
@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="destinoServicio">Destino del Servicio</label>
                     <select class="form-control" name="destinoServicio" id="destinoServicio" [(ngModel)]="destinoServicio" required>
-                        <option [ngValue]="null" selected>Elija un destino</option>
+                        <option [ngValue]="0" selected>Elija un destino</option>
                         <option [ngValue]="genareser.oid" *ngFor="let genareser of genaresers">{{genareser.gasnombre}}</option>
                     </select>
                 </div>

@@ -19,9 +19,9 @@ export class NuevoServicioComponent implements OnInit {
   fecha = '';
 
   genaresers: Genareser[] = [];
-  servicioSolicitado!: number;
+  servicioSolicitado: number = 0;
   solicitante: string = '';
-  destinoServicio!: number;
+  destinoServicio: number = 0;
   transporte: string = '';
   insumo: string = '';
   familiar: string = '';

@@ -26,3 +26,11 @@ tbody td:nth-child(1) {
     background: white;
     z-index: 3;
 }
+
+.cantidad {
+    font-size:x-large;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 8px;
+    background-color:#e2b2ee;
+}

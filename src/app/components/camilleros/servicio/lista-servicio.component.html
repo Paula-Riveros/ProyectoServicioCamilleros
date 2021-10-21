@@ -11,19 +11,94 @@
     </form>
   </div> -->
 
-<div class="col-md-3 mx-auto text-center">
-  <label><b>Listar servicios por fecha</b></label>
+<div class="container mb-5">
+  <form>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label><b>Fecha:</b></label>
+          <input type="text" (keyup)="onSearchServicio(txtSearch.value)" #txtSearch class="form-control mr-sm-2"
+            placeholder="Buscar servicios">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label><b>Solicitante o Camillero:</b></label>
+          <input type="text" (keyup)="onSearchServicio2(txtSearch2.value)" #txtSearch2 class="form-control mr-sm-2"
+            placeholder="Buscar servicios">
+        </div>
+      </div>
+      <div class="col">
+        <label for="cancelado"><b>Cancelado:</b></label>
+        <div class="form-control">
+          <label class="radio-inline">
+            <input type="radio" name="searchCancel" checked value="" [(ngModel)]="searchCancel"> Todos
+          </label>
+          &nbsp;
+          <label class="radio-inline">
+            <input type="radio" name="searchCancel" value="true" [(ngModel)]="searchCancel"> Sí
+          </label>
+          &nbsp;
+          <label class="radio-inline">
+            <input type="radio" name="searchCancel" value="false" [(ngModel)]="searchCancel"> No
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="searchSolicitado"><b>Servicio solicitado:</b></label>
+          <select class="form-control" name="searchSolicitado" id="searchSolicitado" [(ngModel)]="searchSolicitado">
+            <option [ngValue]="null" selected>Elija un servicio</option>
+            <option [ngValue]="genareser.oid" *ngFor="let genareser of genaresers">{{genareser.gasnombre}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="kmHasta"><b>Kilómetros Hasta:</b></label>
+          <div class="input-group">
+            <button class="btn btn-outline-danger">Vaciar</button>
+            <input type="number" class="form-control" name="kmHasta" id="kmHasta">
+            <button class="btn btn-outline-success">Filtrar</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <label for="cambio"><b>Cambio:</b></label>
+        <div class="form-control">
+          <label class="radio-inline">
+            <input type="radio" name="cambio" id="cambio" checked [value]="''"> Todos
+          </label>
+          &nbsp;
+          <label class="radio-inline">
+            <input type="radio" name="cambio" id="cambio" [value]="false"> Manual
+          </label>
+          &nbsp;
+          <label class="radio-inline">
+            <input type="radio" name="cambio" id="cambio" [value]="true"> Automático
+          </label>
+          &nbsp;
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- <div class="col-md-3 mx-auto text-center">
+  <label><b>Filtrar servicios</b></label>
   <form class="form-inline my-2">
     <input type="text" (keyup)="onSearchServicio(txtSearch.value)" #txtSearch class="form-control mr-sm-2"
-      placeholder="Buscar servicios por fecha">
+      placeholder="Buscar servicios">
   </form>
 </div>
 
 <div class="col-md-3 mx-auto text-center">
-  <label><b>Listar servicios por otro</b></label>
+  <label><b>Filtrar servicios por otro campo</b></label>
   <form class="form-inline my-2">
-    <input type="text" (keyup)="onSearchServicioByOtro(txtSearchOtro.value)" #txtSearchOtro class="form-control mr-sm-2"
-      placeholder="Buscar servicios por fecha">
+    <input type="text" (keyup)="onSearchServicio2(txtSearch2.value)" #txtSearch2 class="form-control mr-sm-2"
+      placeholder="Buscar servicios">
   </form>
 </div>
 
@@ -31,25 +106,22 @@
   <label for="aislamiento"><b>Cancelado</b></label>
   <div class="form-control">
     <form name="demo">
-    <label class="radio-inline">
-      <input type="radio" name="searchCancel" checked 
-      value="" [(ngModel)]="searchCancel"> Todos
-    </label>
-    &nbsp;
-    <label class="radio-inline">
-      <input type="radio" name="searchCancel"
-      value="true" [(ngModel)]="searchCancel"> Sí
-    </label>
-    &nbsp;
-    <label class="radio-inline">
-      <input type="radio" name="searchCancel"
-      value="false" [(ngModel)]="searchCancel"> No
-    </label>
-  </form>
+      <label class="radio-inline">
+        <input type="radio" name="searchCancel" checked value="" [(ngModel)]="searchCancel"> Todos
+      </label>
+      &nbsp;
+      <label class="radio-inline">
+        <input type="radio" name="searchCancel" value="true" [(ngModel)]="searchCancel"> Sí
+      </label>
+      &nbsp;
+      <label class="radio-inline">
+        <input type="radio" name="searchCancel" value="false" [(ngModel)]="searchCancel"> No
+      </label>
+    </form>
   </div>
 </div>
 
-<!-- <div class="col-md-3 mx-auto text-center">
+<div class="col-md-3 mx-auto text-center">
   <label><b>Listar servicios por tipo</b></label>
   <form class="form-inline my-2">
     <select class="form-control mr-sm-2" (keyup)="onSearchServicio(txtSearch.value)" #txtSearch>
@@ -58,6 +130,8 @@
   </select>
   </form>
 </div> -->
+<label class="cantidad">Número de servicios: <b>{{(servicios |
+    filtroFecha:page:search:search2:searchCancel).length}}</b></label>
 
 <div class="mb-3">
   <button class="btn btn-primary mt-3" (click)="prevPage()">
@@ -65,7 +139,7 @@
   </button>
   &nbsp;
   <button class="btn btn-primary mt-3" (click)="nextPage()"
-    [disabled]="(servicios | filtroFecha:page:search:searchOtro).length === 0">
+    [disabled]="(servicios | filtroFecha:page:search:search2:searchCancel:searchSolicitado).length === 0">
     Siguientes
   </button>
 </div>
@@ -94,12 +168,13 @@
           <th scope="col">Cancelar servicio</th>
           <th scope="col" *ngIf="isAdmin">Ver</th>
           <th scope="col" *ngIf="isAdmin">Editar</th>
+          <th scope="col" *ngIf="isAdmin">Imprimir</th>
           <th scope="col" *ngIf="isSuperadmin">Borrar</th>
         </tr>
       </thead>
       <tbody>
         <!-- *ngFor="let servicio of servicios | filtroFecha:page:search" -->
-        <tr *ngFor="let servicio of servicios | filtroFecha:page:search:searchOtro:searchCancel">
+        <tr *ngFor="let servicio of servicios | filtroFecha:page:search:search2:searchCancel:searchSolicitado">
           <td>{{servicio.id}}</td>
           <td>{{servicio.fecha}}</td>
           <td>{{servicio.genareser?.gasnombre}}</td>
@@ -124,6 +199,8 @@
               routerLink="/camilleros/servicio/detalle/{{servicio.id}}"><i class="fas fa-eye"></i></button></td>
           <td *ngIf="isAdmin"><button class="btn btn-outline-warning"
               routerLink="/camilleros/servicio/editar/{{servicio.id}}"><i class="fas fa-edit"></i></button></td>
+          <td><button (click)="onOpenModal(servicio, 'print')" class="btn btn-outline-dark tooltips"
+              data-placement="top" data-original-title="Print"><i class="fas fa-print"></i></button></td>
           <td *ngIf="isSuperadmin"><button class="btn btn-outline-danger" (click)="borrar(servicio.id)"><i
                 class="fas fa-trash-alt"></i></button></td>
         </tr>
@@ -160,13 +237,15 @@
             <div class="form-group mt-4">
               <button type="button" class="btn btn-danger" (click)="horaEjecucionServicio()">Hora de
                 ejecución</button><br>
-              <input type="text" class="form-control mt-2" id="horaEjecucion" name="horaEjecucion">
+              <input type="text" #txtHEj class="form-control mt-2" id="horaEjecucion" name="horaEjecucion"
+                (keyup)="cambioHEj(txtHEj.value)">
             </div>
 
             <div class="form-group mt-5">
               <button type="button" class="btn btn-success" (click)="horaFinalizacionServicio()">Hora de
                 finalización</button><br>
-              <input type="text" class="form-control mt-2" id="horaFinalizacion" name="horaFinalizacion">
+              <input type="text" #txtHF class="form-control mt-2" id="horaFinalizacion" name="horaFinalizacion"
+                (keyup)="cambioHF(txtHF.value)">
             </div>
 
             <div class="modal-footer">
@@ -253,6 +332,67 @@
     </div>
   </div>
 
+  <!-- Imprimir -->
+  <div class="modal fade" id="imprimirModal" tabindex="-1" role="dialog" aria-labelledby="servicioImprimirModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateTimeModalLabel">Imprimir Servicio </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="row" *ngIf="servicio" id="imprimir1">
+           
+              <div class="card">
+                <div class="card-header text-center">
+                  Servicio {{servicio.id}}
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>FECHA: </b>{{servicio.fecha}}</li>
+                  <li class="list-group-item"><b>SERVICIO: </b>{{servicio.genareser?.gasnombre}}</li>
+
+                  <li class="list-group-item"><b>SOLICITANTE: </b>{{servicio.solicitante}}</li>
+                  <li class="list-group-item"><b>DESTINO DEL SERVICIO: </b>{{servicio.genareser2?.gasnombre}}</li>
+                  <li class="list-group-item"><b>TRANSPORTE: </b>{{servicio.transporte}}</li>
+                  <li class="list-group-item"><b>INSUMO: </b>{{servicio.insumo}}</li>
+                  <li class="list-group-item"><b>ACOMPAÑANTE: </b>{{servicio.familiar}}</li>
+                  <li class="list-group-item" *ngIf="servicio.aislamiento"><b>AISLAMIENTO: </b>Sí</li>
+                  <li class="list-group-item" *ngIf="!servicio.aislamiento"><b>AISLAMIENTO: </b>No</li>
+                  <li class="list-group-item"><b>OBSERVACIONES: </b>{{servicio.observaciones}}</li>
+                  <li class="list-group-item">
+                    <b>PACIENTE: </b>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><b>N° de documento:</b> {{servicio.genpacien?.pacnumdoc}}</li>
+                      <li class="list-group-item"><b>Nombre:</b> {{servicio.genpacien?.pacprinom}}
+                        {{servicio.genpacien?.pacsegnom}}
+                        {{servicio.genpacien?.pacpriape}} {{servicio.genpacien?.pacsegape}}</li>
+                    </ul>
+                  </li>
+                  <li class="list-group-item"><b>CAMILLERO: </b>{{servicio.camillero?.nombreCamillero}}</li>
+
+                  <li class="list-group-item">
+                    <b>HORAS: </b>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><b>Hora de envio:</b> {{servicio.horaEnvio}}</li>
+                      <li class="list-group-item"><b>Hora de asignación:</b> {{servicio.horaAsignacion}}</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button (click)="printServicio('imprimir1')" class="btn btn-primary">Imprimir Servicio</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

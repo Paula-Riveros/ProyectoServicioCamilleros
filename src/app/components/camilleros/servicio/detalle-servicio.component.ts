@@ -63,6 +63,8 @@ export class DetalleServicioComponent implements OnInit {
       var minutosT = sumaM - (horaT * 60);
       this.tiempoT = "El tiempo total del servicio es de: " + (horaT ? horaT + (horaT > 1 ? " horas y " : " hora y ") : "") + minutosT + " minutos";
       console.log(this.tiempoT);
+    }else {
+      this.tiempoT = "No se ha registrado la hora de finalización del servicio."
     }
 
     
@@ -71,6 +73,17 @@ export class DetalleServicioComponent implements OnInit {
   volver(): void {
     this.router.navigate(['/camilleros/servicio/lista']);
   }
+
+  printServicio(imprimir1: any) {
+    let printContents = (document.getElementById(imprimir1) as InnerHTML).innerHTML;
+    let originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+}
 
 
 }
