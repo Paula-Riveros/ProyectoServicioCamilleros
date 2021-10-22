@@ -100,6 +100,28 @@ export class ListaServicioComponent implements OnInit {
      );
    }
 
+   clearSearch(): void {
+    this.search = '';
+    (document.getElementById('search') as HTMLInputElement).value = '';
+    this.listaServicios();
+  }
+
+   clearSearch2(): void {
+    this.search2 = '';
+    (document.getElementById('search2') as HTMLInputElement).value = '';
+    this.listaServicios();
+  }
+
+   clear(): void {
+     this.search = '';
+     (document.getElementById('search') as HTMLInputElement).value = '';
+     this.search2 = '';
+     (document.getElementById('search2') as HTMLInputElement).value = '';
+     this.searchCancel = '';
+     this.searchSolicitado = null;
+     this.listaServicios();
+   }
+
   // --------------------------------------------------------------
 
   // Paginación
@@ -141,7 +163,7 @@ export class ListaServicioComponent implements OnInit {
   //   this.listaServicios();
   // }
 
-  // ----------- Registrar horas -------------
+  // ----------- Modals -------------
 
   horaEjecucionServicio(): void {
     const nowHora = new Date();
@@ -210,7 +232,7 @@ export class ListaServicioComponent implements OnInit {
   onUpdateCancel(servicio: Servicio): void {
     this.servicioService.updateCancelado(this.servicio).subscribe(
       data => {
-        this.toastr.success('Servicio cancelado', 'OK', {
+        this.toastr.success('Servicio actualizado', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         this.router.navigate(['/camilleros/servicio/lista']);
@@ -233,6 +255,7 @@ export class ListaServicioComponent implements OnInit {
     window.print();
 
     document.body.innerHTML = originalContents;
+
 }
 
   public onOpenModal(servicio: Servicio, mode: string): void {
