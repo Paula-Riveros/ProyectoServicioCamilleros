@@ -4,9 +4,16 @@
 
 <div class="cuerpo">
 
-    <div class="container text-center">
+    <!-- <div class="container text-center">
         <div *ngIf="isLogged; else loggedOut"><h2>Bienvenido {{nombreUsuario}}</h2></div>
         <ng-template #loggedOut><h2>No has iniciado sesión</h2></ng-template>
+    </div> -->
+
+    <div class="container text-center">
+        <div class="jumbotron">
+            <h1 *ngIf="!nombreUsuario" class="display-4">Bienvenido</h1>
+            <h1 *ngIf="nombreUsuario" class="display-4">Hola {{nombreUsuario}}</h1>
+        </div>
     </div>
 
     <router-outlet></router-outlet>

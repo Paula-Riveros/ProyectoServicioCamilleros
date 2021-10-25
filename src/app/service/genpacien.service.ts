@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Genpacien } from '../components/models/genpacien';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class GenpacienService {
 
   // genpacienURL = 'http://localhost:1433/genpacien/';
 
-  genpacienURL = 'http://localhost:8080/genpacien/';
+  genpacienURL = environment.genpacienURL;
 
   constructor(private httpClient: HttpClient) { }
 

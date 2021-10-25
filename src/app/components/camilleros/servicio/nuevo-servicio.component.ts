@@ -38,8 +38,8 @@ export class NuevoServicioComponent implements OnInit {
   cancelado: Boolean = false;
   motivoCancelado: string = '';
 
-  roles!: string[];
   isAdmin = false;
+  isSuperadmin = false;
 
   @ViewChild('txtBuscar') txtBuscar!: ElementRef<HTMLInputElement>;
 
@@ -52,12 +52,8 @@ export class NuevoServicioComponent implements OnInit {
   ngOnInit(): void {
     this.fechaActual();
     this.listaSolicitados();
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach(rol => {
-      if (rol == 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    });
+    this.isAdmin = this.tokenService.isAdmin();
+    this.isSuperadmin = this.tokenService.isSuperadmin();
   }
 
   fechaActual(): void {

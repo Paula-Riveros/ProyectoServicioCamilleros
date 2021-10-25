@@ -9,18 +9,14 @@ import { TokenService } from 'src/app/service/token.service';
 })
 export class InicioCamillerosComponent implements OnInit {
 
-  roles!: string[];
   isAdmin = false;
+  isSuperadmin = false;
   
   constructor(private router: Router, private tokenService: TokenService) { }
 
   ngOnInit(): void {
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach( rol => {
-      if(rol =='ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    });
+    this.isAdmin = this.tokenService.isAdmin();
+    this.isSuperadmin = this.tokenService.isSuperadmin();
   }
 
 

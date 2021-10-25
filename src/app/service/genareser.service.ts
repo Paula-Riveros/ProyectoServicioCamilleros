@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Genareser } from '../components/models/genareser';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class GenareserService {
 
   // genareserURL = 'http://localhost:1433/genareser/';
 
-  genareserURL = 'http://localhost:8080/genareser/';
+  genareserURL = environment.genareserURL;
 
   constructor(private httpClient: HttpClient) { }
 

@@ -11,9 +11,7 @@ export class ServicioService {
 
   //servicioURL = 'http://localhost:1433/servicio/';
 
-  servicioURL = 'http://localhost:8080/servicio/';
-
-  private apiServerUrl = environment.apiBaseUrl;
+  servicioURL = environment.servicioURL;
 
   constructor(private httpClient: HttpClient) { }
 

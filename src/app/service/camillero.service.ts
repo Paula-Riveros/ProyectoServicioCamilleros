@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Camillero } from '../components/models/camillero';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class CamilleroService {
 
   //camilleroURL = 'http://localhost:1433/camillero/';
 
-  camilleroURL = 'http://localhost:8080/camillero/';
+  camilleroURL = environment.camilleroURL;
 
   constructor(private httpClient: HttpClient) { }
 

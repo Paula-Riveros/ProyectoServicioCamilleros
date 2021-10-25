@@ -15,7 +15,6 @@ import { Servicio } from '../../models/servicio';
 export class ListaServicioComponent implements OnInit {
 
   servicios: Servicio[] = [];
-  roles!: string[];
   isAdmin = false;
   isSuperadmin = false;
 
@@ -39,15 +38,8 @@ export class ListaServicioComponent implements OnInit {
   ngOnInit(): void {
     this.listaServicios();
     this.listaSolicitados();
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach(rol => {
-      if (rol == 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-      if (rol == 'ROLE_SUPERADMIN') {
-        this.isSuperadmin = true;
-      }
-    });
+    this.isAdmin = this.tokenService.isAdmin();
+    this.isSuperadmin = this.tokenService.isSuperadmin();
   }
 
   listaServicios(): void {

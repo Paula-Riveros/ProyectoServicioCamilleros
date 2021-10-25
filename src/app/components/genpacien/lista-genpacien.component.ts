@@ -12,19 +12,15 @@ import { Genpacien } from '../models/genpacien';
 export class ListaGenpacienComponent implements OnInit {
 
   genpacientes: Genpacien[] = [];
-  roles!: string[];
   isAdmin = false;
+  isSuperadmin = false;
 
   constructor(private genpacienService: GenpacienService, private toastr: ToastrService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.listaPacientes();
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach( rol => {
-      if(rol =='ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    });
+    this.isAdmin = this.tokenService.isAdmin();
+    this.isSuperadmin = this.tokenService.isSuperadmin();
   }
 
   listaPacientes(): void {

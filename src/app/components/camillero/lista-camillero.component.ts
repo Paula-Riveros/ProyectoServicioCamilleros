@@ -12,19 +12,15 @@ import { Camillero } from '../models/camillero';
 export class ListaCamilleroComponent implements OnInit {
 
   camilleros: Camillero[] = [];
-  roles!: string[];
   isAdmin = false;
+  isSuperadmin = false;
 
   constructor(private camilleroService: CamilleroService, private toastr: ToastrService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.listaCamilleros();
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach( rol => {
-      if(rol =='ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    });
+    this.isAdmin = this.tokenService.isAdmin();
+    this.isSuperadmin = this.tokenService.isSuperadmin();
   }
 
   listaCamilleros(): void {

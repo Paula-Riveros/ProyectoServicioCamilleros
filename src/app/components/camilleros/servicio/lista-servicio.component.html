@@ -79,50 +79,7 @@
   </form>
 </div>
 
-<!-- <div class="col-md-3 mx-auto text-center">
-  <label><b>Filtrar servicios</b></label>
-  <form class="form-inline my-2">
-    <input type="text" (keyup)="onSearchServicio(txtSearch.value)" #txtSearch class="form-control mr-sm-2"
-      placeholder="Buscar servicios">
-  </form>
-</div>
 
-<div class="col-md-3 mx-auto text-center">
-  <label><b>Filtrar servicios por otro campo</b></label>
-  <form class="form-inline my-2">
-    <input type="text" (keyup)="onSearchServicio2(txtSearch2.value)" #txtSearch2 class="form-control mr-sm-2"
-      placeholder="Buscar servicios">
-  </form>
-</div>
-
-<div class="col-md-3 mx-auto text-center">
-  <label for="aislamiento"><b>Cancelado</b></label>
-  <div class="form-control">
-    <form name="demo">
-      <label class="radio-inline">
-        <input type="radio" name="searchCancel" checked value="" [(ngModel)]="searchCancel"> Todos
-      </label>
-      &nbsp;
-      <label class="radio-inline">
-        <input type="radio" name="searchCancel" value="true" [(ngModel)]="searchCancel"> Sí
-      </label>
-      &nbsp;
-      <label class="radio-inline">
-        <input type="radio" name="searchCancel" value="false" [(ngModel)]="searchCancel"> No
-      </label>
-    </form>
-  </div>
-</div>
-
-<div class="col-md-3 mx-auto text-center">
-  <label><b>Listar servicios por tipo</b></label>
-  <form class="form-inline my-2">
-    <select class="form-control mr-sm-2" (keyup)="onSearchServicio(txtSearch.value)" #txtSearch>
-      <option [ngValue]="null" selected>Elija un servicio</option>
-      <option [ngValue]="genareser.oid" *ngFor="let genareser of genaresers">{{genareser.gasnombre}}</option>
-  </select>
-  </form>
-</div> -->
 <label class="cantidad">Número de servicios: <b>{{(servicios |
     filtroFecha:page:search:search2:searchCancel).length}}</b></label>
 
@@ -159,10 +116,10 @@
           <th scope="col">Fallido</th>
           <th scope="col">Registrar hora</th>
           <th scope="col">Cancelar servicio</th>
-          <th scope="col" *ngIf="isAdmin">Ver</th>
+          <th scope="col">Ver</th>
           <th scope="col" *ngIf="isAdmin">Editar</th>
           <th scope="col" *ngIf="isAdmin">Imprimir</th>
-          <th scope="col" *ngIf="isSuperadmin">Borrar</th>
+          <th scope="col" *ngIf="isSuperadmin">Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -188,11 +145,11 @@
               data-placement="top" data-original-title="Edit"><i class="fas fa-clock"></i></button></td>
           <td><button (click)="onOpenModal(servicio, 'editCancel')" class="btn btn-outline-danger tooltips"
               data-placement="top" data-original-title="Cancel"><i class="fas fa-window-close"></i></button></td>
-          <td *ngIf="isAdmin"><button class="btn btn-outline-primary"
+          <td><button class="btn btn-outline-primary"
               routerLink="/camilleros/servicio/detalle/{{servicio.id}}"><i class="fas fa-eye"></i></button></td>
           <td *ngIf="isAdmin"><button class="btn btn-outline-warning"
               routerLink="/camilleros/servicio/editar/{{servicio.id}}"><i class="fas fa-edit"></i></button></td>
-          <td><button (click)="onOpenModal(servicio, 'print')" class="btn btn-outline-dark tooltips"
+          <td><button *ngIf="isAdmin" (click)="onOpenModal(servicio, 'print')" class="btn btn-outline-dark tooltips"
               data-placement="top" data-original-title="Print"><i class="fas fa-print"></i></button></td>
           <td *ngIf="isSuperadmin"><button class="btn btn-outline-danger" (click)="borrar(servicio.id)"><i
                 class="fas fa-trash-alt"></i></button></td>

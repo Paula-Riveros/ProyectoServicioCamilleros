@@ -8,19 +8,12 @@ import { TokenService } from 'src/app/service/token.service';
 })
 export class CamillerosComponent implements OnInit {
 
-  isLogged = false;
-  nombreUsuario = '';
+  nombreUsuario: string = '';
 
   constructor(private tokenService: TokenService) { }
 
   ngOnInit() {
-    if (this.tokenService.getToken()) {
-      this.isLogged = true;
-      this.nombreUsuario = this.tokenService.getUserName();
-    } else {
-      this.isLogged = false;
-      this.nombreUsuario = '';
-    }
+    this.nombreUsuario = this.tokenService.getUserName();
   }
 
 }
