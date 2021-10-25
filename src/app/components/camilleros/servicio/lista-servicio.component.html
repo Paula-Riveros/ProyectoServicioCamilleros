@@ -18,20 +18,20 @@
         <div class="form-group">
           <label><b>Fecha:</b></label>
           <div class="input-group">
-          <input type="text" (keyup)="onSearchServicio(txtSearch.value)" #txtSearch class="form-control mr-sm-2"
-            id="search" placeholder="Buscar servicios">
+            <input type="text" (keyup)="onSearchServicio(txtSearch.value)" #txtSearch class="form-control mr-sm-2"
+              id="search" placeholder="Buscar servicios">
             <button class="btn btn-outline-danger" (click)="clearSearch()" [disabled]="!search">Vaciar</button>
-            </div>
+          </div>
         </div>
       </div>
       <div class="col">
         <div class="form-group">
           <label><b>Solicitante o Camillero:</b></label>
           <div class="input-group">
-          <input type="text" (keyup)="onSearchServicio2(txtSearch2.value)" #txtSearch2 class="form-control mr-sm-2"
-          id="search2" placeholder="Buscar servicios">
-          <button class="btn btn-outline-danger" (click)="clearSearch2()" [disabled]="!search2">Vaciar</button>
-        </div>
+            <input type="text" (keyup)="onSearchServicio2(txtSearch2.value)" #txtSearch2 class="form-control mr-sm-2"
+              id="search2" placeholder="Buscar servicios">
+            <button class="btn btn-outline-danger" (click)="clearSearch2()" [disabled]="!search2">Vaciar</button>
+          </div>
         </div>
       </div>
       <div class="col">
@@ -54,20 +54,28 @@
     <div class="row mt-4">
       <div class="col">
         <div class="form-group">
+          <label><b>Servicio solicitado:</b></label>
+          <div class="input-group">
+            <input type="text" (keyup)="onSearchServicio3(txtSearch3.value)" #txtSearch3 class="form-control mr-sm-2"
+              id="search3" placeholder="Buscar servicios">
+            <button class="btn btn-outline-danger" (click)="clearSearch3()" [disabled]="!search3">Vaciar</button>
+          </div>
+        </div>
+        <!-- <div class="form-group">
           <label for="searchSolicitado"><b>Servicio solicitado:</b></label>
           <select class="form-control" name="searchSolicitado" id="searchSolicitado" [(ngModel)]="searchSolicitado">
             <option [ngValue]="null" selected>Elija un servicio</option>
             <option [ngValue]="genareser.oid" *ngFor="let genareser of genaresers">{{genareser.gasnombre}}</option>
           </select>
-        </div>
+        </div> -->
       </div>
       <div class="col">
         <div class="form-group">
-          <label for="kmHasta"><b>Kilómetros Hasta:</b></label>
+          <label><b>Destino del servicio:</b></label>
           <div class="input-group">
-            <button class="btn btn-outline-danger">Vaciar</button>
-            <input type="number" class="form-control" name="kmHasta" id="kmHasta">
-            <button class="btn btn-outline-success">Filtrar</button>
+            <input type="text" (keyup)="onSearchServicio4(txtSearch4.value)" #txtSearch4 class="form-control mr-sm-2"
+              id="search4" placeholder="Buscar servicios">
+            <button class="btn btn-outline-danger" (click)="clearSearch4()" [disabled]="!search4">Vaciar</button>
           </div>
         </div>
       </div>
@@ -81,7 +89,7 @@
 
 
 <label class="cantidad">Número de servicios: <b>{{(servicios |
-    filtroFecha:page:search:search2:searchCancel).length}}</b></label>
+    filtroFecha:page:search:search2:searchCancel:search3:search4).length}}</b></label>
 
 <div class="mb-3">
   <button class="btn btn-primary mt-3" (click)="prevPage()">
@@ -89,7 +97,7 @@
   </button>
   &nbsp;
   <button class="btn btn-primary mt-3" (click)="nextPage()"
-    [disabled]="(servicios | filtroFecha:page:search:search2:searchCancel:searchSolicitado).length === 0">
+    [disabled]="(servicios | filtroFecha:page:search:search2:searchCancel:search3:search4).length === 0">
     Siguientes
   </button>
 </div>
@@ -115,7 +123,7 @@
           <th scope="col">Camillero</th>
           <th scope="col">Fallido</th>
           <th scope="col">Registrar hora</th>
-          <th scope="col">Cancelar servicio</th>
+          <th scope="col" *ngIf="isAdmin">Cancelar servicio</th>
           <th scope="col">Ver</th>
           <th scope="col" *ngIf="isAdmin">Editar</th>
           <th scope="col" *ngIf="isAdmin">Imprimir</th>
@@ -124,7 +132,7 @@
       </thead>
       <tbody>
         <!-- *ngFor="let servicio of servicios | filtroFecha:page:search" -->
-        <tr *ngFor="let servicio of servicios | filtroFecha:page:search:search2:searchCancel:searchSolicitado">
+        <tr *ngFor="let servicio of servicios | filtroFecha:page:search:search2:searchCancel:search3:search4">
           <td>{{servicio.id}}</td>
           <td>{{servicio.fecha}}</td>
           <td>{{servicio.genareser?.gasnombre}}</td>
@@ -143,13 +151,14 @@
           <!-- <td><a (click)="onOpenModal(servicio, 'editTime')" class="btn btn-outline-info tooltips" data-placement="top" data-original-title="Edit"><i class="fas fa-clock"></i></a></td> -->
           <td><button (click)="onOpenModal(servicio, 'editTime')" class="btn btn-outline-info tooltips"
               data-placement="top" data-original-title="Edit"><i class="fas fa-clock"></i></button></td>
-          <td><button (click)="onOpenModal(servicio, 'editCancel')" class="btn btn-outline-danger tooltips"
+          <td *ngIf="isAdmin"><button (click)="onOpenModal(servicio, 'editCancel')" class="btn btn-outline-danger tooltips"
               data-placement="top" data-original-title="Cancel"><i class="fas fa-window-close"></i></button></td>
-          <td><button class="btn btn-outline-primary"
-              routerLink="/camilleros/servicio/detalle/{{servicio.id}}"><i class="fas fa-eye"></i></button></td>
+          <td><button class="btn btn-outline-primary" routerLink="/camilleros/servicio/detalle/{{servicio.id}}"><i
+                class="fas fa-eye"></i></button></td>
           <td *ngIf="isAdmin"><button class="btn btn-outline-warning"
               routerLink="/camilleros/servicio/editar/{{servicio.id}}"><i class="fas fa-edit"></i></button></td>
-          <td><button *ngIf="isAdmin" (click)="onOpenModal(servicio, 'print')" class="btn btn-outline-dark tooltips"
+              <!-- (click)="onOpenModal(servicio, 'print')" -->
+          <td><button *ngIf="isAdmin" routerLink="/camilleros/servicio/imprimir/{{servicio.id}}" class="btn btn-outline-dark tooltips"
               data-placement="top" data-original-title="Print"><i class="fas fa-print"></i></button></td>
           <td *ngIf="isSuperadmin"><button class="btn btn-outline-danger" (click)="borrar(servicio.id)"><i
                 class="fas fa-trash-alt"></i></button></td>
@@ -200,7 +209,8 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button (click)="onUpdateTime(editForm.value)" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
+              <button (click)="onUpdateTime(editForm.value)" class="btn btn-primary" data-bs-dismiss="modal">Guardar
+                cambios</button>
             </div>
 
           </form>
@@ -272,7 +282,8 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button (click)="onUpdateCancel(f.value)" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
+              <button (click)="onUpdateCancel(f.value)" class="btn btn-primary" data-bs-dismiss="modal">Guardar
+                cambios</button>
             </div>
 
           </form>

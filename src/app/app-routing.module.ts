@@ -9,6 +9,7 @@ import { NuevoCamilleroComponent } from './components/camillero/nuevo-camillero.
 import { CamillerosComponent } from './components/camilleros/camilleros/camilleros.component';
 import { InicioCamillerosComponent } from './components/camilleros/inicio/inicio.component';
 import { DetalleServicioComponent } from './components/camilleros/servicio/detalle-servicio.component';
+import { ImprimirServicioComponent } from './components/camilleros/servicio/imprimir-servicio.component';
 import { EditarServicioComponent } from './components/camilleros/servicio/editar-servicio.component';
 import { ListaServicioComponent } from './components/camilleros/servicio/lista-servicio.component';
 import { NuevoServicioComponent } from './components/camilleros/servicio/nuevo-servicio.component';
@@ -51,6 +52,8 @@ const routes: Routes = [
     { path: 'servicio/detalle/:id', component: DetalleServicioComponent, canActivate: [ProdGuardService], data: { expectedRol: ['superadmin', 'admin', 'user']}},
     { path: 'servicio/nuevo', component: NuevoServicioComponent, canActivate: [ProdGuardService], data: { expectedRol: ['superadmin', 'admin', 'user']}},
     { path: 'servicio/editar/:id', component: EditarServicioComponent, canActivate: [ProdGuardService], data: { expectedRol: ['superadmin', 'admin']}},
+    { path: 'servicio/imprimir/:id', component: ImprimirServicioComponent, canActivate: [ProdGuardService], data: { expectedRol: ['superadmin', 'admin']}},
+
 
     { path: 'genpacien/lista', component: ListaGenpacienComponent, canActivate: [ProdGuardService], data: { expectedRol: ['superadmin', 'admin', 'user']} },
     { path: 'genpacien/detalle/:pacnumdoc', component: DetalleGenpacienComponent, canActivate: [ProdGuardService], data: { expectedRol: ['superadmin', 'admin', 'user']} },

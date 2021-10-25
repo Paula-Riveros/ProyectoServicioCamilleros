@@ -28,6 +28,8 @@ export class ListaServicioComponent implements OnInit {
   search: string = '';
   search2: string = '';
   searchCancel: string = '';
+  search3: string = '';
+  search4: string = '';
   searchSolicitado: any = null;
 
   isCancel: boolean = true;  
@@ -63,6 +65,16 @@ export class ListaServicioComponent implements OnInit {
   onSearchServicio2(search2: string) {
     this.page = 0;
     this.search2 = search2;
+  }
+
+  onSearchServicio3(search3: string) {
+    this.page = 0;
+    this.search3 = search3;
+  }
+
+  onSearchServicio4(search4: string) {
+    this.page = 0;
+    this.search4 = search4;
   }
 
   borrar(id: number) {
@@ -104,12 +116,28 @@ export class ListaServicioComponent implements OnInit {
     this.listaServicios();
   }
 
+  clearSearch3(): void {
+    this.search3 = '';
+    (document.getElementById('search3') as HTMLInputElement).value = '';
+    this.listaServicios();
+  }
+
+  clearSearch4(): void {
+    this.search4 = '';
+    (document.getElementById('search4') as HTMLInputElement).value = '';
+    this.listaServicios();
+  }
+
    clear(): void {
      this.search = '';
      (document.getElementById('search') as HTMLInputElement).value = '';
      this.search2 = '';
      (document.getElementById('search2') as HTMLInputElement).value = '';
      this.searchCancel = '';
+     this.search3 = '';
+    (document.getElementById('search3') as HTMLInputElement).value = '';
+     this.search4 = '';
+    (document.getElementById('search4') as HTMLInputElement).value = '';
      this.searchSolicitado = null;
      this.listaServicios();
    }

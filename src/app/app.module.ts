@@ -14,7 +14,6 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
-import { LoginUsuarioComponent } from './components/user/login-usuario/login-usuario.component';
 import { NavbarLoginComponent } from './components/shared/navbar-login/navbar-login.component';
 //import { ListaPacienteComponent } from './components/paciente/lista-paciente.component';
 //import { DetallePacienteComponent } from './components/paciente/detalle-paciente.component';
@@ -43,6 +42,7 @@ import { DetalleGenpacienComponent } from './components/genpacien/detalle-genpac
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FiltroFechaPipe } from './components/pipes/filtro-fecha.pipe';
+import { ImprimirServicioComponent } from './components/camilleros/servicio/imprimir-servicio.component';
 
 
 
@@ -56,7 +56,6 @@ import { FiltroFechaPipe } from './components/pipes/filtro-fecha.pipe';
     InicioComponent,
     FooterComponent,
     CarouselComponent,
-    LoginUsuarioComponent,
     NavbarLoginComponent,
     //ListaPacienteComponent,
     //DetallePacienteComponent,
@@ -76,7 +75,8 @@ import { FiltroFechaPipe } from './components/pipes/filtro-fecha.pipe';
     EditarCamilleroComponent,
     ListaGenpacienComponent,
     DetalleGenpacienComponent,
-    FiltroFechaPipe
+    FiltroFechaPipe,
+    ImprimirServicioComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,51 @@
+<button class="btn btn-outline-primary btn-block" (click)="volver()"><i class="fas fa-arrow-alt-circle-left"></i>
+    Regresar</button>
+
+<div class="container" id="imprimir1">
+  <div class="row mt-5" *ngIf="servicio">
+    <div class="col-md-4 mx-auto">
+      <div class="card-mt-5" style="width: 18rem;">
+        <div class="card-header text-center">
+          Servicio {{servicio.id}}
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>FECHA: </b>{{servicio.fecha}}</li>
+          <li class="list-group-item"><b>SERVICIO: </b>{{servicio.genareser?.gasnombre}}</li>
+
+          <li class="list-group-item"><b>SOLICITANTE: </b>{{servicio.solicitante}}</li>
+          <li class="list-group-item"><b>DESTINO DEL SERVICIO: </b>{{servicio.genareser2?.gasnombre}}</li>
+          <li class="list-group-item"><b>TRANSPORTE: </b>{{servicio.transporte}}</li>
+          <li class="list-group-item"><b>INSUMO: </b>{{servicio.insumo}}</li>
+          <li class="list-group-item"><b>ACOMPAÑANTE: </b>{{servicio.familiar}}</li>
+          <li class="list-group-item" *ngIf="servicio.aislamiento"><b>AISLAMIENTO: </b>Sí</li>
+          <li class="list-group-item" *ngIf="!servicio.aislamiento"><b>AISLAMIENTO: </b>No</li>
+          <li class="list-group-item"><b>OBSERVACIONES: </b>{{servicio.observaciones}}</li>
+          <li class="list-group-item">
+            <b>PACIENTE: </b>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>N° de documento:</b> {{servicio.genpacien?.pacnumdoc}}</li>
+              <li class="list-group-item"><b>Nombre:</b> {{servicio.genpacien?.pacprinom}}
+                {{servicio.genpacien?.pacsegnom}}
+                {{servicio.genpacien?.pacpriape}} {{servicio.genpacien?.pacsegape}}</li>
+            </ul>
+          </li>
+          <li class="list-group-item"><b>CAMILLERO: </b>{{servicio.camillero?.nombreCamillero}}</li>
+
+          <li class="list-group-item">
+            <b>HORAS: </b>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Hora de envio:</b> {{servicio.horaEnvio}}</li>
+              <li class="list-group-item"><b>Hora de asignación:</b> {{servicio.horaAsignacion}}</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="card-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+
+ <div class="col-md-4 mx-auto">
+ <button class="btn btn-outline-dark btn-block" (click)="printServicio('imprimir1')"><i class="fas fa-print"></i> IMPRIMIR</button>
+</div>

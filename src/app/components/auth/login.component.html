@@ -6,45 +6,6 @@
 
     </div>
 
-
-    <!-- <div class="container d-flex justify-content-center">
-        <div class="card">
-            <div class="card-header">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" routerLink="/login">Iniciar Sesión</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/registro">Crear cuenta</a>
-                    </li>
-                  </ul>
-            </div>
-            <div class="card-body">
-                <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
-
-                    <div class="form-group">
-                        <label for="nombreUsuario">Nombre de Usuario</label>
-                        <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control"
-                        [(ngModel)]= "nombreUsuario" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" name="password" id="password" class="form-control"
-                        [(ngModel)]= "password" required>
-                    </div>
-
-                    <div class="form-group">
-                        <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
-                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
-                    </div>
-                </form>
-                <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">Error en el login: {{errMsj}}</div>
-            </div>
-        </div>
-    </div> -->
-
-
     <div class="login-box animate__animated animate__fadeIn ">
 
         <img class="avatar" src="../../../../assets/img/icon.png" alt="Logo">
