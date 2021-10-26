@@ -25,16 +25,6 @@
         </div>
       </div>
       <div class="col">
-        <div class="form-group">
-          <label><b>Solicitante o Camillero:</b></label>
-          <div class="input-group">
-            <input type="text" (keyup)="onSearchServicio2(txtSearch2.value)" #txtSearch2 class="form-control mr-sm-2"
-              id="search2" placeholder="Buscar servicios">
-            <button class="btn btn-outline-danger" (click)="clearSearch2()" [disabled]="!search2">Vaciar</button>
-          </div>
-        </div>
-      </div>
-      <div class="col">
         <label for="cancelado"><b>Cancelado:</b></label>
         <div class="form-control">
           <label class="radio-inline">
@@ -50,39 +40,7 @@
           </label>
         </div>
       </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col">
-        <div class="form-group">
-          <label><b>Servicio solicitado:</b></label>
-          <div class="input-group">
-            <input type="text" (keyup)="onSearchServicio3(txtSearch3.value)" #txtSearch3 class="form-control mr-sm-2"
-              id="search3" placeholder="Buscar servicios">
-            <button class="btn btn-outline-danger" (click)="clearSearch3()" [disabled]="!search3">Vaciar</button>
-          </div>
-        </div>
-        <!-- <div class="form-group">
-          <label for="searchSolicitado"><b>Servicio solicitado:</b></label>
-          <select class="form-control" name="searchSolicitado" id="searchSolicitado" [(ngModel)]="searchSolicitado">
-            <option [ngValue]="null" selected>Elija un servicio</option>
-            <option [ngValue]="genareser.oid" *ngFor="let genareser of genaresers">{{genareser.gasnombre}}</option>
-          </select>
-        </div> -->
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label><b>Destino del servicio:</b></label>
-          <div class="input-group">
-            <input type="text" (keyup)="onSearchServicio4(txtSearch4.value)" #txtSearch4 class="form-control mr-sm-2"
-              id="search4" placeholder="Buscar servicios">
-            <button class="btn btn-outline-danger" (click)="clearSearch4()" [disabled]="!search4">Vaciar</button>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <label for="reset"><b>Limpiar</b></label>
-        <button class="btn btn-outline-danger form-control" (click)="clear()">Borrar Filtros</button>
-      </div>
+      <div class="col"></div>
     </div>
   </form>
 </div>
@@ -127,7 +85,6 @@
           <th scope="col">Ver</th>
           <th scope="col" *ngIf="isAdmin">Editar</th>
           <th scope="col" *ngIf="isAdmin">Imprimir</th>
-          <th scope="col" *ngIf="isSuperadmin">Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -157,25 +114,29 @@
                 class="fas fa-eye"></i></button></td>
           <td *ngIf="isAdmin"><button class="btn btn-outline-warning"
               routerLink="/camilleros/servicio/editar/{{servicio.id}}"><i class="fas fa-edit"></i></button></td>
-              <!-- (click)="onOpenModal(servicio, 'print')" -->
-          <td><button *ngIf="isAdmin" routerLink="/camilleros/servicio/imprimir/{{servicio.id}}" class="btn btn-outline-dark tooltips"
+              <!-- routerLink="/camilleros/servicio/imprimir/{{servicio.id}}"  -->
+          <td><button *ngIf="isAdmin" (click)="onOpenModal(servicio, 'print')" class="btn btn-outline-dark tooltips"
               data-placement="top" data-original-title="Print"><i class="fas fa-print"></i></button></td>
-          <td *ngIf="isSuperadmin"><button class="btn btn-outline-danger" (click)="borrar(servicio.id)"><i
-                class="fas fa-trash-alt"></i></button></td>
+              <td colspan="10">
+        </td>
         </tr>
+
         <!-- <tr>
-        <td><i class="fas fa-angle-double-left fa-2x" (click)="rewind()"></i></td>
+         <td><i class="fas fa-angle-double-left fa-2x" (click)="rewind()"></i></td>
         <td colspan="10">
           <span *ngFor="let p of totalPages; let i = index">
             <a style="cursor: pointer;" (click)="setPages(i)" [ngClass]="{'text-primary': i === page }">{{ i+1
               }}&nbsp;&nbsp;&nbsp;</a>
           </span>
         </td>
-        <td><i class="fas fa-angle-double-right fa-2x" (click)="forward()"></i></td>
+         <td><i class="fas fa-angle-double-right fa-2x" (click)="forward()"></i></td>
       </tr> -->
+
       </tbody>
     </table>
+    
   </div>
+  
 
   <!-- Edit Time -->
   <div class="modal fade" id="updateTimeModal" tabindex="-1" role="dialog" aria-labelledby="servicioEditModalLabel"
@@ -304,7 +265,7 @@
         </div>
         <div class="modal-body">
 
-          <div class="row" *ngIf="servicio" id="imprimir1">
+          <div class="row imprimir" *ngIf="servicio" id="imprimir1">
 
             <div class="card">
               <div class="card-header text-center">

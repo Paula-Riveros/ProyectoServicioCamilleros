@@ -1,0 +1,235 @@
+<div *ngIf="isAdmin">
+    <button class="btn btn-outline-success mb-3" routerLink="/camilleros/servicio/nuevo">
+      <i class="fas fa-plus-circle"></i> Nuevo servicio</button>
+  </div>
+  
+  <!-- <div class="col-md-3 mx-auto text-center">
+      <label><b>Listar servicios por fecha</b></label>
+      <form class="form-inline my-2">
+        <input type="date" (ngModelChange)="listaServiciosFecha(key.value)" #key="ngModel" ngModel
+           name="key" class="form-control mr-sm-2" placeholder="Buscar servicios por fecha">
+      </form>
+    </div> -->
+  
+  <div class="container mb-5">
+    <form>
+      <div class="row mt-4">
+        <div class="col">
+          <div class="form-group">
+            <label><b>Fecha:</b></label>
+            <div class="input-group">
+              <input type="text" (keyup)="onSearchServicio(txtSearch.value)" #txtSearch class="form-control mr-sm-2"
+                id="search" placeholder="Buscar servicios">
+              <button class="btn btn-outline-danger" (click)="clearSearch()" [disabled]="!search">Vaciar</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label><b>Solicitante o Camillero:</b></label>
+            <div class="input-group">
+              <input type="text" (keyup)="onSearchServicio2(txtSearch2.value)" #txtSearch2 class="form-control mr-sm-2"
+                id="search2" placeholder="Buscar servicios">
+              <button class="btn btn-outline-danger" (click)="clearSearch2()" [disabled]="!search2">Vaciar</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <label for="cancelado"><b>Cancelado:</b></label>
+          <div class="form-control">
+            <label class="radio-inline">
+              <input type="radio" name="searchCancel" checked value="" [(ngModel)]="searchCancel"> Todos
+            </label>
+            &nbsp;
+            <label class="radio-inline">
+              <input type="radio" name="searchCancel" value="true" [(ngModel)]="searchCancel"> Sí
+            </label>
+            &nbsp;
+            <label class="radio-inline">
+              <input type="radio" name="searchCancel" value="false" [(ngModel)]="searchCancel"> No
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col">
+          <div class="form-group">
+            <label><b>Servicio solicitado:</b></label>
+            <div class="input-group">
+              <input type="text" (keyup)="onSearchServicio3(txtSearch3.value)" #txtSearch3 class="form-control mr-sm-2"
+                id="search3" placeholder="Buscar servicios">
+              <button class="btn btn-outline-danger" (click)="clearSearch3()" [disabled]="!search3">Vaciar</button>
+            </div>
+          </div>
+          <!-- <div class="form-group">
+            <label for="searchSolicitado"><b>Servicio solicitado:</b></label>
+            <select class="form-control" name="searchSolicitado" id="searchSolicitado" [(ngModel)]="searchSolicitado">
+              <option [ngValue]="null" selected>Elija un servicio</option>
+              <option [ngValue]="genareser.oid" *ngFor="let genareser of genaresers">{{genareser.gasnombre}}</option>
+            </select>
+          </div> -->
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label><b>Destino del servicio:</b></label>
+            <div class="input-group">
+              <input type="text" (keyup)="onSearchServicio4(txtSearch4.value)" #txtSearch4 class="form-control mr-sm-2"
+                id="search4" placeholder="Buscar servicios">
+              <button class="btn btn-outline-danger" (click)="clearSearch4()" [disabled]="!search4">Vaciar</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <label for="reset"><b>Limpiar</b></label>
+          <button class="btn btn-outline-danger form-control" (click)="clear()">Borrar Filtros</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  
+  <label class="cantidad">Número de servicios: <b>{{(servicios |
+      filtroFecha:page:search:search2:searchCancel:search3:search4).length}}</b></label>
+  
+  <div class="mb-3">
+    <button class="btn btn-primary mt-3" (click)="prevPage()">
+      Anteriores
+    </button>
+    &nbsp;
+    <button class="btn btn-primary mt-3" (click)="nextPage()"
+      [disabled]="(servicios | filtroFecha:page:search:search2:searchCancel:search3:search4).length === 0">
+      Siguientes
+    </button>
+  </div>
+  
+  <div class="container" id="main-container">
+    <div class="table-responsive">
+      <table id="dtHorizontalExample" class="table table-striped table-hover table-sm mb-0 text-center" cellspacing="0"
+        width="100%">
+        <thead>
+          <tr>
+            <!-- (click)="sort()" -->
+            <th scope="col">Id</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Servicio solicitado</th>
+            <th scope="col">Solicitante</th>
+            <th scope="col">Destino del servicio</th>
+            <th scope="col">Transporte</th>
+            <th scope="col">Insumo</th>
+            <th scope="col">Acompañante</th>
+            <th scope="col">Aislamiento</th>
+            <th scope="col">Observaciones</th>
+            <th scope="col">Paciente</th>
+            <th scope="col">Camillero</th>
+            <th scope="col">Fallido</th>
+            <th scope="col">Ver</th>
+            <th scope="col" *ngIf="isAdmin">Imprimir</th>
+            <th scope="col" *ngIf="isSuperadmin">Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- *ngFor="let servicio of servicios | filtroFecha:page:search" -->
+          <tr *ngFor="let servicio of servicios | filtroFecha:page:search:search2:searchCancel:search3:search4">
+            <td>{{servicio.id}}</td>
+            <td>{{servicio.fecha}}</td>
+            <td>{{servicio.genareser?.gasnombre}}</td>
+            <td>{{servicio.solicitante}}</td>
+            <td>{{servicio.genareser2?.gasnombre}}</td>
+            <td>{{servicio.transporte}}</td>
+            <td>{{servicio.insumo}}</td>
+            <td>{{servicio.familiar}}</td>
+            <td *ngIf="servicio.aislamiento">Sí</td>
+            <td *ngIf="!servicio.aislamiento">No</td>
+            <td>{{servicio.observaciones}}</td>
+            <td>{{servicio.genpacien?.pacnumdoc}}</td>
+            <td>{{servicio.camillero?.nombreCamillero}}</td>
+            <td *ngIf="servicio.cancelado">Cancelado</td>
+            <td *ngIf="!servicio.cancelado">No cancelado</td>
+            <!-- <td><a (click)="onOpenModal(servicio, 'editTime')" class="btn btn-outline-info tooltips" data-placement="top" data-original-title="Edit"><i class="fas fa-clock"></i></a></td> -->
+            <td><button class="btn btn-outline-primary" routerLink="/camilleros/servicio/detalle/{{servicio.id}}"><i
+                  class="fas fa-eye"></i></button></td>
+            <td><button *ngIf="isAdmin" (click)="onOpenModal(servicio, 'print')" class="btn btn-outline-dark tooltips"
+                data-placement="top" data-original-title="Print"><i class="fas fa-print"></i></button></td>
+            <td *ngIf="isSuperadmin"><button class="btn btn-outline-danger" (click)="borrar(servicio.id)"><i
+                  class="fas fa-trash-alt"></i></button></td>
+          </tr>
+          <!-- <tr>
+          <td><i class="fas fa-angle-double-left fa-2x" (click)="rewind()"></i></td>
+          <td colspan="10">
+            <span *ngFor="let p of totalPages; let i = index">
+              <a style="cursor: pointer;" (click)="setPages(i)" [ngClass]="{'text-primary': i === page }">{{ i+1
+                }}&nbsp;&nbsp;&nbsp;</a>
+            </span>
+          </td>
+          <td><i class="fas fa-angle-double-right fa-2x" (click)="forward()"></i></td>
+        </tr> -->
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Imprimir -->
+    <div class="modal fade" id="imprimirModal" tabindex="-1" role="dialog" aria-labelledby="servicioImprimirModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateTimeModalLabel">Imprimir Servicio </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+  
+            <div class="row" *ngIf="servicio" id="imprimir1">
+  
+              <div class="card">
+                <div class="card-header text-center">
+                  Servicio {{servicio.id}}
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>FECHA: </b>{{servicio.fecha}}</li>
+                  <li class="list-group-item"><b>SERVICIO: </b>{{servicio.genareser?.gasnombre}}</li>
+  
+                  <li class="list-group-item"><b>SOLICITANTE: </b>{{servicio.solicitante}}</li>
+                  <li class="list-group-item"><b>DESTINO DEL SERVICIO: </b>{{servicio.genareser2?.gasnombre}}</li>
+                  <li class="list-group-item"><b>TRANSPORTE: </b>{{servicio.transporte}}</li>
+                  <li class="list-group-item"><b>INSUMO: </b>{{servicio.insumo}}</li>
+                  <li class="list-group-item"><b>ACOMPAÑANTE: </b>{{servicio.familiar}}</li>
+                  <li class="list-group-item" *ngIf="servicio.aislamiento"><b>AISLAMIENTO: </b>Sí</li>
+                  <li class="list-group-item" *ngIf="!servicio.aislamiento"><b>AISLAMIENTO: </b>No</li>
+                  <li class="list-group-item"><b>OBSERVACIONES: </b>{{servicio.observaciones}}</li>
+                  <li class="list-group-item">
+                    <b>PACIENTE: </b>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><b>N° de documento:</b> {{servicio.genpacien?.pacnumdoc}}</li>
+                      <li class="list-group-item"><b>Nombre:</b> {{servicio.genpacien?.pacprinom}}
+                        {{servicio.genpacien?.pacsegnom}}
+                        {{servicio.genpacien?.pacpriape}} {{servicio.genpacien?.pacsegape}}</li>
+                    </ul>
+                  </li>
+                  <li class="list-group-item"><b>CAMILLERO: </b>{{servicio.camillero?.nombreCamillero}}</li>
+  
+                  <li class="list-group-item">
+                    <b>HORAS: </b>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><b>Hora de envio:</b> {{servicio.horaEnvio}}</li>
+                      <li class="list-group-item"><b>Hora de asignación:</b> {{servicio.horaAsignacion}}</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+  
+            </div>
+  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button (click)="printServicio('imprimir1')" class="btn btn-primary">Imprimir Servicio</button>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!-- {{servicios[0].paciente | json}}  -->

@@ -28,12 +28,14 @@ import { ListaServicioComponent } from './components/camilleros/servicio/lista-s
 import { DetalleServicioComponent } from './components/camilleros/servicio/detalle-servicio.component';
 import { NuevoServicioComponent } from './components/camilleros/servicio/nuevo-servicio.component';
 import { EditarServicioComponent } from './components/camilleros/servicio/editar-servicio.component';
+import { ConsultaServicioComponent } from './components/camilleros/servicio/consulta-servicio.component';
 import { ListaCamilleroComponent } from './components/camillero/lista-camillero.component';
 import { DetalleCamilleroComponent } from './components/camillero/detalle-camillero.component';
 import { NuevoCamilleroComponent } from './components/camillero/nuevo-camillero.component';
 import { EditarCamilleroComponent } from './components/camillero/editar-camillero.component';
 import { ListaGenpacienComponent } from './components/genpacien/lista-genpacien.component';
 import { DetalleGenpacienComponent } from './components/genpacien/detalle-genpacien.component';
+import { FiltroFechaPipe } from './components/pipes/filtro-fecha.pipe';
 
 
 
@@ -41,9 +43,6 @@ import { DetalleGenpacienComponent } from './components/genpacien/detalle-genpac
 // External
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { FiltroFechaPipe } from './components/pipes/filtro-fecha.pipe';
-import { ImprimirServicioComponent } from './components/camilleros/servicio/imprimir-servicio.component';
-
 
 
 @NgModule({
@@ -76,7 +75,7 @@ import { ImprimirServicioComponent } from './components/camilleros/servicio/impr
     ListaGenpacienComponent,
     DetalleGenpacienComponent,
     FiltroFechaPipe,
-    ImprimirServicioComponent
+    ConsultaServicioComponent
   ],
   imports: [
     BrowserModule,

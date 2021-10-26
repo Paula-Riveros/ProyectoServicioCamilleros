@@ -9,15 +9,18 @@
 
     <hr>
 
-
-
+    
     <div class=" container wrapper-bottons mt-5">
 
         <div class="row">
 
+            
 
             <div class="col boton-camas">
-
+                <!-- <div *ngIf="isAdmin">
+                    <button class="btn btn-outline-success mb-3" routerLink="/camilleros/servicio/nuevo">
+                       Solicitud</button>
+                  </div> -->
                 <a [routerLink]="['/camilleros/servicio/nuevo']">
                     <div>
                         Solicitud
@@ -25,7 +28,7 @@
                 </a>
 
             </div>
-            <div *ngIf="isAdmin" class="col boton-camas">
+            <div class="col boton-camas">
                 <a [routerLink]="['/camilleros/servicio/lista']">
                     <div>
                         Asignación
@@ -33,23 +36,15 @@
                     </div>
                 </a>
             </div>
-            <div class="col boton-camas">
-                <a [routerLink]="['/camilleros/servicio/lista']">
+            <div *ngIf="isAdmin" class="col boton-camas">
+                <a [routerLink]="['/camilleros/servicio/consultar']">
                     <div>
                         Consulta
                     </div>
                 </a>
             </div>
-            <!-- <div class="col boton-camas">
-                <a [routerLink]="['/camilleros/paciente/lista']">
-                    <div>
-                        Pacientes
-                    </div>
-                </a>
-            </div> -->
+           
             <div *ngIf="isAdmin" class="col boton-camas">
-                <!-- <button class="btn btn-outline" routerLink="/camilleros/paciente/lista">
-                    Pacientes</button> -->
                 <a [routerLink]="['/camilleros/camillero/lista']">
                     <div>
                         Camilleros

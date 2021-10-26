@@ -27,9 +27,9 @@ export class ServicioService {
     return this.httpClient.get<Servicio>(this.servicioURL + `detail/${id}`);
   }
 
-  public listafecha(servicio: Servicio): Observable<Servicio[]> {
-    return this.httpClient.get<Servicio[]>(this.servicioURL + 'listafecha');
-  }
+  // public listafecha(servicio: Servicio): Observable<Servicio[]> {
+  //   return this.httpClient.get<Servicio[]>(this.servicioURL + 'listafecha');
+  // }
 
   public save(servicio: Servicio): Observable<any> {
     return this.httpClient.post<any>(this.servicioURL + 'create', servicio); 

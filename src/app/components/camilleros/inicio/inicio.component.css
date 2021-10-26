@@ -23,6 +23,13 @@ img {
     width: 90%;
 }
 
+/* .btn { 
+    width: 100%;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+} */
+
 .wrapper-bottons {
     width: 60%;
     font-size: 20px;
@@ -44,7 +51,7 @@ img {
     background-color: #264285;
     color: white;
     transform: translateY(-5px);
-    transition: background-color 0.8s linear 0.2s;
+    transition: background-color 0.1s linear 0.1s;
 }
 
 .imagen {
@@ -115,6 +122,7 @@ i {
 a:link,
 a:visited {
     color: black;
+    text-decoration: none;
 }
 
 .boton-camas a:hover {
