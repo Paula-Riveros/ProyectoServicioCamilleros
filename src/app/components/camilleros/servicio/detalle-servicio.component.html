@@ -246,6 +246,7 @@
             <p *ngIf="servicio?.cancelado"><b>Sí cancelado</b></p>
             <p *ngIf="!servicio?.cancelado"><b>No cancelado</b></p>
             <p *ngIf="servicio?.cancelado"><b>Motivo: </b> {{servicio?.motivoCancelado}}</p>
+            <p *ngIf="servicio?.cancelado"><b>Hora de Cancelación:</b><br>{{servicio?.horaCancelacion}}</p>
           <!-- <div class="mt-3">
             <a href="javascript:void(0)" class="text-custom">Read More <i class="mdi mdi-chevron-right"></i></a>
           </div> -->

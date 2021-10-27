@@ -66,8 +66,6 @@ export class DetalleServicioComponent implements OnInit {
     }else {
       this.tiempoT = "No se ha registrado la hora de finalización del servicio."
     }
-
-    
   }
 
   volver(): void {

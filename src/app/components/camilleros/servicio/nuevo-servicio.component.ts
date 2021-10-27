@@ -35,8 +35,11 @@ export class NuevoServicioComponent implements OnInit {
   horaEjecucion = '00:00:00';
   horaFinalizacion = '00:00:00';
 
+  tiempoTotal: number = 0;
+
   cancelado: Boolean = false;
   motivoCancelado: string = '';
+  horaCancelacion = '00:00:00'
 
   isAdmin = false;
   isSuperadmin = false;
@@ -76,7 +79,7 @@ export class NuevoServicioComponent implements OnInit {
   onCreate(): void {
     const servicio = new Servicio(this.id, this.fecha, this.servicioSolicitado, this.solicitante, this.destinoServicio, this.transporte,
       this.insumo, this.familiar, this.aislamiento, this.observaciones, this.docPaciente, this.nombrePaciente, this.horaEnvio,
-      this.horaAsignacion, this.horaEjecucion, this.horaFinalizacion, this.cancelado, this.motivoCancelado);
+      this.horaAsignacion, this.horaEjecucion, this.horaFinalizacion, this.tiempoTotal, this.cancelado, this.motivoCancelado, this.horaCancelacion);
     this.servicioService.save(servicio).subscribe(
       data => {
         this.toastr.success('Servicio enviado', 'OK', {

@@ -37,12 +37,15 @@ export class ConsultaServicioComponent implements OnInit {
 
   today = '';
 
+  promedio: number = 0;
+
   constructor(private servicioService: ServicioService, private toastr: ToastrService, private tokenService: TokenService,
     private activatedRoute: ActivatedRoute, private router: Router, private genareserService: GenareserService) { }
 
   ngOnInit(): void {
     this.fechaActual();
     this.listaServicios();
+    // this.tiempoPromedio();
     this.isAdmin = this.tokenService.isAdmin();
     this.isSuperadmin = this.tokenService.isSuperadmin();
   }
@@ -52,12 +55,21 @@ export class ConsultaServicioComponent implements OnInit {
       (data: Servicio[]) => {
         this.servicios = data;
         this.totalRecords = data.length;
-        // console.log(data[0].paciente?.id);
+        this.tiempoPromedio();
+        // this.promedio = this.servicios.reduce((acc, obj) =>
+        //   acc + obj.tiempoTotal, 0);
+        // console.log(this.promedio);
       },
       err => {
         console.log(err);
       }
     );
+  }
+
+  tiempoPromedio(): void {
+    this.promedio = this.servicios.reduce((acc, obj) =>
+      acc + obj.tiempoTotal, 0)/this.totalRecords;
+    console.log(this.promedio);
   }
 
   fechaActual(): void {
@@ -68,7 +80,7 @@ export class ConsultaServicioComponent implements OnInit {
     (document.getElementById("search") as HTMLInputElement).value = today;
     this.today = today;
     this.search = today;
-    }
+  }
 
   onSearchServicio(search: string) {
     //this.page = 0;
@@ -107,23 +119,23 @@ export class ConsultaServicioComponent implements OnInit {
     );
   }
 
-   listaSolicitados(): void {
-     this.genareserService.lista().subscribe(
-       data => {
-         this.genaresers = data;
-       }, 
-       err => {
-         console.log(err);
-       }
-     );
-   }
+  listaSolicitados(): void {
+    this.genareserService.lista().subscribe(
+      data => {
+        this.genaresers = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 
-   clearSearch(): void {
+  clearSearch(): void {
     this.search = '';
     (document.getElementById('search') as HTMLInputElement).value = '';
   }
 
-   clearSearch2(): void {
+  clearSearch2(): void {
     this.search2 = '';
     (document.getElementById('search2') as HTMLInputElement).value = '';
   }
@@ -138,18 +150,18 @@ export class ConsultaServicioComponent implements OnInit {
     (document.getElementById('search4') as HTMLInputElement).value = '';
   }
 
-   clear(): void {
-     this.search = this.today;
-     (document.getElementById('search') as HTMLInputElement).value = this.today;
-     this.search2 = '';
-     (document.getElementById('search2') as HTMLInputElement).value = '';
-     this.searchCancel = '';
-     this.search3 = '';
+  clear(): void {
+    this.search = this.today;
+    (document.getElementById('search') as HTMLInputElement).value = this.today;
+    this.search2 = '';
+    (document.getElementById('search2') as HTMLInputElement).value = '';
+    this.searchCancel = '';
+    this.search3 = '';
     (document.getElementById('search3') as HTMLInputElement).value = '';
-     this.search4 = '';
+    this.search4 = '';
     (document.getElementById('search4') as HTMLInputElement).value = '';
-     this.searchSolicitado = null;
-   }
+    this.searchSolicitado = null;
+  }
 
   // --------------------------------------------------------------
 
@@ -204,7 +216,7 @@ export class ConsultaServicioComponent implements OnInit {
 
     document.body.innerHTML = originalContents;
     window.location.reload()
-}
+  }
 
   public onOpenModal(servicio: Servicio, mode: string): void {
     const container = document.getElementById('main-container');

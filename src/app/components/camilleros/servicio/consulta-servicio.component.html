@@ -122,6 +122,7 @@
             <th scope="col">Paciente</th>
             <th scope="col">Camillero</th>
             <th scope="col">Fallido</th>
+            <th scope="col">Tiempo del Servicio</th>
             <th scope="col">Ver</th>
             <th scope="col" *ngIf="isAdmin">Imprimir</th>
             <th scope="col" *ngIf="isSuperadmin">Eliminar</th>
@@ -144,6 +145,7 @@
             <td>{{servicio.camillero?.nombreCamillero}}</td>
             <td *ngIf="servicio.cancelado">Cancelado</td>
             <td *ngIf="!servicio.cancelado">No cancelado</td>
+            <td>{{servicio.tiempoTotal}}</td>
             <!-- <td><a (click)="onOpenModal(servicio, 'editTime')" class="btn btn-outline-info tooltips" data-placement="top" data-original-title="Edit"><i class="fas fa-clock"></i></a></td> -->
             <td><button class="btn btn-outline-primary" routerLink="/camilleros/servicio/detalle/{{servicio.id}}"><i
                   class="fas fa-eye"></i></button></td>
@@ -152,6 +154,7 @@
             <td *ngIf="isSuperadmin"><button class="btn btn-outline-danger" (click)="borrar(servicio.id)"><i
                   class="fas fa-trash-alt"></i></button></td>
           </tr>
+    
           <!-- <tr>
           <td><i class="fas fa-angle-double-left fa-2x" (click)="rewind()"></i></td>
           <td colspan="10">
@@ -163,8 +166,13 @@
           <td><i class="fas fa-angle-double-right fa-2x" (click)="forward()"></i></td>
         </tr> -->
         </tbody>
+        
       </table>
+      
     </div>
+    <div class="text-center mt-2"><label for="">Promedio: {{ promedio }} minutos</label></div>
+    
+    
   
     <!-- Imprimir -->
     <div class="modal fade" id="imprimirModal" tabindex="-1" role="dialog" aria-labelledby="servicioImprimirModalLabel"

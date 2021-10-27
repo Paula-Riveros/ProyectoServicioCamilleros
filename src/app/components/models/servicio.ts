@@ -32,14 +32,17 @@ export class Servicio {
     horaAsignacion: string;
     horaEjecucion: string;
     horaFinalizacion: string;
+
+    tiempoTotal: number;
     
     cancelado: Boolean;
     motivoCancelado: string;
+    horaCancelacion: string;
 
     constructor(id: number, fecha: string, servicioSolicitado: number, solicitante: string, destinoServicio: number,
         transporte: string, insumo: string, familiar: string, aislamiento: boolean, observaciones: string, 
         docPaciente: string, nombrePaciente: string, horaEnvio: string, horaAsignacion: string, horaEjecucion: string,
-        horaFinalizacion: string, cancelado: Boolean, motivoCancelado: string) {
+        horaFinalizacion: string, tiempoTotal: number, cancelado: Boolean, motivoCancelado: string, horaCancelacion: string) {
             this.id = id;
             this.fecha = fecha;
             this.servicioSolicitado = servicioSolicitado;
@@ -56,8 +59,10 @@ export class Servicio {
             this.horaAsignacion = horaAsignacion;
             this.horaEjecucion = horaEjecucion;
             this.horaFinalizacion = horaFinalizacion;
+            this.tiempoTotal = tiempoTotal;
             this.cancelado = cancelado;
             this.motivoCancelado = motivoCancelado;
+            this.horaCancelacion = horaCancelacion;
         }
 
 }

@@ -22,11 +22,11 @@ export class ListaServicioComponent implements OnInit {
 
   genaresers: Genareser[] = [];
 
- // page: number = 0;
+  // page: number = 0;
 
- page_size: number = 50;
- page_number: number = 1;
- totalRecords!: number;
+  page_size: number = 3;
+  page_number: number = 1;
+  totalRecords!: number;
 
   search: string = '';
   search2: string = '';
@@ -36,7 +36,6 @@ export class ListaServicioComponent implements OnInit {
   searchSolicitado: any = null;
 
   isCancel: boolean = true;
-  horaCancel: string = '';
 
 
   constructor(private servicioService: ServicioService, private toastr: ToastrService, private tokenService: TokenService,
@@ -54,6 +53,7 @@ export class ListaServicioComponent implements OnInit {
       (data: Servicio[]) => {
         this.servicios = data;
         this.totalRecords = data.length;
+        
         // console.log(data[0].paciente?.id);
       },
       err => {
@@ -156,6 +156,35 @@ export class ListaServicioComponent implements OnInit {
     );
   }
 
+  tiempoTotal(): void {
+      var hora1 = (this.servicio.horaEnvio).split(":");
+      var hora4 = (this.servicio.horaFinalizacion).split(":");
+      var t1 = new Date();
+      var t4 = new Date();
+      t1.setHours(Number(hora1[0]), Number(hora1[1]), Number(hora1[2]));
+      t4.setHours(Number(hora4[0]), Number(hora4[1]), Number(hora4[2]));
+
+      var m1 = 60 - (t1.getMinutes());
+      var m4 = t4.getMinutes();
+      var sumaM = m1 + m4;
+
+      var h1 = 1 + (t1.getHours());
+      var h4 = t4.getHours();
+
+      var tt = "El tiempo total del servicio es de:" + "\n" +
+        Math.abs(t1.getHours() - t4.getHours()) + " " + "horas" + "\n" +
+        Math.abs(t1.getMinutes() - t4.getMinutes()) + " " + "minutos" + "\n" +
+        Math.abs(t1.getSeconds() - t4.getSeconds()) + " " + "segundos"
+
+      while (h1 != h4) {
+        sumaM = sumaM + 60;
+        h1 = h1 + 1;
+      }
+      //var horaT = Math.floor(sumaM / 60);
+      //var minutosT = sumaM - (horaT * 60);
+      this.servicio.tiempoTotal = sumaM;
+  }
+
   habilitar(): void {
     const cancel = (document.getElementById('cancelado') as HTMLInputElement).value;
     this.isCancel = false;
@@ -171,6 +200,7 @@ export class ListaServicioComponent implements OnInit {
     this.servicio.cancelado = false;
     (document.getElementById('motivoCancelado') as HTMLInputElement).value = '';
     this.servicio.motivoCancelado = '';
+    this.servicio.horaCancelacion = '00:00:00';
   }
 
   horaCancelacionServicio(): void {
@@ -179,14 +209,12 @@ export class ListaServicioComponent implements OnInit {
     const min = ("0" + nowHora.getMinutes()).slice(-2);
     const seg = ("0" + nowHora.getSeconds()).slice(-2);
     const horaCancel = hora + ":" + min + ":" + seg;
-    this.horaCancel = horaCancel;
+    this.servicio.horaCancelacion = horaCancel;
   }
 
   onUpdateCancel(servicio: Servicio): void {
     this.servicioService.updateCancelado(this.servicio).subscribe(
       data => {
-        this.horaCancelacionServicio();
-        console.log(this.horaCancel)
         this.toastr.success('Servicio actualizado', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
@@ -204,7 +232,7 @@ export class ListaServicioComponent implements OnInit {
   printServicio(imprimir1: any) {
     let printContents = (document.getElementById(imprimir1) as InnerHTML).innerHTML;
     let originalContents = document.body.innerHTML;
-    
+
     document.body.innerHTML = printContents;
 
     window.print();
