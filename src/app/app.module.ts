@@ -36,6 +36,7 @@ import { EditarCamilleroComponent } from './components/camillero/editar-camiller
 import { ListaGenpacienComponent } from './components/genpacien/lista-genpacien.component';
 import { DetalleGenpacienComponent } from './components/genpacien/detalle-genpacien.component';
 import { FiltroFechaPipe } from './components/pipes/filtro-fecha.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -43,7 +44,6 @@ import { FiltroFechaPipe } from './components/pipes/filtro-fecha.pipe';
 // External
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-
 
 @NgModule({
   declarations: [
@@ -82,7 +82,8 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
+    NgxPaginationModule, 
     ToastrModule.forRoot()
   ],
   providers: [ServicioService, interceptorProvider],

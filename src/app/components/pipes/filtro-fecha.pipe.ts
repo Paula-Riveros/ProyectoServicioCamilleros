@@ -6,8 +6,7 @@ import { Servicio } from '../models/servicio';
 })
 export class FiltroFechaPipe implements PipeTransform {
 
-  transform(servicios: Servicio[], page: number = 0, search: string = '',
-    search2: string = '', searchCancel: string = '', search3: string = '', search4: string = ''): Servicio[] {
+  transform(servicios: Servicio[], search: string = '', search2: string = '', searchCancel: string = '', search3: string = '', search4: string = ''): Servicio[] {
 
     // if(search.length === 0) {
     //   return servicios.slice(page,page + 10);    
@@ -20,10 +19,10 @@ export class FiltroFechaPipe implements PipeTransform {
       && servicio.cancelado.toString().toLocaleLowerCase().includes(searchCancel.toLocaleLowerCase())
       && servicio.genareser?.gasnombre.toLocaleLowerCase().includes(search3.toLocaleLowerCase())
       && servicio.genareser2?.gasnombre.toLocaleLowerCase().includes(search4.toLocaleLowerCase())
-        //&& servicio.genareser?.oid.toString().includes(searchSolicitado.toString())
-      );
+      //&& servicio.genareser?.oid.toString().includes(searchSolicitado.toString())
+    );
 
-    return filteredServicios.slice(page, page + 20);
+    return filteredServicios;
     //}
   }
 

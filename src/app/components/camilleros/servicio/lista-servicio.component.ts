@@ -22,7 +22,12 @@ export class ListaServicioComponent implements OnInit {
 
   genaresers: Genareser[] = [];
 
-  page: number = 0;
+ // page: number = 0;
+
+ page_size: number = 50;
+ page_number: number = 1;
+ totalRecords!: number;
+
   search: string = '';
   search2: string = '';
   searchCancel: string = '';
@@ -48,6 +53,7 @@ export class ListaServicioComponent implements OnInit {
     this.servicioService.lista().subscribe(
       (data: Servicio[]) => {
         this.servicios = data;
+        this.totalRecords = data.length;
         // console.log(data[0].paciente?.id);
       },
       err => {
@@ -66,7 +72,7 @@ export class ListaServicioComponent implements OnInit {
   }
 
   onSearchServicio(search: string) {
-    this.page = 0;
+    //this.page = 0;
     this.search = search;
   }
 
@@ -75,21 +81,6 @@ export class ListaServicioComponent implements OnInit {
     (document.getElementById('search') as HTMLInputElement).value = '';
     this.listaServicios();
   }
-
-  // --------------------------------------------------------------
-
-  // Paginación
-
-  nextPage() {
-    this.page += 20;
-  }
-
-  prevPage() {
-    if (this.page > 0) {
-      this.page -= 20;
-    }
-  }
-
 
   // --------------------------------------------------------------
   // Paginación (otro metodo)

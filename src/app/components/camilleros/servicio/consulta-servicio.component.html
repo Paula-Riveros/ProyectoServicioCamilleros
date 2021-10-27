@@ -11,7 +11,7 @@
       </form>
     </div> -->
   
-  <div class="container mb-5">
+  <div class="container mb-2">
     <form>
       <div class="row mt-4">
         <div class="col">
@@ -87,22 +87,22 @@
     </form>
   </div>
   
-  
-  <label class="cantidad">Número de servicios: <b>{{(servicios |
-      filtroFecha:page:search:search2:searchCancel:search3:search4).length}}</b></label>
-  
-  <div class="mb-3">
-    <button class="btn btn-primary mt-3" (click)="prevPage()">
-      Anteriores
-    </button>
-    &nbsp;
-    <button class="btn btn-primary mt-3" (click)="nextPage()"
-      [disabled]="(servicios | filtroFecha:page:search:search2:searchCancel:search3:search4).length === 0">
-      Siguientes
-    </button>
-  </div>
-  
   <div class="container" id="main-container">
+
+    <div class="d-flex justify-content-center">
+      <label class="cantidad"><b>{{(servicios |
+        filtroFecha:search:search2:searchCancel:search3:search4 | 
+        paginate: {itemsPerPage: page_size, currentPage: page_number}).length}}</b> 
+        de 
+        <b>{{(servicios |
+        filtroFecha:search:search2:searchCancel:search3:search4).length}}</b></label>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="page_number = $event">
+      </pagination-controls>
+    </div>
+
     <div class="table-responsive">
       <table id="dtHorizontalExample" class="table table-striped table-hover table-sm mb-0 text-center" cellspacing="0"
         width="100%">
@@ -128,8 +128,7 @@
           </tr>
         </thead>
         <tbody>
-          <!-- *ngFor="let servicio of servicios | filtroFecha:page:search" -->
-          <tr *ngFor="let servicio of servicios | filtroFecha:page:search:search2:searchCancel:search3:search4">
+          <tr *ngFor="let servicio of servicios | filtroFecha:search:search2:searchCancel:search3:search4 | paginate: {itemsPerPage: page_size, currentPage: page_number}">
             <td>{{servicio.id}}</td>
             <td>{{servicio.fecha}}</td>
             <td>{{servicio.genareser?.gasnombre}}</td>

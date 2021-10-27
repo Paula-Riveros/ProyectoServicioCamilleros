@@ -22,7 +22,10 @@ export class ConsultaServicioComponent implements OnInit {
 
   genaresers: Genareser[] = [];
 
-  page: number = 0;
+  page_size: number = 50;
+  page_number: number = 1;
+  totalRecords!: number;
+
   search: string = '';
   search2: string = '';
   searchCancel: string = '';
@@ -48,6 +51,7 @@ export class ConsultaServicioComponent implements OnInit {
     this.servicioService.lista().subscribe(
       (data: Servicio[]) => {
         this.servicios = data;
+        this.totalRecords = data.length;
         // console.log(data[0].paciente?.id);
       },
       err => {
@@ -67,25 +71,22 @@ export class ConsultaServicioComponent implements OnInit {
     }
 
   onSearchServicio(search: string) {
-    this.page = 0;
+    //this.page = 0;
     this.search = search;
     this.listaServicios();
   }
 
   onSearchServicio2(search2: string) {
-    this.page = 0;
     this.search2 = search2;
     this.listaServicios();
   }
 
   onSearchServicio3(search3: string) {
-    this.page = 0;
     this.search3 = search3;
     this.listaServicios();
   }
 
   onSearchServicio4(search4: string) {
-    this.page = 0;
     this.search4 = search4;
     this.listaServicios();
   }
@@ -154,15 +155,15 @@ export class ConsultaServicioComponent implements OnInit {
 
   // Paginación
 
-  nextPage() {
-    this.page += 20;
-  }
+  // nextPage() {
+  //   this.page += 20;
+  // }
 
-  prevPage() {
-    if (this.page > 0) {
-      this.page -= 20;
-    }
-  }
+  // prevPage() {
+  //   if (this.page > 0) {
+  //     this.page -= 20;
+  //   }
+  // }
 
 
   // --------------------------------------------------------------
