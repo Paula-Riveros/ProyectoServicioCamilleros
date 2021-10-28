@@ -22,7 +22,7 @@ export class ConsultaServicioComponent implements OnInit {
 
   genaresers: Genareser[] = [];
 
-  page_size: number = 3;
+  page_size: number = 5;
   page_number: number = 1;
   totalRecords!: number;
 
@@ -36,8 +36,6 @@ export class ConsultaServicioComponent implements OnInit {
   isCancel: boolean = true;
 
   today = '';
-
-  promedio: number = 0;
 
   constructor(private servicioService: ServicioService, private toastr: ToastrService, private tokenService: TokenService,
     private activatedRoute: ActivatedRoute, private router: Router, private genareserService: GenareserService) { }
@@ -54,7 +52,6 @@ export class ConsultaServicioComponent implements OnInit {
       (data: Servicio[]) => {
         this.servicios = data;
         this.totalRecords = data.length;
-        this.tiempoPromedio();
         // this.promedio = this.servicios.reduce((acc, obj) =>
         //   acc + obj.tiempoTotal, 0);
         // console.log(this.promedio);
@@ -63,11 +60,6 @@ export class ConsultaServicioComponent implements OnInit {
         console.log(err);
       }
     );
-  }
-
-  tiempoPromedio(): void {
-    this.promedio = this.servicios.reduce((acc, obj) =>
-      acc + obj.tiempoTotal, 0)/this.totalRecords;
   }
 
   fechaActual(): void {

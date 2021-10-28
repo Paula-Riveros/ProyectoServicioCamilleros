@@ -24,7 +24,7 @@ export class ListaServicioComponent implements OnInit {
 
   // page: number = 0;
 
-  page_size: number = 3;
+  page_size: number = 5;
   page_number: number = 1;
   totalRecords!: number;
 
@@ -36,7 +36,6 @@ export class ListaServicioComponent implements OnInit {
   searchSolicitado: any = null;
 
   isCancel: boolean = true;
-
 
   constructor(private servicioService: ServicioService, private toastr: ToastrService, private tokenService: TokenService,
     private activatedRoute: ActivatedRoute, private router: Router, private genareserService: GenareserService) { }
@@ -53,7 +52,7 @@ export class ListaServicioComponent implements OnInit {
       (data: Servicio[]) => {
         this.servicios = data;
         this.totalRecords = data.length;
-        
+
         // console.log(data[0].paciente?.id);
       },
       err => {
@@ -81,6 +80,7 @@ export class ListaServicioComponent implements OnInit {
     (document.getElementById('search') as HTMLInputElement).value = '';
     this.listaServicios();
   }
+
 
   // --------------------------------------------------------------
   // Paginación (otro metodo)
@@ -157,32 +157,32 @@ export class ListaServicioComponent implements OnInit {
   }
 
   tiempoTotal(): void {
-      var hora1 = (this.servicio.horaEnvio).split(":");
-      var hora4 = (this.servicio.horaFinalizacion).split(":");
-      var t1 = new Date();
-      var t4 = new Date();
-      t1.setHours(Number(hora1[0]), Number(hora1[1]), Number(hora1[2]));
-      t4.setHours(Number(hora4[0]), Number(hora4[1]), Number(hora4[2]));
+    var hora1 = (this.servicio.horaEnvio).split(":");
+    var hora4 = (this.servicio.horaFinalizacion).split(":");
+    var t1 = new Date();
+    var t4 = new Date();
+    t1.setHours(Number(hora1[0]), Number(hora1[1]), Number(hora1[2]));
+    t4.setHours(Number(hora4[0]), Number(hora4[1]), Number(hora4[2]));
 
-      var m1 = 60 - (t1.getMinutes());
-      var m4 = t4.getMinutes();
-      var sumaM = m1 + m4;
+    var m1 = 60 - (t1.getMinutes());
+    var m4 = t4.getMinutes();
+    var sumaM = m1 + m4;
 
-      var h1 = 1 + (t1.getHours());
-      var h4 = t4.getHours();
+    var h1 = 1 + (t1.getHours());
+    var h4 = t4.getHours();
 
-      var tt = "El tiempo total del servicio es de:" + "\n" +
-        Math.abs(t1.getHours() - t4.getHours()) + " " + "horas" + "\n" +
-        Math.abs(t1.getMinutes() - t4.getMinutes()) + " " + "minutos" + "\n" +
-        Math.abs(t1.getSeconds() - t4.getSeconds()) + " " + "segundos"
+    var tt = "El tiempo total del servicio es de:" + "\n" +
+      Math.abs(t1.getHours() - t4.getHours()) + " " + "horas" + "\n" +
+      Math.abs(t1.getMinutes() - t4.getMinutes()) + " " + "minutos" + "\n" +
+      Math.abs(t1.getSeconds() - t4.getSeconds()) + " " + "segundos"
 
-      while (h1 != h4) {
-        sumaM = sumaM + 60;
-        h1 = h1 + 1;
-      }
-      //var horaT = Math.floor(sumaM / 60);
-      //var minutosT = sumaM - (horaT * 60);
-      this.servicio.tiempoTotal = sumaM;
+    while (h1 != h4) {
+      sumaM = sumaM + 60;
+      h1 = h1 + 1;
+    }
+    //var horaT = Math.floor(sumaM / 60);
+    //var minutosT = sumaM - (horaT * 60);
+    this.servicio.tiempoTotal = sumaM;
   }
 
   habilitar(): void {

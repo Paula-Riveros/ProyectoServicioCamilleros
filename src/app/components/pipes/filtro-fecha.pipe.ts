@@ -22,9 +22,6 @@ export class FiltroFechaPipe implements PipeTransform {
       //&& servicio.genareser?.oid.toString().includes(searchSolicitado.toString())
     );
 
-    const promedio = filteredServicios.reduce((acc, obj) =>
-    acc + obj.tiempoTotal, 0)/filteredServicios.length;
-
     return filteredServicios;
     //}
   }
