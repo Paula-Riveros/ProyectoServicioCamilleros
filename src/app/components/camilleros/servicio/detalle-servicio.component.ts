@@ -50,14 +50,25 @@ export class DetalleServicioComponent implements OnInit {
       var h1 = 1 + (t1.getHours());
       var h4 = t4.getHours();
 
-      var tt = "El tiempo total del servicio es de:" + "\n" +
-        Math.abs(t1.getHours() - t4.getHours()) + " " + "horas" + "\n" +
-        Math.abs(t1.getMinutes() - t4.getMinutes()) + " " + "minutos" + "\n" +
-        Math.abs(t1.getSeconds() - t4.getSeconds()) + " " + "segundos"
+      // var tt = "El tiempo total del servicio es de:" + "\n" +
+      //   Math.abs(t1.getHours() - t4.getHours()) + " " + "horas" + "\n" +
+      //   Math.abs(t1.getMinutes() - t4.getMinutes()) + " " + "minutos" + "\n" +
+      //   Math.abs(t1.getSeconds() - t4.getSeconds()) + " " + "segundos"
 
       while (h1 != h4) {
+        if((h4+24) == h1) {
+          sumaM = sumaM;
+          break;
+        }
+        if(h1 == 24 && h4 != 0) {
+          sumaM = sumaM + (60 * h4);
+          break;
+        }
         sumaM = sumaM + 60;
         h1 = h1 + 1;
+      }
+      if(t1.getHours() == t4.getHours()) {
+        sumaM = t4.getMinutes() - t1.getMinutes();
       }
       var horaT = Math.floor(sumaM / 60);
       var minutosT = sumaM - (horaT * 60);
