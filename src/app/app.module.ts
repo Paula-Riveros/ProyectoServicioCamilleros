@@ -44,6 +44,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 // External
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { PromedioPipe } from './components/pipes/promedio.pipe';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { ToastrModule } from 'ngx-toastr';
     ListaGenpacienComponent,
     DetalleGenpacienComponent,
     FiltroFechaPipe,
-    ConsultaServicioComponent
+    ConsultaServicioComponent,
+    PromedioPipe
   ],
   imports: [
     BrowserModule,

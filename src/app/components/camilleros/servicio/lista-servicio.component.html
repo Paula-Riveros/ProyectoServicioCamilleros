@@ -67,7 +67,6 @@
       width="100%">
       <thead>
         <tr>
-          <!-- (click)="sort()" -->
           <th scope="col">Id</th>
           <th scope="col">Fecha</th>
           <th scope="col">Servicio solicitado</th>
@@ -83,7 +82,7 @@
           <th scope="col">Fallido</th>
           <th scope="col">Registrar hora</th>
           <th scope="col" *ngIf="isAdmin">Cancelar servicio</th>
-          <th scope="col">Ver</th>
+          <!-- <th scope="col">Ver</th> -->
           <th scope="col" *ngIf="isAdmin">Editar</th>
           <th scope="col" *ngIf="isAdmin">Imprimir</th>
         </tr>
@@ -107,17 +106,15 @@
           <td>{{servicio.camillero?.nombreCamillero}}</td>
           <td *ngIf="servicio.cancelado">Cancelado</td>
           <td *ngIf="!servicio.cancelado">No cancelado</td>
-          <!-- <td><a (click)="onOpenModal(servicio, 'editTime')" class="btn btn-outline-info tooltips" data-placement="top" data-original-title="Edit"><i class="fas fa-clock"></i></a></td> -->
           <td><button (click)="onOpenModal(servicio, 'editTime')" class="btn btn-outline-info tooltips"
               data-placement="top" data-original-title="Edit"><i class="fas fa-clock"></i></button></td>
           <td *ngIf="isAdmin"><button (click)="onOpenModal(servicio, 'editCancel')"
               class="btn btn-outline-danger tooltips" data-placement="top" data-original-title="Cancel"><i
                 class="fas fa-window-close"></i></button></td>
-          <td><button class="btn btn-outline-primary" routerLink="/camilleros/servicio/detalle/{{servicio.id}}"><i
-                class="fas fa-eye"></i></button></td>
+          <!-- <td><button class="btn btn-outline-primary" routerLink="/camilleros/servicio/detalle/{{servicio.id}}"><i
+                class="fas fa-eye"></i></button></td> -->
           <td *ngIf="isAdmin"><button class="btn btn-outline-warning"
               routerLink="/camilleros/servicio/editar/{{servicio.id}}"><i class="fas fa-edit"></i></button></td>
-          <!-- routerLink="/camilleros/servicio/imprimir/{{servicio.id}}"  -->
           <td><button *ngIf="isAdmin" (click)="onOpenModal(servicio, 'print')" class="btn btn-outline-dark tooltips"
               data-placement="top" data-original-title="Print"><i class="fas fa-print"></i></button></td>
           <td colspan="10">

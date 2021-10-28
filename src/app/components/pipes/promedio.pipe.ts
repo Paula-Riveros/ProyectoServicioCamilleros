@@ -2,15 +2,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Servicio } from '../models/servicio';
 
 @Pipe({
-  name: 'filtroFecha'
+  name: 'promedio'
 })
-export class FiltroFechaPipe implements PipeTransform {
+export class PromedioPipe implements PipeTransform {
 
-  transform(servicios: Servicio[], search: string = '', search2: string = '', searchCancel: string = '', search3: string = '', search4: string = ''): Servicio[] {
-
-    // if(search.length === 0) {
-    //   return servicios.slice(page,page + 10);    
-    // }
+  transform(servicios: Servicio[], search: string = '', search2: string = '', searchCancel: string = '', search3: string = '', search4: string = ''): number {
 
     const filteredServicios = servicios.filter(servicio =>
       servicio.fecha.includes(search) &&
@@ -19,13 +15,12 @@ export class FiltroFechaPipe implements PipeTransform {
       && servicio.cancelado.toString().toLocaleLowerCase().includes(searchCancel.toLocaleLowerCase())
       && servicio.genareser?.gasnombre.toLocaleLowerCase().includes(search3.toLocaleLowerCase())
       && servicio.genareser2?.gasnombre.toLocaleLowerCase().includes(search4.toLocaleLowerCase())
-      //&& servicio.genareser?.oid.toString().includes(searchSolicitado.toString())
     );
 
-    const promedio = filteredServicios.reduce((acc, obj) =>
-    acc + obj.tiempoTotal, 0)/filteredServicios.length;
+    const promedio = Math.round(filteredServicios.reduce((acc, obj) =>
+    acc + obj.tiempoTotal, 0)/filteredServicios.length);
 
-    return filteredServicios;
+    return promedio;
     //}
   }
 

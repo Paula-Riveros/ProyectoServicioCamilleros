@@ -22,7 +22,7 @@ export class ConsultaServicioComponent implements OnInit {
 
   genaresers: Genareser[] = [];
 
-  page_size: number = 50;
+  page_size: number = 3;
   page_number: number = 1;
   totalRecords!: number;
 
@@ -45,7 +45,6 @@ export class ConsultaServicioComponent implements OnInit {
   ngOnInit(): void {
     this.fechaActual();
     this.listaServicios();
-    // this.tiempoPromedio();
     this.isAdmin = this.tokenService.isAdmin();
     this.isSuperadmin = this.tokenService.isSuperadmin();
   }
@@ -69,7 +68,6 @@ export class ConsultaServicioComponent implements OnInit {
   tiempoPromedio(): void {
     this.promedio = this.servicios.reduce((acc, obj) =>
       acc + obj.tiempoTotal, 0)/this.totalRecords;
-    console.log(this.promedio);
   }
 
   fechaActual(): void {
@@ -230,6 +228,10 @@ export class ConsultaServicioComponent implements OnInit {
     }
     container!.appendChild(button);
     button.click();
+  }
+
+  volver(): void {
+    this.router.navigate(['/camilleros/inicio']);
   }
 
 }

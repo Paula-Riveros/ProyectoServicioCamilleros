@@ -1,8 +1,3 @@
-<div *ngIf="isAdmin">
-    <button class="btn btn-outline-success mb-3" routerLink="/camilleros/servicio/nuevo">
-      <i class="fas fa-plus-circle"></i> Nuevo servicio</button>
-  </div>
-  
   <!-- <div class="col-md-3 mx-auto text-center">
       <label><b>Listar servicios por fecha</b></label>
       <form class="form-inline my-2">
@@ -10,6 +5,9 @@
            name="key" class="form-control mr-sm-2" placeholder="Buscar servicios por fecha">
       </form>
     </div> -->
+
+    <button class="btn btn-outline-primary btn-block" (click)="volver()"><i class="fas fa-arrow-alt-circle-left"></i>
+      Regresar</button>
   
   <div class="container mb-2">
     <form>
@@ -170,7 +168,8 @@
       </table>
       
     </div>
-    <div class="text-center mt-2"><label for="">Promedio: {{ promedio }} minutos</label></div>
+    <div class="text-center mt-2"><label> Promedio del tiempo total de los servicios:<b> {{servicios |
+      promedio:search:search2:searchCancel:search3:search4}} minutos </b></label></div>
     
     
   

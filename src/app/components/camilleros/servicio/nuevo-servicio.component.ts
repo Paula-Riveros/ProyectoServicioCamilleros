@@ -85,7 +85,7 @@ export class NuevoServicioComponent implements OnInit {
         this.toastr.success('Servicio enviado', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        this.router.navigate(['/camilleros/servicio/lista']);
+        this.router.navigate(['/camilleros/inicio']);
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {

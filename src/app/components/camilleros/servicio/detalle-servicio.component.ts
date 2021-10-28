@@ -69,7 +69,7 @@ export class DetalleServicioComponent implements OnInit {
   }
 
   volver(): void {
-    this.router.navigate(['/camilleros/servicio/lista']);
+    this.router.navigate(['/camilleros/servicio/consultar']);
   }
 
   printServicio(imprimir1: any) {
