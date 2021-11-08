@@ -19,8 +19,8 @@
           <label><b>Fecha:</b></label>
           <div class="input-group">
             <input type="text" (keyup)="onSearchServicio(txtSearch.value)" #txtSearch class="form-control mr-sm-2"
-              id="search" placeholder="Buscar servicios" disabled>
-            <button class="btn btn-outline-danger" (click)="clearSearch()" [disabled]="!search">Vaciar</button>
+              id="search" placeholder="Buscar servicios">
+            <!-- <button class="btn btn-outline-danger" (click)="clearSearch()" [disabled]="!search">Vaciar</button> -->
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@
           <th scope="col">Observaciones</th>
           <th scope="col">Paciente</th>
           <th scope="col">Camillero</th>
-          <th scope="col">Fallido</th>
+          <th scope="col">¿Cancelado?</th>
           <th scope="col">Registrar hora</th>
           <th scope="col" *ngIf="isAdmin">Cancelar servicio</th>
           <!-- <th scope="col">Ver</th> -->

@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginUsuario).subscribe(
       data => {
         this.tokenService.setToken(data.token);
-        this.router.navigate(['/camilleros']);
+        this.router.navigate(['/camilleros/inicio']);
       },
       err => {
         this.errMsj = err.error.mensaje;

@@ -33,8 +33,8 @@ export class CamilleroService {
     return this.httpClient.put<any>(this.camilleroURL + `update/${id}`, camillero); 
   }
 
-  // public delete(id: number): Observable<any> {
-  //   return this.httpClient.delete<any>(this.camilleroURL + `delete/${id}`);
-  // }
+   public delete(id: number): Observable<any> {
+     return this.httpClient.delete<any>(this.camilleroURL + `delete/${id}`);
+   }
 
 }
