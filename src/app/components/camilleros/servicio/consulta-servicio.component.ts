@@ -72,27 +72,31 @@ export class ConsultaServicioComponent implements OnInit {
     this.search = today;
   }
 
+  // Filtro fecha
   onSearchServicio(search: string) {
     //this.page = 0;
     this.search = search;
     this.listaServicios();
   }
-
+ // Filtro camillero o solicitante
   onSearchServicio2(search2: string) {
     this.search2 = search2;
     this.listaServicios();
   }
 
+  // Filtro tipo de servicio
   onSearchServicio3(search3: string) {
     this.search3 = search3;
     this.listaServicios();
   }
 
+  // Filtro destino
   onSearchServicio4(search4: string) {
     this.search4 = search4;
     this.listaServicios();
   }
 
+  // Eliminar un servicio
   borrar(id: number) {
     this.servicioService.delete(id).subscribe(
       data => {
@@ -109,6 +113,7 @@ export class ConsultaServicioComponent implements OnInit {
     );
   }
 
+  // Lista de las areas (GENARESER)
   listaSolicitados(): void {
     this.genareserService.lista().subscribe(
       data => {
@@ -119,6 +124,8 @@ export class ConsultaServicioComponent implements OnInit {
       }
     );
   }
+
+  // ---------- Limpiar filtros individualmente -----------
 
   clearSearch(): void {
     this.search = '';
@@ -140,6 +147,7 @@ export class ConsultaServicioComponent implements OnInit {
     (document.getElementById('search4') as HTMLInputElement).value = '';
   }
 
+  // Limpiar todos los filtros
   clear(): void {
     this.search = this.today;
     (document.getElementById('search') as HTMLInputElement).value = this.today;
@@ -153,49 +161,9 @@ export class ConsultaServicioComponent implements OnInit {
     this.searchSolicitado = null;
   }
 
-  // --------------------------------------------------------------
-
-  // Paginación
-
-  // nextPage() {
-  //   this.page += 20;
-  // }
-
-  // prevPage() {
-  //   if (this.page > 0) {
-  //     this.page -= 20;
-  //   }
-  // }
-
-
-  // --------------------------------------------------------------
-  // Paginación (otro metodo)
-  // sort(): void {
-  //   this.asc = !this.asc;
-  //   this.listaServicios();
-  // }
-
-  // rewind(): void {
-  //   if (!this.isFirst) {
-  //     this.page--;
-  //     this.listaServicios();
-  //   }
-  // }
-
-  // forward(): void {
-  //   if (!this.isLast) {
-  //     this.page++;
-  //     this.listaServicios();
-  //   }
-  // }
-
-  // setPages(page: number): void {
-  //   this.page = page;
-  //   this.listaServicios();
-  // }
-
   // ----------- Modals -------------
 
+  // Imprimir
   printServicio(imprimir1: any) {
     let printContents = (document.getElementById(imprimir1) as InnerHTML).innerHTML;
     let originalContents = document.body.innerHTML;
@@ -208,6 +176,7 @@ export class ConsultaServicioComponent implements OnInit {
     window.location.reload()
   }
 
+  // Muestra el formulario que se llame
   public onOpenModal(servicio: Servicio, mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');

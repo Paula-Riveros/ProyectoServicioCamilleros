@@ -59,6 +59,7 @@ export class NuevoServicioComponent implements OnInit {
     this.isSuperadmin = this.tokenService.isSuperadmin();
   }
 
+  // Fecha actual en el campo del formulario para solicitar un servicio
   fechaActual(): void {
     const nowFecha = new Date();
     const day = ("0" + nowFecha.getDate()).slice(-2);
@@ -68,6 +69,7 @@ export class NuevoServicioComponent implements OnInit {
     this.fecha = nowFecha.getFullYear() + "-" + (month) + "-" + (day);
   }
 
+  // Registra hora de envio del servicio
   horaEnvioServicio(): void {
     const nowHora = new Date();
     const hora = ("0" + nowHora.getHours()).slice(-2);
@@ -76,6 +78,7 @@ export class NuevoServicioComponent implements OnInit {
     this.horaEnvio = hora + ":" + min + ":" + seg;
   }
 
+  // Crea el servicio
   onCreate(): void {
     const servicio = new Servicio(this.id, this.fecha, this.servicioSolicitado, this.solicitante, this.destinoServicio, this.transporte,
       this.insumo, this.familiar, this.aislamiento, this.observaciones, this.docPaciente, this.nombrePaciente, this.horaEnvio,
@@ -96,6 +99,7 @@ export class NuevoServicioComponent implements OnInit {
     );
   }
 
+  // Lista de la areas del HUS (GENARESER)
   listaSolicitados(): void {
     this.genareserService.lista().subscribe(
       data => {
@@ -107,6 +111,7 @@ export class NuevoServicioComponent implements OnInit {
     );
   }
 
+  // Busca nombre del paciente por el numero del documento
   buscarNombrePaciente() {
     let valor: string = this.txtBuscar.nativeElement.value;
 

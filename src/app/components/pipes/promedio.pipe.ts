@@ -1,6 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Servicio } from '../models/servicio';
 
+// Obtiene el promedio de todos los servicios que se muestran segun los filtros aplicados, si los hay
+
 @Pipe({
   name: 'promedio'
 })

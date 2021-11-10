@@ -1,3 +1,4 @@
+<!-- Pagina de inicio una vez se ha iniciado sesion -->
 <div class="wrapper">
 
     <hr>
@@ -15,18 +16,15 @@
         <div class="row">
 
             
-
+            <!-- Solicitar un servicio -->
             <div class="col boton-camas">
-                <!-- <div *ngIf="isAdmin">
-                    <button class="btn btn-outline-success mb-3" routerLink="/camilleros/servicio/nuevo">
-                       Solicitud</button>
-                  </div> -->
                 <a [routerLink]="['/camilleros/servicio/nuevo']">
                     <div>
                         Solicitud
                     </div>
                 </a>
 
+                <!-- Asignar información a un servicio -->
             </div>
             <div class="col boton-camas">
                 <a [routerLink]="['/camilleros/servicio/lista']">
@@ -36,6 +34,8 @@
                     </div>
                 </a>
             </div>
+
+            <!-- Consultar informacion de los servicios -->
             <div *ngIf="isAdmin" class="col boton-camas">
                 <a [routerLink]="['/camilleros/servicio/consultar']">
                     <div>
@@ -44,6 +44,7 @@
                 </a>
             </div>
            
+            <!-- Consultar, editar, crear o eliminar algun camillero -->
             <div *ngIf="isAdmin" class="col boton-camas">
                 <a [routerLink]="['/camilleros/camillero/lista']">
                     <div>

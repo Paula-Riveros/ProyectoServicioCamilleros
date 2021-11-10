@@ -22,8 +22,6 @@ export class ListaServicioComponent implements OnInit {
 
   genaresers: Genareser[] = [];
 
-  // page: number = 0;
-
   page_size: number = 5;
   page_number: number = 1;
   totalRecords!: number;
@@ -52,8 +50,6 @@ export class ListaServicioComponent implements OnInit {
       (data: Servicio[]) => {
         this.servicios = data;
         this.totalRecords = data.length;
-
-        // console.log(data[0].paciente?.id);
       },
       err => {
         console.log(err);
@@ -61,6 +57,7 @@ export class ListaServicioComponent implements OnInit {
     );
   }
 
+  // Trae la fecha actual del computador
   fechaActual(): void {
     const nowFecha = new Date();
     const day = ("0" + nowFecha.getDate()).slice(-2);
@@ -70,46 +67,22 @@ export class ListaServicioComponent implements OnInit {
     this.search = today;
   }
 
+  // Filtro Fecha
   onSearchServicio(search: string) {
     //this.page = 0;
     this.search = search;
   }
 
+  // Boton de limpiar filtro fecha
   clearSearch(): void {
     this.search = '';
     (document.getElementById('search') as HTMLInputElement).value = '';
     this.listaServicios();
   }
 
-
-  // --------------------------------------------------------------
-  // Paginación (otro metodo)
-  // sort(): void {
-  //   this.asc = !this.asc;
-  //   this.listaServicios();
-  // }
-
-  // rewind(): void {
-  //   if (!this.isFirst) {
-  //     this.page--;
-  //     this.listaServicios();
-  //   }
-  // }
-
-  // forward(): void {
-  //   if (!this.isLast) {
-  //     this.page++;
-  //     this.listaServicios();
-  //   }
-  // }
-
-  //  setPages(page: number): void {
-  //    this.page = page;
-  //    this.listaServicios();
-  //  }
-
   // ----------- Modals -------------
 
+  // Obtiene hora de ejecucion
   horaEjecucionServicio(): void {
     const nowHora = new Date();
     const hora = ("0" + nowHora.getHours()).slice(-2);
@@ -121,10 +94,12 @@ export class ListaServicioComponent implements OnInit {
     this.servicio.horaFinalizacion = '00:00:00';
   }
 
+  // Cambio hora de ejecucion
   cambioHEj(txtHEj: string): void {
     this.servicio.horaEjecucion = (document.getElementById("horaEjecucion") as HTMLInputElement).value;
   }
 
+  // Obtiene hora de finalizacion
   horaFinalizacionServicio(): void {
     const nowHora = new Date();
     const hora = ("0" + nowHora.getHours()).slice(-2);
@@ -135,10 +110,12 @@ export class ListaServicioComponent implements OnInit {
     this.servicio.horaFinalizacion = hora + ":" + min + ":" + seg;
   }
 
+  // Cambio hora de finalizacion
   cambioHF(txtHF: string): void {
     this.servicio.horaFinalizacion = (document.getElementById("horaFinalizacion") as HTMLInputElement).value;
   }
 
+  // Actualizar horas
   onUpdateTime(servicio: Servicio): void {
     this.servicioService.updateTime(this.servicio).subscribe(
       data => {
@@ -156,6 +133,7 @@ export class ListaServicioComponent implements OnInit {
     );
   }
 
+  // Calcula el tiempo total del servicio
   tiempoTotal(): void {
     
     var hora1 = (this.servicio.horaEnvio).split(":");
@@ -199,15 +177,16 @@ export class ListaServicioComponent implements OnInit {
     this.servicio.tiempoTotal = sumaM;
   }
 
+  // Habilita input del motivo de cancelacion del servicio
   habilitar(): void {
     const cancel = (document.getElementById('cancelado') as HTMLInputElement).value;
     this.isCancel = false;
     this.servicio.cancelado = true;
     const mot = (document.getElementById('motivoCancelado') as HTMLInputElement).value;
     this.servicio.motivoCancelado = mot;
-    //console.log(cancel);
   }
 
+  // Deshabilita input del motivo de cancelacion del servicio
   noHabilitar(): void {
     const nocancel = (document.getElementById('noCancelado') as HTMLInputElement).value;
     this.isCancel = true;
@@ -217,6 +196,7 @@ export class ListaServicioComponent implements OnInit {
     this.servicio.horaCancelacion = '00:00:00';
   }
 
+  // Obtiene hora de cancelacion del servicio
   horaCancelacionServicio(): void {
     const nowHora = new Date();
     const hora = ("0" + nowHora.getHours()).slice(-2);
@@ -226,6 +206,7 @@ export class ListaServicioComponent implements OnInit {
     this.servicio.horaCancelacion = horaCancel;
   }
 
+  // Registra actualizacion del servicio (cancelado o no)
   onUpdateCancel(servicio: Servicio): void {
     this.servicioService.updateCancelado(this.servicio).subscribe(
       data => {
@@ -243,6 +224,7 @@ export class ListaServicioComponent implements OnInit {
     );
   }
 
+  // Imprimir
   printServicio(imprimir1: any) {
     let printContents = (document.getElementById(imprimir1) as InnerHTML).innerHTML;
     let originalContents = document.body.innerHTML;

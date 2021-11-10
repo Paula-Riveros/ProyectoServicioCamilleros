@@ -23,6 +23,7 @@ export class ListaCamilleroComponent implements OnInit {
     this.isSuperadmin = this.tokenService.isSuperadmin();
   }
 
+  // Listar los camilleros
   listaCamilleros(): void {
     this.camilleroService.lista().subscribe(
       data => {
@@ -34,6 +35,7 @@ export class ListaCamilleroComponent implements OnInit {
     );
   }
 
+  // Borrar un camillero
   borrar(idCamillero: number) {
      this.camilleroService.delete(idCamillero).subscribe(
      data => {

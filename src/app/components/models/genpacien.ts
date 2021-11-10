@@ -1,3 +1,4 @@
+// Pacientes
 export class Genpacien {
     oid: number;
     pacnumdoc: string;

@@ -17,10 +17,6 @@ import { DetalleGenpacienComponent } from './components/genpacien/detalle-genpac
 import { ListaGenpacienComponent } from './components/genpacien/lista-genpacien.component';
 import { HomeComponent } from './components/home/home.component';
 import { InicioComponent } from './components/inicio/inicio.component';
-//import { DetallePacienteComponent } from './components/paciente/detalle-paciente.component';
-//import { EditarPacienteComponent } from './components/paciente/editar-paciente.component';
-//import { ListaPacienteComponent } from './components/paciente/lista-paciente.component';
-//import { NuevoPacienteComponent } from './components/paciente/nuevo-paciente.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { LoginGuard } from './guards/login.guard';
@@ -37,11 +33,6 @@ const routes: Routes = [
 
   { path: 'camilleros', component: CamillerosComponent,  children:[
     { path: 'inicio', component: InicioCamillerosComponent },
-
-    //{ path: 'paciente/lista', component: ListaPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']} },
-    //{ path: 'paciente/detalle/:id', component: DetallePacienteComponent, canActivate: [guard], data: { expectedRol: ['admin', 'user']} },
-    //{ path: 'paciente/nuevo', component: NuevoPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin']} },
-    //{ path: 'paciente/editar/:id', component: EditarPacienteComponent, canActivate: [guard], data: { expectedRol: ['admin']} },
     
     { path: 'camillero/lista', component: ListaCamilleroComponent, canActivate: [ProdGuardService], data: { expectedRol: ['superadmin', 'admin']}},
     { path: 'camillero/detalle/:id', component: DetalleCamilleroComponent, canActivate: [ProdGuardService], data: { expectedRol: ['superadmin', 'admin']}},

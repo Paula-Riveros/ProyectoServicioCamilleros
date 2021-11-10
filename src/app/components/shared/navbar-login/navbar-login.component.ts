@@ -19,8 +19,6 @@ export class NavbarLoginComponent {
 
   onLogOut(): void {
     this.tokenService.logOut();
-    // window.location.reload();
-    //this.router.navigate(['/inicio/home']);
   }
 
   

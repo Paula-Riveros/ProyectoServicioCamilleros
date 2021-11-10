@@ -8,17 +8,12 @@ import { ServicioService } from './service/servicio.service';
 import { HomeComponent } from './components/home/home.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { HeaderComponent } from './components/header/header.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { NavbarLoginComponent } from './components/shared/navbar-login/navbar-login.component';
-//import { ListaPacienteComponent } from './components/paciente/lista-paciente.component';
-//import { DetallePacienteComponent } from './components/paciente/detalle-paciente.component';
-//import { NuevoPacienteComponent } from './components/paciente/nuevo-paciente.component';
-//import { EditarPacienteComponent } from './components/paciente/editar-paciente.component';
 import { CamillerosComponent } from './components/camilleros/camilleros/camilleros.component';
 import { InicioCamillerosComponent } from './components/camilleros/inicio/inicio.component';
 import { interceptorProvider } from './interceptors/prod-interceptor.service';
@@ -38,9 +33,6 @@ import { DetalleGenpacienComponent } from './components/genpacien/detalle-genpac
 import { FiltroFechaPipe } from './components/pipes/filtro-fecha.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 
-
-
-
 // External
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -52,15 +44,10 @@ import { PromedioPipe } from './components/pipes/promedio.pipe';
     HomeComponent,
     QuienesSomosComponent,
     NavbarComponent,
-    HeaderComponent,
     InicioComponent,
     FooterComponent,
     CarouselComponent,
     NavbarLoginComponent,
-    //ListaPacienteComponent,
-    //DetallePacienteComponent,
-    //NuevoPacienteComponent,
-    //EditarPacienteComponent,
     CamillerosComponent,
     InicioCamillerosComponent,
     LoginComponent,

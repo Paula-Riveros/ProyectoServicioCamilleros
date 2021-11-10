@@ -31,6 +31,7 @@ export class EditarCamilleroComponent implements OnInit {
     );
   }
 
+  // Editar camillero
   onUpdate(): void {
     const id = this.activatedRoute.snapshot.params.id;
     this.camilleroService.update(id, this.camillero).subscribe(

@@ -3,17 +3,12 @@
     <i class="fas fa-plus-circle"></i> Nuevo servicio</button>
 </div>
 
-<!-- <div class="col-md-3 mx-auto text-center">
-    <label><b>Listar servicios por fecha</b></label>
-    <form class="form-inline my-2">
-      <input type="date" (ngModelChange)="listaServiciosFecha(key.value)" #key="ngModel" ngModel
-         name="key" class="form-control mr-sm-2" placeholder="Buscar servicios por fecha">
-    </form>
-  </div> -->
 
 <div class="container mb-2">
   <form>
     <div class="row mt-3">
+
+      <!-- Filtro fecha -->
       <div class="col">
         <div class="form-group">
           <label><b>Fecha:</b></label>
@@ -24,6 +19,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Filtro cancelado -->
       <div class="col">
         <label for="cancelado"><b>Cancelado:</b></label>
         <div class="form-control">
@@ -121,24 +118,13 @@
           </td>
         </tr>
 
-        <!-- <tr>
-         <td><i class="fas fa-angle-double-left fa-2x" (click)="rewind()"></i></td>
-        <td colspan="10">
-          <span *ngFor="let p of totalPages; let i = index">
-            <a style="cursor: pointer;" (click)="setPages(i)" [ngClass]="{'text-primary': i === page }">{{ i+1
-              }}&nbsp;&nbsp;&nbsp;</a>
-          </span>
-        </td>
-         <td><i class="fas fa-angle-double-right fa-2x" (click)="forward()"></i></td>
-      </tr> -->
-
       </tbody>
     </table>
 
   </div>
 
 
-  <!-- Edit Time -->
+  <!-- Edit Time Modal -->
   <div class="modal fade" id="updateTimeModal" tabindex="-1" role="dialog" aria-labelledby="servicioEditModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -181,7 +167,7 @@
     </div>
   </div>
 
-  <!-- Edit Cancelado -->
+  <!-- Edit Cancelado Modal -->
   <div class="modal fade" id="updateCancelModal" tabindex="-1" role="dialog" aria-labelledby="servicioEditModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -254,7 +240,7 @@
     </div>
   </div>
 
-  <!-- Imprimir -->
+  <!-- Imprimir Modal -->
   <div class="modal fade" id="imprimirModal" tabindex="-1" role="dialog" aria-labelledby="servicioImprimirModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">

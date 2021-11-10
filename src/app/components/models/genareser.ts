@@ -1,3 +1,4 @@
+// Areas del HUS
 export class Genareser {
     oid: number;
     gascodigo: string;

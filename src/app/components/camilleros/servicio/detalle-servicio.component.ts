@@ -34,6 +34,7 @@ export class DetalleServicioComponent implements OnInit {
     );
   }
 
+  // Calcula el tiempo total del servicio
   tiempoTotal(): void {
     if (this.servicio?.horaFinalizacion != "00:00:00") {
       var hora1 = (this.servicio!.horaEnvio).split(":");
@@ -83,6 +84,7 @@ export class DetalleServicioComponent implements OnInit {
     this.router.navigate(['/camilleros/servicio/consultar']);
   }
 
+  // Imprimir servicio
   printServicio(imprimir1: any) {
     let printContents = (document.getElementById(imprimir1) as InnerHTML).innerHTML;
     let originalContents = document.body.innerHTML;
@@ -92,6 +94,8 @@ export class DetalleServicioComponent implements OnInit {
     window.print();
 
     document.body.innerHTML = originalContents;
+
+    window.location.reload()
 }
 
 

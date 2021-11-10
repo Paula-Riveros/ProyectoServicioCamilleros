@@ -19,8 +19,6 @@ export class Servicio {
     familiar: string;
     aislamiento: boolean;
     observaciones: string;
-    // paciente?: Paciente;
-    // idPaciente?: number;
     nombrePaciente: string;
     genpacien?: Genpacien;
     docPaciente: string;
