@@ -12,6 +12,7 @@ import { NuevoUsuario } from '../models/nuevo-usuario';
 })
 export class RegistroComponent implements OnInit {
 
+  isLogged = false;
   nuevoUsuario!: NuevoUsuario;
   nombre: string = '';
   nombreUsuario!: string;
@@ -23,6 +24,9 @@ export class RegistroComponent implements OnInit {
   constructor(private tokenService: TokenService, private authService: AuthService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    }
 
   }
 
@@ -40,7 +44,7 @@ export class RegistroComponent implements OnInit {
         },
         err => {
         this.errMsj = err.error.mensaje;
-        this.toastr.error(this.errMsj, 'Fail', {
+        this.toastr.error(this.errMsj, 'Error al crear la cuenta', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
         // console.log(err.error.message);

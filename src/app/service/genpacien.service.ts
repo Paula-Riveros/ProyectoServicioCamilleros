@@ -11,8 +11,6 @@ import { Genpacien } from '../components/models/genpacien';
 })
 export class GenpacienService {
 
-  // genpacienURL = 'http://localhost:1433/genpacien/';
-
   genpacienURL = environment.genpacienURL;
 
   constructor(private httpClient: HttpClient) { }

@@ -10,7 +10,7 @@ import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { NavbarLoginComponent } from './components/shared/navbar-login/navbar-login.component';
@@ -65,7 +65,7 @@ import { PromedioPipe } from './components/pipes/promedio.pipe';
     FiltroFechaPipe,
     ConsultaServicioComponent,
     PromedioPipe
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -75,7 +75,9 @@ import { PromedioPipe } from './components/pipes/promedio.pipe';
     NgxPaginationModule, 
     ToastrModule.forRoot()
   ],
-  providers: [ServicioService, interceptorProvider],
+  providers: [ServicioService, interceptorProvider,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

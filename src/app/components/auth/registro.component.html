@@ -1,12 +1,13 @@
 <!-- Registro de un nuevo usuario (Crear cuenta) -->
+
 <body>
 
 
-<div class="container ">
+  <div class="container ">
 
-  <a [routerLink]="['/inicio/home']"><i class="fas fa-arrow-left mt-5"  ></i></a>
+    <a [routerLink]="['/login']"><i class="fas fa-arrow-left mt-5"></i></a>
 
-</div>
+  </div>
 
 
 
@@ -15,9 +16,9 @@
   <div class="login-box animate__animated animate__fadeIn ">
 
     <img class="avatar" src="../../../../assets/img/icon.png" alt="Logo">
-    <h1>Login</h1>
+    <h1>Registrarse</h1>
 
-    <form #f="ngForm" (ngSubmit)="onRegister()" novalidate>
+    <form #f="ngForm" (ngSubmit)="onRegister()" novalidate class="login100-form validate-form flex-sb flex-w">
 
       <label for="nombre">Nombre</label>
       <div class="wrap-input100 m-b-16 mt-1">
@@ -25,13 +26,17 @@
           [(ngModel)]="nombre" required>
       </div>
 
+      <span *ngIf="f.submitted && f.controls['nombre'].errors" class="text-danger animate__animated animate__fadeIn"> El
+        nombre es obligatorio</span>
+
       <label for="nombreUsuario" class="mt-3">Nombre de Usuario</label>
       <div class="wrap-input100 m-b-16 mt-1">
         <input type="text" name="nombreUsuario" id="nombreUsuario" class="input100" placeholder="Ingrese usuario aqui"
           [(ngModel)]="nombreUsuario" required>
       </div>
 
-      <!-- <span *ngIf="loginForm.submitted && loginForm.controls['email'].errors" class="text-danger animate__animated animate__fadeIn"> El usuario es obligatorio</span> -->
+      <span *ngIf="f.submitted && f.controls['nombreUsuario'].errors"
+        class="text-danger animate__animated animate__fadeIn"> El usuario es obligatorio</span>
 
 
       <label for="password" class="mt-3"> Contraseña</label>
@@ -40,13 +45,18 @@
           [(ngModel)]="password" required>
       </div>
 
+      <span *ngIf="f.submitted && f.controls['password'].errors" 
+      class="text-danger animate__animated animate__fadeIn">
+        La contraseña es obligatoria</span>
+
       <label for="email" class="mt-3">Correo Electrónico</label>
       <div class="wrap-input100 m-b-16 mt-1">
-        <input type="text" name="email" id="email" class="input100" placeholder="Ingrese email aqui"
-          [(ngModel)]="email" required>
+        <input type="text" name="email" id="email" class="input100" placeholder="Ingrese email aqui" [(ngModel)]="email"
+          required>
       </div>
 
-      <!-- <span *ngIf="loginForm.submitted && loginForm.controls['password'].errors" class="text-danger animate__animated animate__fadeIn"> La contraseña es obligatoria</span> -->
+      <span *ngIf="f.submitted && f.controls['email'].errors"
+        class="text-danger animate__animated animate__fadeIn"> La contraseña es obligatoria</span>
 
       <br>
       <div class="container-login100-form-btn mt-1">

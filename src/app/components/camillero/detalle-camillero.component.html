@@ -9,6 +9,7 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item"><b>NÚMERO DE DOCUMENTO: </b>{{camillero.idCamillero}}</li>
                   <li class="list-group-item"><b>NOMBRE: </b>{{camillero.nombreCamillero}}</li>
+                  <li class="list-group-item"><b>CORREO ELECTRÓNICO: </b>{{camillero.emailCamillero}}</li>
                   <li class="list-group-item" *ngIf="camillero.estadoCamillero"><b>ESTADO: </b>Activo</li>
                   <li class="list-group-item" *ngIf="!camillero.estadoCamillero"><b>ESTADO: </b>Inactivo</li>
                 </ul>

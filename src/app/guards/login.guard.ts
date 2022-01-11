@@ -5,16 +5,17 @@ import { TokenService } from '../service/token.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
+// implements CanActivate
+export class LoginGuard implements CanActivate  {
 
   constructor(private tokenService: TokenService, private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if(this.tokenService.isLogged()) {
-      this.router.navigate(['/camilleros/inicio']);
-      return false;
-    }
-    return true;
-  }
+   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+     if(this.tokenService.isLogged()) {
+       this.router.navigate(['/camilleros/inicio']);
+       return false;
+     }
+     return true;
+   }
   
 }

@@ -11,8 +11,6 @@ import { Genareser } from '../components/models/genareser';
 })
 export class GenareserService {
 
-  // genareserURL = 'http://localhost:1433/genareser/';
-
   genareserURL = environment.genareserURL;
 
   constructor(private httpClient: HttpClient) { }

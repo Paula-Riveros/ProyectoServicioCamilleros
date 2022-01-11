@@ -2,24 +2,33 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col-md-4 mx-auto">
-        <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
-            <div class="form-group">
-                <label for="idCamillero">Número de documento</label>
-                <input type="number" class="form-control" id="idCamillero" name="idCamillero" [(ngModel)]="idCamillero" required >
-            </div>
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="idCamillero">Número de documento</label>
+                    <input type="number" class="form-control" id="idCamillero" name="idCamillero"
+                        [(ngModel)]="idCamillero" required>
+                </div>
 
-            <div class="form-group">
-                <label for="nombreCamillero">Nombre</label>
-                <input type="text" class="form-control" id="nombreCamillero" name="nombreCamillero" [(ngModel)]="nombreCamillero" required>
-            </div>
+                <div class="form-group">
+                    <label for="nombreCamillero">Nombre</label>
+                    <input type="text" class="form-control" id="nombreCamillero" name="nombreCamillero"
+                        [(ngModel)]="nombreCamillero" required>
+                </div>
 
-            <div class="mt-3" style="text-align: center;">
-            <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"><i class="fas fa-plus-circle"></i> Crear</button>
-            &nbsp; &nbsp;
-            <button class="btn btn-outline-primary btn-block" routerLink="/camilleros/camillero/lista"><i class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
+                <div class="wrap-input100 m-b-16 mt-1">
+                    <label for="emailCamillero">Correo Electrónico</label>
+                    <input type="text" class="form-control" id="emailCamillero" name="emailCamillero"
+                    [(ngModel)]="emailCamillero" required>
+                </div>
+
+                <div class="mt-3" style="text-align: center;">
+                    <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"><i
+                            class="fas fa-plus-circle"></i> Crear</button>
+                    &nbsp; &nbsp;
+                    <button class="btn btn-outline-primary btn-block" routerLink="/camilleros/camillero/lista"><i
+                            class="fas fa-arrow-alt-circle-left"></i> Regresar</button>
+                </div>
+            </form>
         </div>
-        </form>
-    </div>
     </div>
 </div>
-

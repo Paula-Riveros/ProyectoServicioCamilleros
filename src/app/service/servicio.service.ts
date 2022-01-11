@@ -10,7 +10,6 @@ import { Servicio } from '../components/models/servicio';
 })
 export class ServicioService {
 
-  //servicioURL = 'http://localhost:1433/servicio/';
 
   servicioURL = environment.servicioURL;
 

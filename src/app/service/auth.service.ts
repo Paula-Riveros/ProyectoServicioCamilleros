@@ -11,8 +11,6 @@ import { NuevoUsuario } from '../components/models/nuevo-usuario';
 })
 export class AuthService {
 
-  //authURL = 'http://localhost:1433/auth/';
-
   authURL = environment.authURL;
 
   constructor(private httpClient: HttpClient) { }
@@ -30,6 +28,10 @@ export class AuthService {
   // Refrescar ingreso
   public refresh(dto: JwtDTO): Observable<JwtDTO> {
     return this.httpClient.post<JwtDTO>(this.authURL + 'refresh', dto);
+  }
+
+  public cambiarClave(oldPassword: string, newPassword: string, usuario: string) {
+    return this.httpClient.put(this.authURL + `usuario/cambiar-clave/old=${oldPassword}/new=${newPassword}`, null);
   }
 
 }

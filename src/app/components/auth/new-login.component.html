@@ -1,0 +1,50 @@
+<!-- <body>
+    <div class="container ">
+  
+      <a [routerLink]="['/login']"><i class="fas fa-arrow-left mt-5"></i></a>
+    </div>
+  
+    <div class="login-box animate__animated animate__fadeIn ">
+      <img class="avatar" src="../../../../assets/img/icon.png" alt="Logo">
+      <h1>Cambie su Contraseña</h1>
+
+      <form #loginForm="ngForm" novalidate class="login100-form validate-form flex-sb flex-w">
+       
+        <label for="username">Nombre de Usuario</label>
+        <div class="wrap-input100 m-b-16 mt-1">
+          <input class="input100" type="text" required name="nombreUsuario" [(ngModel)]="usuario"
+            placeholder="Ingrese usuario aqui">
+        </div>
+  
+        <label for="username">Contraseña Actual</label>
+        <div class="wrap-input100 m-b-16 mt-1">
+          <input class="input100" type="password" required name="email" [(ngModel)]="oldClave"
+            placeholder="Ingrese su contraseña aqui">
+        </div>
+  
+  
+        <label for="password" class="mt-2">Nueva Contraseña</label>
+        <div class="wrap-input100 m-b-16" data-validate="Password is required">
+          <input required class="input100" type="password" name="password" [(ngModel)]="clave"
+            placeholder="Ingrese la nueva Contraseña ">
+        </div>
+  
+        <span *ngIf="loginForm.submitted && loginForm.controls['password'].errors"
+          class="text-danger animate__animated animate__fadeIn"> La contraseña es obligatoria</span>
+  
+        <br>
+        <div class="container-login100-form-btn mt-1">
+          <button class="login100-form-btn" [disabled]="!loginForm.valid"
+            (click)="nuevaContrasenaLogin(usuario, clave, oldClave)">
+            Ingresar
+          </button>
+        </div>
+      </form>
+  
+      <span *ngIf="loginForm.submitted && isLoginFail" class="text-danger animate__animated animate__fadeIn">
+        {{errMsj}}</span>
+  
+  
+    </div>
+  
+  </body> -->

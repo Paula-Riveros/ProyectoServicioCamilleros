@@ -9,8 +9,6 @@ import { Camillero } from '../components/models/camillero';
 })
 export class CamilleroService {
 
-  //camilleroURL = 'http://localhost:1433/camillero/';
-
   camilleroURL = environment.camilleroURL;
 
   constructor(private httpClient: HttpClient) { }

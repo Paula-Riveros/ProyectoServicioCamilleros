@@ -9,6 +9,7 @@
           <tr>
             <th scope="col">Número de documento</th>
             <th scope="col">Nombre</th>
+            <th scope="col">Correo electrónico</th>
             <th scope="col">Estado</th>
             <th scope="col">Ver</th>
             <th scope="col" *ngIf="isAdmin">Editar</th>
@@ -19,6 +20,7 @@
           <tr *ngFor="let camillero of camilleros">
             <td>{{camillero.idCamillero}}</td>
             <td>{{camillero.nombreCamillero}}</td>
+            <td>{{camillero.emailCamillero}}</td>
             <td *ngIf="camillero.estadoCamillero">Activo</td>
             <td *ngIf="!camillero.estadoCamillero">Inactivo</td>
             <td><button class="btn btn-outline-primary" routerLink="/camilleros/camillero/detalle/{{camillero.idCamillero}}"><i class="fas fa-eye"></i> Ver</button></td>
